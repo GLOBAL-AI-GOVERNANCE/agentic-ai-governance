@@ -1,0 +1,17 @@
+name: Governance change proposal
+description: Propose a policy, ADR, compatibility, or release-process change.
+title: "[Governance]: "
+labels: ["governance"]
+body:
+  - type: textarea
+    id: decision
+    attributes:
+      label: Proposed decision
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences and alternatives
+    validations:
+      required: true

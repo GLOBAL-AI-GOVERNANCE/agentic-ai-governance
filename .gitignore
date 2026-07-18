@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: CC-BY-4.0
+
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/*.tmp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

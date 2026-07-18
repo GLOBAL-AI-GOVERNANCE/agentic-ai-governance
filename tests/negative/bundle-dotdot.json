@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "bundle_id": "sha256:3fc7a604520bfd9cbcae17b71160bb3ed6592c5096e6f5967108500980e95ae4",
+  "files": [
+    {
+      "path": "a/..",
+      "media_type": "application/json",
+      "size_bytes": 2,
+      "hash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "canonicalization": "JCS"
+    },
+    {
+      "path": "inventories/mcp.json",
+      "media_type": "application/json",
+      "size_bytes": 2,
+      "hash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "canonicalization": "JCS"
+    },
+    {
+      "path": "inventories/tools.json",
+      "media_type": "application/json",
+      "size_bytes": 2,
+      "hash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "canonicalization": "JCS"
+    }
+  ]
+}

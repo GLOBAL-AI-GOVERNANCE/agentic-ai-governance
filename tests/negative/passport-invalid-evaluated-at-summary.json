@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "framework": {
+    "id": "global-ai-governance.agentic-ai-governance",
+    "version": "v0.1.0-alpha.1"
+  },
+  "profile": {
+    "id": "global-ai-governance.mcp-governance",
+    "version": "0.1.0-alpha.1"
+  },
+  "passport_id": "sha256:028e707ba92bf95ab7448341268553aa30f6b4eaf979031baa3a6de986ea85b6",
+  "issuer": {
+    "issuer_id": "global-ai-governance.test-issuer"
+  },
+  "subject": {
+    "agent_id": "agent.synthetic.quickstart",
+    "display_name": "Synthetic Quickstart Research Agent"
+  },
+  "issued_assessment": {
+    "result": "APPROVED",
+    "evaluated_at": "2026-02-30T00:00:00Z",
+    "control_summary": {
+      "PASS": 1,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 0,
+      "NOT_EVALUATED": 0,
+      "ERROR": 0
+    },
+    "maximum_action_level": 1,
+    "assessment_id": "sha256:7881b77ebefe51733b1ec24dd234d3ef5455fe7a7e6b41c1dacd5209df4ccd10",
+    "data_authority_status": "VERIFIED"
+  },
+  "assurance": {
+    "evidence_basis": "DECLARED",
+    "validation_method": "STRUCTURAL",
+    "attestation_status": "ISSUER_SIGNED"
+  },
+  "bindings": {
+    "assessment_bundle": "sha256:1fe8ac724a781850b851c531b046e099af20671282fb2281bb083ef102cd3d4e",
+    "agent_inventory": "sha256:31e14fabd2440b9bdba60ba9a42b717f3fc8686799a2d69d5440e474359a689e",
+    "mcp_inventory": "sha256:00e73682f17db56bd459800fefe4a8ef1217623be8c38bc38a6b444827f30676",
+    "tool_inventory": "sha256:a642bcd7061a19d5718f78c6e818b98e9f8b7c23ba237e43efb8006dfccd88c5",
+    "control_profile": "sha256:5aa19fb2cc3f72a8f511a0dd51a34be64fc60844b2f97167b0f295809006814a",
+    "data_authority_evidence": [
+      "sha256:4cd988a745d8e44bebd98cf7b81ada2d6595f3cbd254ed457bdae1ad346054e4"
+    ],
+    "evaluator_version": "reference-validator-0.1.0-alpha.1",
+    "assessment_policy_version": "0.1.0-alpha.1",
+    "action_authority_graph": "sha256:09138e1b8236a24f86605184f1ae97980007adddd41889cf9e18e62e972eb61e",
+    "control_profile_descriptor": "sha256:78e1ca880180abc1e96759de591ed55e8d2dbf8eb2f6a95546ecb867fd8e285a",
+    "evaluator_id": "global-ai-governance.reference-validator",
+    "assessment_policy_id": "global-ai-governance.alpha1-reference-policy"
+  },
+  "validity": {
+    "not_before": "2026-07-17T20:00:00Z",
+    "expires_at": "2026-08-17T20:00:00Z"
+  },
+  "conditions": [],
+  "extensions": {},
+  "critical_extensions": [],
+  "proof": {
+    "jws": "eyJhbGciOiJFZDI1NTE5IiwiY3R5IjoiYXBwbGljYXRpb24vYWdlbnQtdHJ1c3QtcGFzc3BvcnQranNvbiIsImtpZCI6InVybjppZXRmOnBhcmFtczpvYXV0aDpqd2stdGh1bWJwcmludDpzaGEtMjU2OjFJRzJ0TUg3SjJ3Ykpabk9mOExKelFpdEtmN0xNdm9BRWxzdURNVk01NFkiLCJ0eXAiOiJhdHArandzIn0.._-xDOBTuxUXCTm3ADb0FUrnjJk7K91QstI-HMHZOtNGSRLh2Tjptz1Y8cc2p2eQfw6EY_6J5HbYgxY0kAJdoDQ"
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "cases": [
+    {
+      "file": "action-computed-level-mismatch.json",
+      "validator": "semantic",
+      "kind": "action"
+    },
+    {
+      "file": "action-duplicate-node-id.json",
+      "validator": "semantic",
+      "kind": "action"
+    },
+    {
+      "file": "action-missing-edge-target.json",
+      "validator": "semantic",
+      "kind": "action"
+    },
+    {
+      "file": "action-no-agent-node.json",
+      "validator": "semantic",
+      "kind": "action"
+    },
+    {
+      "file": "assessment-approved-with-fail.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-conditions-empty.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-data-authority-unknown-approved.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-duplicate-control-id.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-id-mismatch.json",
+      "validator": "identifier",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-level5-approved.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "assessment-not-applicable-contradiction.json",
+      "validator": "semantic",
+      "kind": "assessment"
+    },
+    {
+      "file": "bundle-control.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-dot.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-dotdot.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-drive-prefix.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-id-mismatch.json",
+      "validator": "identifier",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-non-nfc.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "bundle-unsafe-path.json",
+      "validator": "artifact",
+      "kind": "bundle"
+    },
+    {
+      "file": "passport-approved-level5-summary.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-approved-not-evaluated-summary.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-approved-with-conditions.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-approved-with-failed-control-summary.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-conditional-without-conditions-summary.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-invalid-evaluated-at-summary.json",
+      "validator": "semantic",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-outer-signature-metadata.json",
+      "validator": "artifact",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-signed-missing-proof.json",
+      "validator": "artifact",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-unknown-property.json",
+      "validator": "artifact",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-unsigned-with-proof.json",
+      "validator": "artifact",
+      "kind": "passport"
+    },
+    {
+      "file": "passport-unsupported-critical-extension.json",
+      "validator": "critical_extensions",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-eddsa.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-extra-key.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-none.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-wrong-cty.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-wrong-kid.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "protected-header-wrong-typ.json",
+      "validator": "protected_header",
+      "kind": "passport"
+    },
+    {
+      "file": "revocation-entry-after-next-update.json",
+      "validator": "semantic",
+      "kind": "revocation"
+    },
+    {
+      "file": "revocation-entry-id-mismatch.json",
+      "validator": "identifier",
+      "kind": "revocation"
+    },
+    {
+      "file": "revocation-entry-untrusted-authority.json",
+      "validator": "semantic",
+      "kind": "revocation"
+    },
+    {
+      "file": "revocation-sequence-one-previous-hash.json",
+      "validator": "semantic",
+      "kind": "revocation"
+    },
+    {
+      "file": "timestamp-invalid-day.json",
+      "validator": "artifact",
+      "kind": "timestamp-passport"
+    },
+    {
+      "file": "timestamp-leap-second.json",
+      "validator": "artifact",
+      "kind": "timestamp-passport"
+    },
+    {
+      "file": "timestamp-offset.json",
+      "validator": "artifact",
+      "kind": "timestamp-passport"
+    },
+    {
+      "file": "trusted-key-invalid-ed25519-x.json",
+      "validator": "trusted_key",
+      "kind": "trusted-key"
+    },
+    {
+      "file": "unsupported-schema-version.json",
+      "validator": "version",
+      "kind": "passport"
+    },
+    {
+      "file": "verification-not-yet-valid-permitted.json",
+      "validator": "semantic",
+      "kind": "verification"
+    },
+    {
+      "file": "verification-rejected-valid-permitted.json",
+      "validator": "semantic",
+      "kind": "verification"
+    },
+    {
+      "file": "verification-valid-signature-fail.json",
+      "validator": "semantic",
+      "kind": "verification"
+    },
+    {
+      "file": "verification-valid-validity-fail.json",
+      "validator": "semantic",
+      "kind": "verification"
+    }
+  ]
+}

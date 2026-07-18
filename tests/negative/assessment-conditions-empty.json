@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "assessment_id": "sha256:929c77fcc026d26536f3a4441d1afbcf8d24cb7f88ea2aa7cc70cdf4f48f92e9",
+  "evaluated_at": "2026-07-17T20:00:00Z",
+  "data_authority_status": "VERIFIED",
+  "result": "APPROVED_WITH_CONDITIONS",
+  "assurance": {
+    "evidence_basis": "DECLARED",
+    "validation_method": "STRUCTURAL",
+    "attestation_status": "NONE"
+  },
+  "requested_action_level": 1,
+  "maximum_action_level": 1,
+  "control_results": [
+    {
+      "control_id": "AID-001",
+      "outcome": "PASS",
+      "applicable": true,
+      "evidence_refs": [
+        "evidence.synthetic.identity"
+      ],
+      "findings": []
+    }
+  ],
+  "conditions": []
+}
