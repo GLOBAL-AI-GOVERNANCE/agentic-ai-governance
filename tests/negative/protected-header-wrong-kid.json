@@ -1,0 +1,6 @@
+{
+  "alg": "Ed25519",
+  "kid": "wrong",
+  "typ": "atp+jws",
+  "cty": "application/agent-trust-passport+json"
+}

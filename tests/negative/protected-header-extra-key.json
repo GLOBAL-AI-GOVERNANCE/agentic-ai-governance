@@ -1,0 +1,7 @@
+{
+  "alg": "Ed25519",
+  "kid": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:1IG2tMH7J2wbJZnOf8LJzQitKf7LMvoAElsuDMVM54Y",
+  "typ": "atp+jws",
+  "cty": "application/agent-trust-passport+json",
+  "x": "bad"
+}

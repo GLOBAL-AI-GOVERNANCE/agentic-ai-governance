@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "passport_id": "sha256:7e6d1eecf08bf05e1760bab94d7a7cf30f6cfde71da529ae9488ceb722302cde",
+  "verified_at": "2026-07-17T22:00:00Z",
+  "issued_assessment_result": "APPROVED",
+  "attestation_status": "ISSUER_SIGNED",
+  "components": {
+    "structure": "PASS",
+    "version": "PASS",
+    "identifier": "PASS",
+    "critical_extensions": "PASS",
+    "signature": "PASS",
+    "signing_key": "PASS",
+    "issuer_authentication": "PASS",
+    "bindings": "PASS",
+    "revocation": "PASS",
+    "validity": "FAIL",
+    "conditions": "PASS"
+  },
+  "primary_status": "NOT_YET_VALID",
+  "findings": [],
+  "operating_disposition": "PERMITTED"
+}

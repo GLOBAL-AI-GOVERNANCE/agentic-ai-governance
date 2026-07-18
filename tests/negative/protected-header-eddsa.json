@@ -1,0 +1,6 @@
+{
+  "alg": "EdDSA",
+  "cty": "application/agent-trust-passport+json",
+  "kid": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:1IG2tMH7J2wbJZnOf8LJzQitKf7LMvoAElsuDMVM54Y",
+  "typ": "atp+jws"
+}

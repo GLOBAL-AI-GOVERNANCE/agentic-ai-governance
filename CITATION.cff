@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Agentic AI Governance
+message: Please cite the repository release and specification version used. Licensing is file-scoped; see LICENSE_POLICY.md.
+type: software
+authors:
+  - name: Global AI Governance
+version: 0.1.0-alpha.1
+repository-code: https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance
+abstract: Experimental machine-readable specifications, schemas, examples, conformance fixtures, and reference validation utilities for governed agentic systems. Code and machine-readable artifacts are Apache-2.0; specification and documentation prose are CC-BY-4.0.

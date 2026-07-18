@@ -1,0 +1,24 @@
+name: Schema or fixture issue
+description: Report a schema, example, or conformance-vector defect.
+title: "[Schema]: "
+labels: ["schema"]
+body:
+  - type: input
+    id: artifact
+    attributes:
+      label: Artifact path
+      placeholder: schemas/agent-trust-passport.schema.json
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true

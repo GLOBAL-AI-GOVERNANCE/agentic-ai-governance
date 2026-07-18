@@ -1,0 +1,27 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+# Changelog
+
+- Added semantic evidence admission, profile descriptors, inventory schemas, action-authority binding, complete condition equality, and evaluator/policy support checks.
+- Added signed adversarial regressions for expired or untrusted evidence, unresolved references, profile drift, unsupported evaluator or policy metadata, destructive action graphs, and inventory-subject mismatch.
+- Added pinned `pip-audit` to the connected CI gate.
+- Enforced bidirectional equality between declared MCP inventory servers and reachable `MCP_SERVER` action-graph nodes.
+
+## v0.1.0-alpha.1
+
+- Published the experimental specification, versioned schemas, reusable profile, and synthetic examples.
+- Added strict JSON parsing, RFC 8785 canonicalization, content-derived identifiers, and Ed25519 detached-JWS verification.
+- Added assessment, verification-result, revocation, validity, signing-key, and action-authority consistency checks.
+- Enforced the assessment `data_authority_status` result cap and added versioned Alpha.1 inventory schemas.
+- Renamed the revoked passport example to `signed-revoked.json` to remove quickstart ambiguity.
+- Added public governance decision records for stewardship, licensing, assurance, decision states, and release sequencing.
+- Recorded the steward-approved release-sequencing supersession in DR-005, limiting release dependencies to explicitly documented causal dependencies.
+- Added a complete signed-passport trust command with structured errors and fail-closed decisions.
+- Separated issued assessment result, verification primary status, and operating disposition in the public CLI output.
+- Added positive, negative, malformed-input, and trust-policy regressions across Python 3.11–3.13 CI.
+- Added fail-closed bound-input verification for the canonical bundle manifest, inventories, control profile, data-authority evidence, and assessment summary.
+- Rejected unknown critical extensions, contradictory passport summaries, unsupported versions, invalid revocation chronology, unrelated revocation authorities, and unusable Ed25519 verification keys.
+- Replaced empty inventory placeholders in the quickstart with non-empty synthetic inventories and reconciled every passport binding.
+- Updated GitHub Actions to SHA-pinned Node 24-compatible official releases.
+- Pinned `cryptography==49.0.0` and `pytest==9.0.3` for the public-alpha validation environment.
+
+- Closed the final policy-anchor and authority-semantics findings by pinning canonical profile hashes, enforcing condition ceilings, validating evidence at assessment and verification time, and mapping controlled capabilities, MCP scopes, tool effects, and graph edges to minimum action levels.

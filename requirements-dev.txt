@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+jsonschema==4.26.0
+cryptography==49.0.0
+pytest==9.0.3
+pip-audit==2.10.1

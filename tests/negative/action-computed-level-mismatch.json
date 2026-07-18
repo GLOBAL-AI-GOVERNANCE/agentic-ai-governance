@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0-alpha.1",
+  "agent_id": "agent.synthetic.readonly",
+  "requested_level": 1,
+  "computed_level": 5,
+  "dimensions": {
+    "delegation": false,
+    "unattended": false,
+    "code_execution": false,
+    "credential_change": false,
+    "identity_change": false,
+    "external_publication": false,
+    "data_movement": false,
+    "self_modification": false,
+    "reversibility": "FULL",
+    "blast_radius": "LOCAL"
+  },
+  "nodes": [
+    {
+      "node_id": "agent.synthetic.readonly",
+      "node_type": "AGENT",
+      "base_level": 0
+    },
+    {
+      "node_id": "tool.synthetic.lookup",
+      "node_type": "TOOL",
+      "base_level": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": "agent.synthetic.readonly",
+      "to": "tool.synthetic.lookup",
+      "edge_type": "INVOKES"
+    }
+  ]
+}
