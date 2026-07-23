@@ -9,6 +9,7 @@
 - `canonical_json.py` implements the restricted RFC 8785 profile used by identifiers and signatures.
 - `verify_repository.py` checks schemas, examples, identifiers, signatures, negative fixtures, release hygiene, and the end-user validation path.
 - `build_dist.py` regenerates the aggregate specification.
+- `public_release_scrub.py` validates the canonical public project identity and optionally scans every tracked UTF-8 text file using a private denylist stored outside the repository. Public output is limited to result, accurate scope, scrub-policy version, bounded limitations, and whether private evidence is retained.
 
 Run `python tools/validate_artifact.py --help` for supported artifact types and trust inputs.
 

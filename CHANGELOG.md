@@ -1,13 +1,23 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Changelog
 
+## Unreleased
+
+- Added a regression-checked sole-public-project-identity statement for GLOBAL AI GOVERNANCE.
+- Established continuous V&V, one-active-increment sequencing, and the Stateful Revocation-first public roadmap.
+- Added machine-readable Claims Register, prohibited-claims controls, and mixed-version schema catalog governance.
+- Preserved the Alpha.1 generated distribution while making the distribution builder extensible to separately versioned future profiles.
+- Added repository enforcement and tests for governance, claims, schema-catalog, and generated-distribution integrity.
+- Enforced evidence references, verification method, and verification date for every `VERIFIED` claim.
+- Added deterministic prohibited-wording scans for declared repository paths while retaining release review for external surfaces.
+- Added catalog-wide local and cross-schema `$ref` resolution plus protected baseline schema identities.
+
+## v0.1.0-alpha.1
+
 - Added semantic evidence admission, profile descriptors, inventory schemas, action-authority binding, complete condition equality, and evaluator/policy support checks.
 - Added signed adversarial regressions for expired or untrusted evidence, unresolved references, profile drift, unsupported evaluator or policy metadata, destructive action graphs, and inventory-subject mismatch.
 - Added pinned `pip-audit` to the connected CI gate.
 - Enforced bidirectional equality between declared MCP inventory servers and reachable `MCP_SERVER` action-graph nodes.
-
-## v0.1.0-alpha.1
-
 - Published the experimental specification, versioned schemas, reusable profile, and synthetic examples.
 - Added strict JSON parsing, RFC 8785 canonicalization, content-derived identifiers, and Ed25519 detached-JWS verification.
 - Added assessment, verification-result, revocation, validity, signing-key, and action-authority consistency checks.
