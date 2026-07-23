@@ -1,8 +1,8 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Schemas
 
-These JSON Schema Draft 2020-12 contracts define the experimental `v0.1.0-alpha.1` structures. They include passports, assessments, verification results, bundles, action-authority graphs, agent inventories, MCP inventories, tool inventories, control-profile descriptors, data-authority evidence, trusted keys, and revocation artifacts.
+This directory contains versioned JSON Schemas used by Agentic AI Governance.
 
-Schema validation must be combined with semantic, identifier, signature, key-trust, binding, validity, and revocation checks when applicable.
+Existing Alpha.1 schema identifiers and raw-file SHA-256 digests are immutable. New versions may coexist only when listed in `schema-catalog.json` with an explicit immutable identifier, content digest, artifact version, lifecycle status, and supersession relationship.
 
-Each `$id` points to the version-tagged raw GitHub path. Those URLs become retrievable after the repository is published and the immutable release tag `v0.1.0-alpha.1` is created.
+`schema-catalog.schema.json` is the fixed repository-governance root used to validate the catalog before other catalog entries are loaded. The catalog is repository metadata, not a protocol artifact.

@@ -98,14 +98,16 @@ Unsigned passports may have `verification_primary_status: VALID` while remaining
 ## Repository map
 
 ```text
-spec/       Normative specification modules
-schemas/    Versioned machine-readable contracts
-examples/   Valid synthetic reference artifacts and quickstart
-profiles/   Reusable governance profiles
-tests/      Positive, negative, interoperability, and CLI regressions
-tools/      Build, strict parsing, validation, and conformance utilities
-decisions/  Architecture and governance decisions
-dist/       Reproducibly generated aggregate specification
+spec/         Normative specification modules
+schemas/      Versioned machine-readable contracts and schema catalog
+examples/     Valid synthetic reference artifacts and quickstart
+profiles/     Reusable governance profiles
+governance/   Program baseline, V&V, claims, and release controls
+requirements/ Deferred requirements preserved outside the active increment
+tests/        Positive, negative, interoperability, governance, and CLI regressions
+tools/        Build, strict parsing, validation, and conformance utilities
+decisions/    Architecture and governance decisions
+dist/         Reproducibly generated versioned distributions
 ```
 
 ## Verify the repository
@@ -117,6 +119,8 @@ python -m pip_audit --strict -r requirements-dev.txt
 pytest -q
 ```
 
+The repository verifier also enforces grounded Claims Register evidence requirements, performs case-insensitive exact-phrase scanning over declared repository surfaces, validates cataloged schema content digests, and resolves every cataloged `$ref`. Human review remains required for paraphrases and external surfaces.
+
 Passing these checks confirms that the bundled examples and implemented Alpha.1 validation subset remain internally consistent. It does not establish operational safety, factual truth of declarations, production key custody, legal compliance, certification, or institutional authorization.
 
 See [CONFORMANCE.md](CONFORMANCE.md), [CONTRIBUTING.md](CONTRIBUTING.md), and [SECURITY.md](SECURITY.md).
@@ -124,6 +128,7 @@ See [CONFORMANCE.md](CONFORMANCE.md), [CONTRIBUTING.md](CONTRIBUTING.md), and [S
 ## Licensing
 
 Code, schemas, tests, utilities, and machine-readable fixtures are Apache-2.0. Specifications, profiles, ADRs, and prose documentation are CC-BY-4.0. See [LICENSE_POLICY.md](LICENSE_POLICY.md).
+
 ### Canonical profile and authority semantics
 
 The reference validator does not accept a submitted bundle as the authority for redefining a supported profile. It independently pins the canonical profile descriptor and profile-document hashes for Alpha.1. The permitted decision path also applies active condition ceilings and controlled minimum action levels for agent capabilities, MCP scopes, tool effects, and graph edge types. Unknown declaration terms fail closed.

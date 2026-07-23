@@ -1,8 +1,22 @@
 name: Governance change proposal
-description: Propose a policy, ADR, compatibility, or release-process change.
+description: Propose a policy, decision, compatibility, claims, or release-process change.
 title: "[Governance]: "
 labels: ["governance"]
 body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and protected asset
+      description: Identify the real problem, threat or failure condition, and protected asset.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Authority, trust boundary, and evidence
+      description: Identify the responsible authority, trust boundary, required evidence, and stop condition.
+    validations:
+      required: true
   - type: textarea
     id: decision
     attributes:
@@ -10,8 +24,15 @@ body:
     validations:
       required: true
   - type: textarea
+    id: claims
+    attributes:
+      label: Claims and status impact
+      description: Identify affected Claims Register entries, Delivery Status, Evidence Status, and prohibited wording.
+    validations:
+      required: true
+  - type: textarea
     id: consequences
     attributes:
-      label: Consequences and alternatives
+      label: Consequences, alternatives, and recovery path
     validations:
       required: true

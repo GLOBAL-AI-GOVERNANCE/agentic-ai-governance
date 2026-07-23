@@ -17,7 +17,6 @@ Agentic AI Governance is an experimental machine-readable trust layer for descri
 - Fail-closed supported-version, critical-extension, bound-input, passport-summary, trusted-key, revocation-chronology, and revocation-authority validation.
 - Positive, negative, malformed-input, identifier, signature, key-lifecycle, validity, binding, and revocation tests.
 
-
 - Machine-readable agent, MCP, tool, and control-profile descriptor schemas.
 - Complete semantic admission of data-authority evidence, including current validity, supported scheme, trusted issuer, subject, scope, content-derived artifact hash, and reference resolution.
 - Exact assessment ID, data-authority status, control summary, and condition reconciliation.

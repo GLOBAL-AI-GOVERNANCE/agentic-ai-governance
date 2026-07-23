@@ -1,0 +1,327 @@
+{
+  "register_version": "1.0.0",
+  "claims": [
+    {
+      "claim_id": "PROHIBITED-INDEPENDENT-CERTIFICATION",
+      "prohibited_wording": [
+        "independently certified",
+        "certified agent-governance platform"
+      ],
+      "rationale": "The project has no accredited certification authority or independently issued certification.",
+      "permitted_alternative": "Publicly released experimental foundation with bounded conformance evidence.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "funding applications",
+        "sales materials"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-PRODUCTION-READINESS",
+      "prohibited_wording": [
+        "production-ready",
+        "production-grade authorization service",
+        "enterprise-safe by default"
+      ],
+      "rationale": "Alpha.1 and the planned local reference store do not establish production operational assurance.",
+      "permitted_alternative": "Experimental reference specifications and tooling with explicit assurance boundaries.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "sales materials",
+        "funding applications"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-AGENT-SAFETY-PROOF",
+      "prohibited_wording": [
+        "proves the agent is safe",
+        "guarantees safe behavior",
+        "verifies complete trustworthiness"
+      ],
+      "rationale": "Profile conformity and supplied evidence do not prove universal safety or behavioral correctness.",
+      "permitted_alternative": "Verifies bounded governance claims and authorization status under the implemented profile and supplied evidence.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "presentations",
+        "funding applications",
+        "sales materials"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-UNIVERSAL-INTEROPERABILITY",
+      "prohibited_wording": [
+        "universally interoperable",
+        "industry standard",
+        "universal agent identity standard"
+      ],
+      "rationale": "No universal adoption, formal standards status, or independent multi-implementation interoperability is established.",
+      "permitted_alternative": "Platform-neutral experimental specifications designed to support interoperable implementations.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "standards submissions",
+        "presentations"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-CONTINUOUS-AUTHORIZATION",
+      "prohibited_wording": [
+        "continuously authorizes agents",
+        "real-time authorization platform",
+        "live policy engine"
+      ],
+      "rationale": "The reference validator is not a production policy engine or continuous runtime monitor.",
+      "permitted_alternative": "Produces machine-readable trust results that enforcement systems may consume.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "architecture presentations",
+        "sales materials"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-LEGAL-PROTECTION",
+      "prohibited_wording": [
+        "provides legal immunity",
+        "eliminates CISO liability",
+        "guarantees evidentiary sufficiency",
+        "creates attorney-client privilege"
+      ],
+      "rationale": "The project is not legal advice and does not establish immunity, indemnification, privilege, or court admissibility.",
+      "permitted_alternative": "Provides contemporaneous governance evidence for organizational review, audit, and counsel assessment.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "executive materials",
+        "funding applications",
+        "sales materials"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-UNIVERSAL-CONTAINMENT",
+      "prohibited_wording": [
+        "universal kill switch",
+        "automatically terminates every agent",
+        "proves operational containment"
+      ],
+      "rationale": "Operational containment depends on external IAM, gateways, runtimes, orchestrators, and infrastructure controls.",
+      "permitted_alternative": "Defines revocation and containment obligations that external enforcement systems may implement and evidence.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "architecture presentations",
+        "sales materials"
+      ]
+    },
+    {
+      "claim_id": "PROHIBITED-ENTERPRISE-NHI-COVERAGE",
+      "prohibited_wording": [
+        "complete enterprise non-human identity platform",
+        "discovers every machine identity",
+        "replaces IAM or PAM"
+      ],
+      "rationale": "The repository governs agent and supporting identity authority chains; it is not a universal enterprise identity administration platform.",
+      "permitted_alternative": "Open trust specifications and validators for governed agent identity, authority, evidence, and revocation.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "product materials",
+        "sales materials"
+      ]
+    }
+  ]
+}
