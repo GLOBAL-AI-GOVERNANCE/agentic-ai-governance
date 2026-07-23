@@ -1,0 +1,270 @@
+{
+  "register_version": "1.0.0",
+  "claims": [
+    {
+      "claim_id": "AAG-ALPHA1-001",
+      "claim_kind": "CAPABILITY",
+      "statement": "Agentic AI Governance v0.1.0-alpha.1 is publicly released as an experimental open-source foundation.",
+      "delivery_status": "SHIPPED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Public repository tag, release artifacts, published specification, schemas, examples, tests, and reference validator.",
+      "verification_method": "Public artifact inspection and repository conformance evidence.",
+      "last_verified": "2026-07-22",
+      "supporting_artifacts": [
+        "README.md",
+        "RELEASE_NOTES.md",
+        "dist/AGENTIC_AI_GOVERNANCE_SPEC.md"
+      ],
+      "evidence_refs": [
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/releases/tag/v0.1.0-alpha.1"
+      ],
+      "limitations": [
+        "Experimental alpha; schemas and specification are not frozen.",
+        "Does not establish production safety, certification, or legal compliance."
+      ],
+      "permitted_wording": [
+        "Agentic AI Governance Alpha.1 is a publicly released experimental open-source foundation."
+      ],
+      "prohibited_wording": [
+        "Agentic AI Governance is production-ready.",
+        "Agentic AI Governance is independently certified."
+      ]
+    },
+    {
+      "claim_id": "AAG-ALPHA1-002",
+      "claim_kind": "TOOLING",
+      "statement": "The Alpha.1 reference validator deterministically evaluates the implemented parsing, schema, semantic, identifier, signature, key-trust, binding, validity, authority, and supplied-state revocation checks.",
+      "delivery_status": "SHIPPED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Implemented Alpha.1 reference path and canonical public fixtures.",
+      "verification_method": "Repository verifier, positive fixtures, negative fixtures, adversarial regressions, and hosted CI.",
+      "last_verified": "2026-07-22",
+      "supporting_artifacts": [
+        "tools/validate_artifact.py",
+        "tools/verify_repository.py",
+        "tests/",
+        "CONFORMANCE.md"
+      ],
+      "evidence_refs": [
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/actions"
+      ],
+      "limitations": [
+        "The validator verifies implemented profile conformity and supplied evidence, not universal agent safety or truth."
+      ],
+      "permitted_wording": [
+        "Alpha.1 includes a deterministic reference validator and conformance fixtures."
+      ],
+      "prohibited_wording": [
+        "The validator proves that an agent is safe."
+      ]
+    },
+    {
+      "claim_id": "AAG-RVK-001",
+      "claim_kind": "SPECIFICATION",
+      "statement": "Alpha.1 publishes cumulative signed revocation-list semantics with monotonic sequences, predecessor linkage, freshness, and fail-closed unknown status when continuity cannot be established.",
+      "delivery_status": "SHIPPED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Published Alpha.1 revocation specification and schemas.",
+      "verification_method": "Normative artifact inspection and conformance testing.",
+      "last_verified": "2026-07-22",
+      "supporting_artifacts": [
+        "spec/07-revocation.md",
+        "schemas/revocation-list.schema.json",
+        "schemas/revocation-entry.schema.json"
+      ],
+      "evidence_refs": [
+        "spec/07-revocation.md"
+      ],
+      "limitations": [
+        "The current CLI does not persist the highest accepted revocation state across executions."
+      ],
+      "permitted_wording": [
+        "Alpha.1 publishes cumulative revocation semantics."
+      ],
+      "prohibited_wording": [
+        "Alpha.1 already provides persistent rollback protection across CLI runs."
+      ]
+    },
+    {
+      "claim_id": "AAG-RVK-002",
+      "claim_kind": "CAPABILITY",
+      "statement": "The reference verifier retains trusted revocation continuity across normal process restarts and rejects rollback relative to an intact trusted local store.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Planned Stateful Revocation Profile and Linux local-reference implementation.",
+      "supporting_artifacts": [
+        "governance/PROGRAM_BASELINE.md",
+        "ROADMAP.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "No persistent reference implementation or released conformance suite exists yet.",
+        "Host-level database rollback, replacement, deletion, compromised time, and host compromise remain outside the local-store claim."
+      ],
+      "permitted_wording": [
+        "Persistent Stateful Revocation is the active defined increment."
+      ],
+      "prohibited_wording": [
+        "Persistent Stateful Revocation has shipped.",
+        "Rollback protection is verified."
+      ]
+    },
+    {
+      "claim_id": "AAG-VV-001",
+      "claim_kind": "ARCHITECTURAL_DECISION",
+      "statement": "Continuous V&V governs design, engineering, release, and public communication through Design Validation, Engineering Verification, and Release Validation.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "The controlling policy decision and repository governance mechanisms only; not future implementation conformance or runtime capability.",
+      "verification_method": "Steward decision and repository-controlled policy review.",
+      "last_verified": "2026-07-22",
+      "supporting_artifacts": [
+        "governance/VV_POLICY.md",
+        "decisions/DR-006-continuous-vv-and-program-sequencing.md"
+      ],
+      "evidence_refs": [
+        "governance/VV_POLICY.md"
+      ],
+      "limitations": [
+        "Repository enforcement becomes publicly shipped only after merge and release."
+      ],
+      "permitted_wording": [
+        "Continuous V&V is the controlling project policy."
+      ],
+      "prohibited_wording": [
+        "Every future implementation is already verified."
+      ]
+    },
+    {
+      "claim_id": "AAG-GOV-001",
+      "claim_kind": "TOOLING",
+      "statement": "The GOVERN increment proposes repository tooling that validates the Claims Register, scans governed repository surfaces for prohibited wording, enforces the schema catalog, checks the roadmap, and preserves generated-distribution integrity.",
+      "delivery_status": "PROPOSED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "GOVERN pull-request implementation and tests.",
+      "supporting_artifacts": [
+        "tools/validate_claims_register.py",
+        "tools/schema_catalog.py",
+        "tools/verify_repository.py",
+        "tests/test_claims_register.py",
+        "tests/test_schema_catalog.py"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "The controls are not shipped until merged and publicly released."
+      ],
+      "permitted_wording": [
+        "The GOVERN repository controls are implemented in a locally validated pull-request branch and remain proposed until merge and public release."
+      ],
+      "prohibited_wording": [
+        "The public repository already enforces the GOVERN package.",
+        "The GOVERN controls are shipped."
+      ]
+    },
+    {
+      "claim_id": "AAG-OPA-001",
+      "claim_kind": "CAPABILITY",
+      "statement": "An OPA Enforcement Bridge consumes validated trust results and returns permit, deny, or require-approval decisions.",
+      "delivery_status": "PROPOSED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Locked future increment after Stateful Revocation.",
+      "supporting_artifacts": [
+        "ROADMAP.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "No OPA adapter is implemented or released."
+      ],
+      "permitted_wording": [
+        "The OPA Enforcement Bridge is the next planned increment after Stateful Revocation."
+      ],
+      "prohibited_wording": [
+        "The repository currently enforces actions through OPA."
+      ]
+    },
+    {
+      "claim_id": "AAG-LIFECYCLE-001",
+      "claim_kind": "CAPABILITY",
+      "statement": "A public demonstration shows authorized, policy-denied, revoked, rollback-rejected, and new-passport reauthorized operation.",
+      "delivery_status": "PROPOSED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Locked future demonstration increment.",
+      "supporting_artifacts": [
+        "ROADMAP.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "No end-to-end enforcement demonstration is implemented."
+      ],
+      "permitted_wording": [
+        "The lifecycle demonstration is planned after the OPA Enforcement Bridge."
+      ],
+      "prohibited_wording": [
+        "The complete lifecycle has been demonstrated."
+      ]
+    },
+    {
+      "claim_id": "AAG-VERIFIER-002",
+      "claim_kind": "CAPABILITY",
+      "statement": "A second independently maintained verifier reproduces normative outcomes from canonical fixtures without reusing Python implementation decision logic.",
+      "delivery_status": "PROPOSED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Locked future independent-verifier increment.",
+      "supporting_artifacts": [
+        "ROADMAP.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "Only the project-maintained Python reference implementation currently exists."
+      ],
+      "permitted_wording": [
+        "A second independently maintained verifier is planned."
+      ],
+      "prohibited_wording": [
+        "Implementation-independent verification is already established."
+      ]
+    },
+    {
+      "claim_id": "AAG-AGDR-001",
+      "claim_kind": "ARCHITECTURAL_DECISION",
+      "statement": "A future Agent Governance Decision Record binds canonical trust and policy references to accountable organizational decision authority without becoming a second policy engine.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Deferred profile requirements only.",
+      "supporting_artifacts": [
+        "requirements/deferred-agent-governance-decision-record.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "No AGDR schema, implementation, or interoperability proof is released."
+      ],
+      "permitted_wording": [
+        "The Agent Governance Decision Record is a defined future requirement."
+      ],
+      "prohibited_wording": [
+        "The repository currently produces Agent Governance Decision Records."
+      ]
+    },
+    {
+      "claim_id": "AAG-INFRA-001",
+      "claim_kind": "ARCHITECTURAL_DECISION",
+      "statement": "A future Infrastructure Trust Profile will bind authorization to declared execution-environment, endpoint, location, isolation, resource, and attestation requirements.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Deferred profile requirements only.",
+      "supporting_artifacts": [
+        "requirements/deferred-requirements.md"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "No Infrastructure Trust Profile is implemented or released."
+      ],
+      "permitted_wording": [
+        "Infrastructure Trust is a defined later profile."
+      ],
+      "prohibited_wording": [
+        "Current passports verify infrastructure trust."
+      ]
+    }
+  ]
+}

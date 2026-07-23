@@ -5,11 +5,11 @@ This repository uses file-scope licensing.
 
 ## Apache-2.0
 
-Apache License 2.0 applies to `schemas/`, `tests/`, `tools/`, machine-readable JSON fixtures under `examples/`, workflow files, and configuration code unless a file states otherwise.
+Apache License 2.0 applies to `schemas/`, `tests/`, `tools/`, machine-readable JSON and JSON-compatible YAML under `examples/` and `governance/`, workflow files, and configuration code unless a file states otherwise.
 
 ## CC-BY-4.0
 
-Creative Commons Attribution 4.0 International applies to `spec/`, `decisions/`, `profiles/`, and prose documentation unless a file states otherwise.
+Creative Commons Attribution 4.0 International applies to `spec/`, `decisions/`, `profiles/`, prose files under `governance/` and `requirements/`, and other prose documentation unless a file states otherwise.
 
 ## Marks
 
