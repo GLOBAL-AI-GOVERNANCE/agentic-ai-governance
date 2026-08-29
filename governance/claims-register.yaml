@@ -138,10 +138,12 @@
     {
       "claim_id": "AAG-GOV-001",
       "claim_kind": "TOOLING",
-      "statement": "The GOVERN increment proposes repository tooling that validates the Claims Register, scans governed repository surfaces for prohibited wording, enforces the schema catalog, checks the roadmap, and preserves generated-distribution integrity.",
-      "delivery_status": "PROPOSED",
-      "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "GOVERN pull-request implementation and tests.",
+      "statement": "Current main implements repository tooling that validates the Claims Register, scans governed repository surfaces for prohibited wording, enforces the schema catalog, checks the roadmap, and preserves generated-distribution integrity.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "The repository controls and regression tests present on current main; not the separately tagged v0.1.0-alpha.1 release.",
+      "verification_method": "Claims-register, schema-catalog, roadmap, generated-distribution, and full repository verification tests.",
+      "last_verified": "2026-08-29",
       "supporting_artifacts": [
         "tools/validate_claims_register.py",
         "tools/schema_catalog.py",
@@ -149,15 +151,20 @@
         "tests/test_claims_register.py",
         "tests/test_schema_catalog.py"
       ],
-      "evidence_refs": [],
+      "evidence_refs": [
+        "tools/validate_claims_register.py",
+        "tests/test_claims_register.py",
+        "tests/test_schema_catalog.py"
+      ],
       "limitations": [
-        "The controls are not shipped until merged and publicly released."
+        "These controls were implemented after the v0.1.0-alpha.1 tag and are not part of that release.",
+        "Current-main implementation does not make the controls SHIPPED; release promotion remains a separate governed action."
       ],
       "permitted_wording": [
-        "The GOVERN repository controls are implemented in a locally validated pull-request branch and remain proposed until merge and public release."
+        "Current main implements and verifies the Claims Gate repository controls; this post-Alpha.1 work remains unreleased."
       ],
       "prohibited_wording": [
-        "The public repository already enforces the GOVERN package.",
+        "v0.1.0-alpha.1 includes the Claims Gate repository controls.",
         "The GOVERN controls are shipped."
       ]
     },

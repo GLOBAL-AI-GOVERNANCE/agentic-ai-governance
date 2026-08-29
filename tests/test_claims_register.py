@@ -55,6 +55,22 @@ def test_governance_registers_validate() -> None:
     assert validate_register(ROOT) == []
 
 
+def test_implemented_claims_gate_is_not_stale_or_attributed_to_alpha1() -> None:
+    claim = next(
+        item for item in _claims()["claims"]
+        if item["claim_id"] == "AAG-GOV-001"
+    )
+    assert claim["delivery_status"] == "DEFINED"
+    assert claim["evidence_status"] == "VERIFIED"
+    assert claim["verification_method"]
+    assert claim["last_verified"]
+    assert claim["evidence_refs"]
+    assert "Current main implements" in claim["statement"]
+    assert "v0.1.0-alpha.1" not in claim["statement"]
+    assert any("not part of that release" in item for item in claim["limitations"])
+    assert any("remains unreleased" in item for item in claim["permitted_wording"])
+
+
 def test_partial_status_is_rejected() -> None:
     document = copy.deepcopy(_claims())
     document["claims"][0]["evidence_status"] = "PARTIALLY_VERIFIED"
