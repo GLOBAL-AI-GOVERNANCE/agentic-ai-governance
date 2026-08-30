@@ -387,6 +387,143 @@ def test_invalid_revocation_chronology_and_authority_fail_closed(tmp_path: Path)
         assert report["operating_disposition"] == "NOT_PERMITTED", name
 
 
+def _revocation_version(
+    sequence: int,
+    previous: str | None,
+    *,
+    entries: list[dict] | None = None,
+    issued_at: str = "2026-07-18T00:00:00Z",
+    next_update: str = "2026-07-19T00:00:00Z",
+) -> dict:
+    value = load_strict(REVOCATION, require_object=True)
+    value["sequence_number"] = sequence
+    value["previous_list_hash"] = previous
+    value["issued_at"] = issued_at
+    value["next_update"] = next_update
+    if entries is not None:
+        value["entries"] = deepcopy(entries)
+    return _sign_document(value, kind="revocation")
+
+
+def _stateful_cli(state: Path, revocation: Path, *, initialize: bool = False):
+    options: list[object] = ["--revocation-state", state]
+    if initialize:
+        options.append("--initialize-revocation-state")
+    return run_cli(
+        "--kind", "passport", "--trusted-key", KEY,
+        "--revocation-list", revocation, *options, *BUNDLE_ARGS,
+        "--at-time", AT_TIME, SIGNED,
+    )
+
+
+def test_revocation_state_persists_across_initialization_advance_and_idempotence(tmp_path: Path) -> None:
+    state = tmp_path / "trusted" / "revocation-state.json"
+    first = _write_json(tmp_path / "list-1.json", _revocation_version(1, None))
+    result, report = _stateful_cli(state, first, initialize=True)
+    assert result.returncode == 0
+    assert report["verification_primary_status"] == "VALID"
+    initial = load_strict(state, require_object=True)
+    second_value = _revocation_version(2, initial["list_id"])
+    second = _write_json(tmp_path / "list-2.json", second_value)
+
+    result, report = _stateful_cli(state, second)
+    assert result.returncode == 0
+    assert load_strict(state, require_object=True)["sequence_number"] == 2
+    bytes_after_advance = state.read_bytes()
+
+    result, report = _stateful_cli(state, second)
+    assert result.returncode == 0
+    assert report["checks"]["revocation"] == "PASS"
+    assert state.read_bytes() == bytes_after_advance
+
+
+def test_missing_revocation_state_requires_explicit_initialization(tmp_path: Path) -> None:
+    state = tmp_path / "missing.json"
+    result, report = _stateful_cli(state, REVOCATION)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+    assert report["operating_disposition"] == "NOT_PERMITTED"
+    assert not state.exists()
+
+
+def test_revocation_state_rejects_rollback_conflict_and_broken_predecessor(tmp_path: Path) -> None:
+    state = tmp_path / "state.json"
+    first = _write_json(tmp_path / "first.json", _revocation_version(1, None))
+    _stateful_cli(state, first, initialize=True)
+    first_state = load_strict(state, require_object=True)
+    second = _write_json(tmp_path / "second.json", _revocation_version(2, first_state["list_id"]))
+    _stateful_cli(state, second)
+    trusted_bytes = state.read_bytes()
+
+    conflict_value = load_strict(second, require_object=True)
+    conflict_value["next_update"] = "2026-07-19T01:00:00Z"
+    conflict = _write_json(tmp_path / "conflict.json", _sign_document(conflict_value, kind="revocation"))
+    broken = _write_json(tmp_path / "broken.json", _revocation_version(3, "sha256:" + "0" * 64))
+    for candidate in (first, conflict, broken):
+        result, report = _stateful_cli(state, candidate)
+        assert result.returncode == 1
+        assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+        assert report["operating_disposition"] == "NOT_PERMITTED"
+        assert state.read_bytes() == trusted_bytes
+
+
+def test_corrupt_or_stale_revocation_state_input_never_overwrites_state(tmp_path: Path) -> None:
+    state = tmp_path / "state.json"
+    state.write_text("{corrupt", encoding="utf-8")
+    corrupt_bytes = state.read_bytes()
+    result, report = _stateful_cli(state, REVOCATION)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+    assert state.read_bytes() == corrupt_bytes
+
+    state.unlink()
+    stale = _write_json(
+        tmp_path / "stale.json",
+        _revocation_version(1, None, next_update="2026-07-18T12:00:00Z"),
+    )
+    result, report = _stateful_cli(state, stale, initialize=True)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+    assert not state.exists()
+
+
+def test_revocation_state_authority_mismatch_fails_closed_without_overwrite(tmp_path: Path) -> None:
+    state = tmp_path / "state.json"
+    _stateful_cli(state, REVOCATION, initialize=True)
+    mismatched = load_strict(state, require_object=True)
+    mismatched["authority"] = "different.example.authority"
+    _write_json(state, mismatched)
+    mismatched_bytes = state.read_bytes()
+
+    result, report = _stateful_cli(state, REVOCATION)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+    assert report["operating_disposition"] == "NOT_PERMITTED"
+    assert state.read_bytes() == mismatched_bytes
+
+
+def test_revoked_passport_cannot_become_permitted_after_cumulative_omission(tmp_path: Path) -> None:
+    state = tmp_path / "state.json"
+    base = load_strict(REVOCATION, require_object=True)
+    revoked_entry = deepcopy(base["entries"][0])
+    revoked_entry["passport_id"] = load_strict(SIGNED, require_object=True)["passport_id"]
+    first = _write_json(tmp_path / "revokes-passport.json", _revocation_version(1, None, entries=[revoked_entry]))
+    result, report = _stateful_cli(state, first, initialize=True)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOKED"
+    trusted = load_strict(state, require_object=True)
+
+    omission = _write_json(
+        tmp_path / "omits-passport.json",
+        _revocation_version(2, trusted["list_id"], entries=base["entries"]),
+    )
+    result, report = _stateful_cli(state, omission)
+    assert result.returncode == 1
+    assert report["verification_primary_status"] == "REVOCATION_STATUS_UNKNOWN"
+    assert report["operating_disposition"] == "NOT_PERMITTED"
+    assert load_strict(state, require_object=True)["sequence_number"] == 1
+
+
 def test_standalone_trusted_key_rejects_noncanonical_ed25519_x(tmp_path: Path) -> None:
     key = load_strict(KEY, require_object=True)
     original = key["jwk"]["x"]

@@ -76,7 +76,7 @@
         "spec/07-revocation.md"
       ],
       "limitations": [
-        "The current CLI does not persist the highest accepted revocation state across executions."
+        "The tagged v0.1.0-alpha.1 CLI does not persist the highest accepted revocation state across executions; the optional stateful reference mechanism is a post-release current-main addition."
       ],
       "permitted_wording": [
         "Alpha.1 publishes cumulative revocation semantics."
@@ -90,23 +90,37 @@
       "claim_kind": "CAPABILITY",
       "statement": "The reference verifier retains trusted revocation continuity across normal process restarts and rejects rollback relative to an intact trusted local store.",
       "delivery_status": "DEFINED",
-      "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "Planned Stateful Revocation Profile and Linux local-reference implementation.",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Current-main optional local reference continuity state across separate verifier processes on supported Python platforms; not the tagged v0.1.0-alpha.1 release.",
+      "verification_method": "Subprocess CLI regression tests covering explicit initialization, persistence, monotonic advance, idempotence, rollback, conflicting repeats, predecessor linkage, corruption, freshness, authority/framework binding, and cumulative terminal revocation.",
+      "last_verified": "2026-08-29",
       "supporting_artifacts": [
         "governance/PROGRAM_BASELINE.md",
-        "ROADMAP.md"
+        "ROADMAP.md",
+        "tools/revocation_state.py",
+        "tools/validate_artifact.py",
+        "tests/test_cli.py"
       ],
-      "evidence_refs": [],
+      "evidence_refs": [
+        "tools/revocation_state.py",
+        "tools/validate_artifact.py",
+        "tests/test_cli.py"
+      ],
       "limitations": [
-        "No persistent reference implementation or released conformance suite exists yet.",
-        "Host-level database rollback, replacement, deletion, compromised time, and host compromise remain outside the local-store claim."
+        "The implementation is unreleased current-main reference tooling and is not part of v0.1.0-alpha.1.",
+        "Continuity is relative only to an intact trusted local store at the explicitly supplied path.",
+        "Host or database rollback, store replacement or deletion, compromised time, and host compromise remain outside the claim.",
+        "The verifier does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects and is not production IAM or runtime containment."
       ],
       "permitted_wording": [
-        "Persistent Stateful Revocation is the active defined increment."
+        "Persistent Stateful Revocation is the active defined increment.",
+        "Current main verifies local rollback continuity relative to an intact explicitly supplied trusted store and remains unreleased."
       ],
       "prohibited_wording": [
         "Persistent Stateful Revocation has shipped.",
-        "Rollback protection is verified."
+        "Rollback protection is verified.",
+        "Stateful Revocation is part of v0.1.0-alpha.1.",
+        "The local reference store prevents host rollback."
       ]
     },
     {

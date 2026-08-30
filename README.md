@@ -3,7 +3,12 @@
 
 An experimental, machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
-**Release:** `v0.1.0-alpha.1`  
+**Tagged release:** `v0.1.0-alpha.1` remains the published experimental alpha.
+**Current main:** Stateful Revocation is implemented and verified as post-Alpha.1 current-main work, remains unreleased, and is not retroactively part of `v0.1.0-alpha.1`.
+
+
+
+**Latest tagged release:** `v0.1.0-alpha.1`
 **Status:** Experimental public alpha. The specification and schemas are not frozen.
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
@@ -93,7 +98,19 @@ A signed passport is never reported as fully validated or permitted when its ver
 
 Unsigned passports may have `verification_primary_status: VALID` while remaining `operating_disposition: INDETERMINATE` because they do not establish issuer authentication.
 
-> **Stateless revocation note:** the reference CLI validates the signed revocation-list snapshot supplied for the current run. It does not remember the highest accepted list sequence across runs and therefore does not provide rollback protection by itself. Production verifiers must persist trusted revocation state.
+### Tagged Alpha.1 and current-main revocation behavior
+
+The tagged `v0.1.0-alpha.1` reference CLI validates only the signed revocation-list snapshot supplied for that run. Current main preserves that stateless default and adds an optional, post-Alpha.1 local continuity mechanism. Nothing is written unless `--revocation-state PATH` is explicitly supplied, and a missing store is created only with `--initialize-revocation-state` after the supplied list passes all trust and freshness checks.
+
+Initialize once with a fresh trusted list by adding:
+
+```text
+--revocation-state /path/to/trusted-revocation-state.json --initialize-revocation-state
+```
+
+On later invocations, supply the same path without the initialization flag. The verifier then rejects lower sequences, conflicting repeated sequences, broken predecessor links, authority/framework mismatches, malformed stores, stale lists, and cumulative lists that omit a previously trusted revocation. Invalid or unavailable state produces `REVOCATION_STATUS_UNKNOWN` and `NOT_PERMITTED`; it is never evidence of non-revocation.
+
+This is deterministic local reference rollback protection relative to an intact trusted local store. It does not prevent host or database rollback, replacement, or deletion. It does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects, and it is not production IAM, runtime containment, certification, a legal determination, or a universal safety guarantee. The current-main implementation remains unreleased until a separate governed release.
 
 ## Repository map
 
@@ -132,4 +149,3 @@ Code, schemas, tests, utilities, and machine-readable fixtures are Apache-2.0. S
 ### Canonical profile and authority semantics
 
 The reference validator does not accept a submitted bundle as the authority for redefining a supported profile. It independently pins the canonical profile descriptor and profile-document hashes for Alpha.1. The permitted decision path also applies active condition ceilings and controlled minimum action levels for agent capabilities, MCP scopes, tool effects, and graph edge types. Unknown declaration terms fail closed.
-
