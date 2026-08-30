@@ -199,6 +199,7 @@
       "supporting_artifacts": [
         "ROADMAP.md",
         "decisions/DR-008-opa-closure-and-lifecycle-activation.md",
+        "decisions/DR-009-lifecycle-closure-and-independent-verifier-activation.md",
         "policies/opa/README.md",
         "tools/opa_bridge.py"
       ],
@@ -243,6 +244,7 @@
       ],
       "limitations": [
         "The demonstration is synthetic, unreleased current-main development and non-operational.",
+        "The lifecycle engineering increment is governance-closed by DR-009 without creating or authorizing a release.",
         "It does not establish external enforcement, runtime containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.",
         "Rollback rejection remains relative to an intact explicitly supplied trusted local continuity store."
       ],
@@ -261,16 +263,19 @@
       "statement": "A second independently maintained verifier reproduces normative outcomes from canonical fixtures without reusing Python implementation decision logic.",
       "delivery_status": "PROPOSED",
       "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "Locked future independent-verifier increment.",
+      "verification_scope": "Active external independent-verifier increment; evidence is not yet established.",
       "supporting_artifacts": [
-        "ROADMAP.md"
+        "ROADMAP.md",
+        "decisions/DR-009-lifecycle-closure-and-independent-verifier-activation.md"
       ],
       "evidence_refs": [],
       "limitations": [
-        "Only the project-maintained Python reference implementation currently exists."
+        "Only project-maintained reference verification currently exists.",
+        "A project- or Codex-authored second implementation does not establish independent maintenance.",
+        "Independent maintenance requires a genuinely separate maintainer and control boundary."
       ],
       "permitted_wording": [
-        "A second independently maintained verifier is planned."
+        "A second independently maintained verifier is the active external increment and remains not yet established."
       ],
       "prohibited_wording": [
         "Implementation-independent verification is already established."
