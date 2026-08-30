@@ -25,7 +25,7 @@ This index identifies the controlling architecture, active increment, normative 
 
 ## One Active Increment
 
-The only active implementation increment is:
+The active increment, pending a separate closure and sequencing decision, is:
 
 > **OPA ENFORCEMENT BRIDGE**
 
@@ -92,14 +92,16 @@ Evidence Status: VERIFIED
 
 The released evidence is the optional local reference continuity implementation and subprocess regression suite. It establishes rollback-aware continuity only relative to an intact explicitly supplied trusted local store. One revocation-state path is a single-writer reference continuity store; concurrent writers to the same path are outside the supported Alpha.2 boundary.
 
-The OPA Enforcement Bridge is now the one active increment and remains:
+The OPA Enforcement Bridge remains the one active increment. Its bounded current-main reference implementation is:
 
 ```text
-Delivery Status: PROPOSED
-Evidence Status: NOT_YET_ESTABLISHED
+Delivery Status: DEFINED
+Evidence Status: VERIFIED
 ```
 
-No OPA implementation, runtime enforcement, or external containment claim is established by Alpha.2.
+The evidence is the current-main Python adapter, OPA policy, synthetic vectors, adversarial tests, and hosted OPA verification. The bridge remains unreleased and is not part of Alpha.2. It performs a policy decision only; no runtime enforcement or external containment claim is established.
+
+Current-main verification does not itself close the active increment or authorize the lifecycle demonstration. That transition requires the separate change control below.
 
 ## Change Control
 

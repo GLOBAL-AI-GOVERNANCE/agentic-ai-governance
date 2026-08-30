@@ -32,6 +32,12 @@ python -m pip_audit --strict -r requirements-dev.txt
 pytest -q
 ```
 
+## Unreleased current-main OPA bridge
+
+The OPA Enforcement Bridge is a separately bounded current-main reference implementation, not part of the Alpha.1 normative distribution or the Alpha.2 release. Its Python adapter validates the local bridge contract; its OPA policy is verified with OPA v1.19.1 in every hosted Python matrix job. Positive and adversarial vectors confirm that policy cannot widen established authority and that invalid, stale, expired, revoked, unknown, incomplete, mismatched, or insufficiently contextualized inputs remain `NOT_PERMITTED`.
+
+The bridge returns policy dispositions and stable reason codes. It performs no external enforcement and establishes no runtime containment.
+
 
 ## Canonical policy and authority semantics
 
