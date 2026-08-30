@@ -25,11 +25,11 @@ This index identifies the controlling architecture, active increment, normative 
 
 ## One Active Increment
 
-The active increment authorized by `DR-008` is:
+The active external increment authorized by `DR-009` is:
 
-> **AUTHORIZED → POLICY-DENIED → REVOKED → ROLLBACK-REJECTED → NEW-PASSPORT REAUTHORIZED**
+> **SECOND INDEPENDENTLY MAINTAINED VERIFIER**
 
-Its human-facing synthetic scenario is **Agent Incident Readiness**. Stateful Revocation shipped in `v0.1.0-alpha.2`, and the OPA Enforcement Bridge implementation increment is governance-closed at its verified unreleased boundary. No parallel infrastructure-trust, runtime-containment, decision-record, independent-verifier, or later-roadmap implementation may interrupt the lifecycle increment without a superseding governance decision.
+Agent Incident Readiness is governance-closed at its verified unreleased boundary. Priority 4 remains `PROPOSED / NOT_YET_ESTABLISHED` pending attributable evidence from a genuinely separate maintainer and control boundary. Project- or Codex-authored verification is not independent verification. No AGDR, Infrastructure Trust, or later-roadmap implementation may interrupt this gate without a superseding governance decision.
 
 ## Normative Precedence
 
@@ -103,7 +103,7 @@ The evidence is the current-main Python adapter, OPA policy, synthetic vectors, 
 
 The bridge remains unreleased current-main development. `v0.1.0-alpha.2` remains the current public release, no new release identity is selected, and no release is authorized.
 
-The lifecycle demonstration remains the authorized increment and now has objective current-main reference evidence:
+The lifecycle demonstration is governance-closed by `DR-009` with objective current-main reference evidence:
 
 ```text
 Delivery Status: DEFINED
@@ -112,7 +112,16 @@ Evidence Status: VERIFIED
 
 Policy denial is not passport revocation. A revoked passport is not restorable. New authorization requires a new governed passport. An OPA policy decision is not external enforcement. Human authority remains explicit.
 
-The evidence is the deterministic synthetic Agent Incident Readiness trace, reference orchestrator, human-readable walkthrough, and adversarial regressions. It is unreleased and non-operational. The next locked gate is a second independently maintained verifier, which remains waiting on genuinely external maintenance.
+The evidence is the deterministic synthetic Agent Incident Readiness trace, reference orchestrator, human-readable walkthrough, and adversarial regressions. It is unreleased and non-operational.
+
+The Second Independently Maintained Verifier is the active external increment:
+
+```text
+Delivery Status: PROPOSED
+Evidence Status: NOT_YET_ESTABLISHED
+```
+
+Independent maintenance requires a genuinely separate maintainer and control boundary. Neutral reproduction material prepared by this project does not establish independent verification. AGDR and Infrastructure Trust remain deferred, `v0.1.0-alpha.2` remains the current release, and no new release is authorized.
 
 ## Change Control
 
