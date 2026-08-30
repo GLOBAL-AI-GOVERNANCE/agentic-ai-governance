@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.0.0",
+  "status": "NEUTRAL_REPRODUCTION_MATERIAL",
+  "controlling_repository": "GLOBAL-AI-GOVERNANCE/agentic-ai-governance",
+  "controlling_commit": "60d5755299531f0e8c17e6beb559e7e1dc7e4910",
+  "published_release": "v0.1.0-alpha.2",
+  "independent_verification_established": false,
+  "normative_artifacts": [
+    {"path":"schemas/agent-trust-passport.schema.json","sha256":"f8b9186d15853c8491ae3f419e7266935d7bc1248e3d2d5152d1fd29149ff970"},
+    {"path":"schemas/revocation-list.schema.json","sha256":"359c72860859732bc8c1948d4aba40427fb31609fa7fd3b997f0371e1229516d"},
+    {"path":"schemas/action-authority.schema.json","sha256":"09a9d349465af91926c9a945485eaf057a9782c2e9edea755fd8c65acc546263"},
+    {"path":"spec/05-agent-trust-passport.md","sha256":"c3fa96444770bc2376a24202119c58a1c95da31959985b2cdc1fd30e62f079b4"},
+    {"path":"spec/07-revocation.md","sha256":"a9f119b6caac55de94d038e52bff62fe31073a89aa9b9512105237aaf21e204f"},
+    {"path":"spec/08-action-authority.md","sha256":"5fb5fe6519f4c1fcea7a2939b98a429375f4fe5ca24a294a659f52606f0cefb2"}
+  ],
+  "vectors": [
+    {"path":"examples/passports/signed-unrevoked.json","sha256":"51d3e06011e72a85ad14c3f888b42fe34a3b6aca24d58fdec71dd26561c39297","expected":{"primary_status":"VALID","operating_disposition":"PERMITTED"}},
+    {"path":"examples/passports/signed-revoked.json","sha256":"f58136acf4a68d82792f4577e1add50c9944d7d3c23689b1258cdc77d60fe303","expected":{"primary_status":"REVOKED","operating_disposition":"NOT_PERMITTED"}},
+    {"path":"examples/revocation/valid-revocation-list.json","sha256":"1a0f71185269d21e15abc3b7360465a9b1ae541fb910b1fa4d18033d66343212","expected":{"signature":"VALID","sequence_number":1,"continuity":"INITIALIZABLE"}},
+    {"path":"examples/opa/permitted-read.json","sha256":"1f3f34e4d7ca7435dd0f2b34f39cfef5d9afb6415063a483248e451ebf25dec7","expected":{"operating_disposition":"PERMITTED","reason_codes":["POLICY_AND_AUTHORITY_MATCH"],"external_enforcement":"NOT_PERFORMED"}},
+    {"path":"examples/opa/policy-denied-read.json","sha256":"17262e709e683e7d3d9d9d0e670c13b275cc767975c5c054135f6eea68bce779","expected":{"operating_disposition":"NOT_PERMITTED","reason_codes":["POLICY_DENIED"],"revocation_mutated":false,"external_enforcement":"NOT_PERFORMED"}},
+    {"path":"examples/agent-incident-readiness/synthetic-lifecycle.json","sha256":"6489cec48fd46628537ba9886bf479752c5010621461aca838aa816961c271b8","expected":{"status":"VERIFIED","states":["AUTHORIZED","POLICY_DENIED","REVOKED","ROLLBACK_REJECTED","NEW_PASSPORT_REAUTHORIZED"],"revoked_passport_remains_revoked":true,"replacement_passport_distinct":true,"external_enforcement":"NOT_PERFORMED"}},
+    {"path":"tests/negative/index.json","sha256":"11f1c2845585c7f1d0d2323412dc1c4bd6599ed8529b8b5c1bcbdaae9895bfa9","expected":{"all_indexed_vectors":"REJECTED"}}
+  ],
+  "stateful_revocation_expectations": {
+    "lower_sequence":"REJECTED_ROLLBACK",
+    "conflicting_same_sequence":"REJECTED_CONFLICT",
+    "broken_predecessor":"REJECTED",
+    "unknown_or_corrupt_current_state":"FAIL_CLOSED",
+    "cumulative_omission":"REJECTED",
+    "host_level_rollback_resistance":"NOT_ESTABLISHED"
+  },
+  "malformed_and_unsupported_expectations": {
+    "duplicate_json_keys":"REJECTED",
+    "nonfinite_numbers":"REJECTED",
+    "unsafe_integers":"REJECTED",
+    "unsupported_schema_or_policy_version":"REJECTED",
+    "raw_unvalidated_passport_at_opa_boundary":"REJECTED",
+    "action_or_resource_outside_authority":"NOT_PERMITTED"
+  },
+  "independence_criteria": [
+    "separate maintainer and control boundary",
+    "no reuse of project implementation decision logic",
+    "attributable source repository and commit",
+    "reproducible environment and dependency inventory",
+    "complete actual-versus-expected result record",
+    "discrepancies reported without suppression"
+  ],
+  "limitations": [
+    "This manifest does not establish independent verification.",
+    "Project- or Codex-authored implementations do not satisfy independent maintenance.",
+    "No production safety, enforcement, containment, certification, compliance, or release claim is established."
+  ]
+}
