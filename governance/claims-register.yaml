@@ -198,6 +198,7 @@
       "last_verified": "2026-08-30",
       "supporting_artifacts": [
         "ROADMAP.md",
+        "decisions/DR-008-opa-closure-and-lifecycle-activation.md",
         "policies/opa/README.md",
         "tools/opa_bridge.py"
       ],
@@ -209,6 +210,7 @@
       ],
       "limitations": [
         "The implementation is unreleased current-main development and is not included in v0.1.0-alpha.2; no later release contains it as of the verification date.",
+        "The OPA engineering increment is governance-closed by DR-008 without creating or authorizing a release.",
         "The bridge consumes an established validation result; it does not verify raw passports or duplicate canonical revocation continuity.",
         "The bridge makes a policy decision only and does not terminate credentials, sessions, workloads, tools, or network actions."
       ],
@@ -223,19 +225,21 @@
     {
       "claim_id": "AAG-LIFECYCLE-001",
       "claim_kind": "CAPABILITY",
-      "statement": "A public demonstration shows authorized, policy-denied, revoked, rollback-rejected, and new-passport reauthorized operation.",
+      "statement": "The active Agent Incident Readiness increment will provide a synthetic reference demonstration of authorized, policy-denied, revoked, rollback-rejected, and new-passport reauthorized operation.",
       "delivery_status": "PROPOSED",
       "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "Locked future demonstration increment.",
+      "verification_scope": "Active synthetic lifecycle demonstration increment; implementation evidence is not yet established.",
       "supporting_artifacts": [
-        "ROADMAP.md"
+        "ROADMAP.md",
+        "decisions/DR-008-opa-closure-and-lifecycle-activation.md"
       ],
       "evidence_refs": [],
       "limitations": [
-        "No end-to-end enforcement demonstration is implemented."
+        "No lifecycle reference demonstration is implemented yet.",
+        "The increment cannot establish external enforcement or production containment."
       ],
       "permitted_wording": [
-        "The lifecycle demonstration is planned after the OPA Enforcement Bridge."
+        "Agent Incident Readiness is the active synthetic lifecycle demonstration increment."
       ],
       "prohibited_wording": [
         "The complete lifecycle has been demonstrated."

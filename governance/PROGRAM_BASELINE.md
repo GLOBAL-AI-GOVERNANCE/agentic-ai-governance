@@ -25,11 +25,11 @@ This index identifies the controlling architecture, active increment, normative 
 
 ## One Active Increment
 
-The active increment, pending a separate closure and sequencing decision, is:
+The active increment authorized by `DR-008` is:
 
-> **OPA ENFORCEMENT BRIDGE**
+> **AUTHORIZED → POLICY-DENIED → REVOKED → ROLLBACK-REJECTED → NEW-PASSPORT REAUTHORIZED**
 
-Stateful Revocation shipped in `v0.1.0-alpha.2`. No parallel identity-lifecycle, infrastructure-trust, runtime-containment, decision-record, or later-roadmap implementation may interrupt the OPA increment without a superseding governance decision.
+Its human-facing synthetic scenario is **Agent Incident Readiness**. Stateful Revocation shipped in `v0.1.0-alpha.2`, and the OPA Enforcement Bridge implementation increment is governance-closed at its verified unreleased boundary. No parallel infrastructure-trust, runtime-containment, decision-record, independent-verifier, or later-roadmap implementation may interrupt the lifecycle increment without a superseding governance decision.
 
 ## Normative Precedence
 
@@ -92,7 +92,7 @@ Evidence Status: VERIFIED
 
 The released evidence is the optional local reference continuity implementation and subprocess regression suite. It establishes rollback-aware continuity only relative to an intact explicitly supplied trusted local store. One revocation-state path is a single-writer reference continuity store; concurrent writers to the same path are outside the supported Alpha.2 boundary.
 
-The OPA Enforcement Bridge remains the one active increment. Its bounded current-main reference implementation is:
+The OPA Enforcement Bridge engineering increment is governance-closed by `DR-008`. Its bounded current-main reference implementation remains:
 
 ```text
 Delivery Status: DEFINED
@@ -101,7 +101,16 @@ Evidence Status: VERIFIED
 
 The evidence is the current-main Python adapter, OPA policy, synthetic vectors, adversarial tests, and hosted OPA verification. The bridge remains unreleased and is not part of Alpha.2. It performs a policy decision only; no runtime enforcement or external containment claim is established.
 
-Current-main verification does not itself close the active increment or authorize the lifecycle demonstration. That transition requires the separate change control below.
+The bridge remains unreleased current-main development. `v0.1.0-alpha.2` remains the current public release, no new release identity is selected, and no release is authorized.
+
+The lifecycle demonstration is the one active increment. Until objective implementation evidence exists, it remains:
+
+```text
+Delivery Status: PROPOSED
+Evidence Status: NOT_YET_ESTABLISHED
+```
+
+Policy denial is not passport revocation. A revoked passport is not restorable. New authorization requires a new governed passport. An OPA policy decision is not external enforcement. Human authority remains explicit.
 
 ## Change Control
 

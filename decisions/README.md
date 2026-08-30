@@ -19,3 +19,4 @@ Architecture decision records define technical interoperability choices. Governa
 - [DR-005: Public Release Sequencing](DR-005-release-sequencing.md)
 - [DR-006: Continuous V&V and Program Sequencing](DR-006-continuous-vv-and-program-sequencing.md)
 - [DR-007: Stateful Revocation Alpha.2 Release and OPA Transition](DR-007-stateful-revocation-alpha2-release.md)
+- [DR-008: OPA Closure and Lifecycle Activation](DR-008-opa-closure-and-lifecycle-activation.md)
