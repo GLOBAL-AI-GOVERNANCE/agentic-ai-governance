@@ -3,12 +3,10 @@
 
 An experimental, machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
-**Tagged release:** `v0.1.0-alpha.1` remains the published experimental alpha.
-**Current main:** Stateful Revocation is implemented and verified as post-Alpha.1 current-main work, remains unreleased, and is not retroactively part of `v0.1.0-alpha.1`.
-
-
-
-**Latest tagged release:** `v0.1.0-alpha.1`
+**Latest tagged release:** `v0.1.0-alpha.2`
+**Status:** Experimental public alpha. The specification and schemas are not frozen.
+**Stateful Revocation:** `SHIPPED / VERIFIED` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
+**Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
 **Status:** Experimental public alpha. The specification and schemas are not frozen.
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
@@ -98,9 +96,9 @@ A signed passport is never reported as fully validated or permitted when its ver
 
 Unsigned passports may have `verification_primary_status: VALID` while remaining `operating_disposition: INDETERMINATE` because they do not establish issuer authentication.
 
-### Tagged Alpha.1 and current-main revocation behavior
+### Alpha.1 and Alpha.2 revocation behavior
 
-The tagged `v0.1.0-alpha.1` reference CLI validates only the signed revocation-list snapshot supplied for that run. Current main preserves that stateless default and adds an optional, post-Alpha.1 local continuity mechanism. Nothing is written unless `--revocation-state PATH` is explicitly supplied, and a missing store is created only with `--initialize-revocation-state` after the supplied list passes all trust and freshness checks.
+The tagged `v0.1.0-alpha.1` reference CLI validates only the signed revocation-list snapshot supplied for that run. `v0.1.0-alpha.2` preserves that stateless default and adds an optional local continuity mechanism. Nothing is written unless `--revocation-state PATH` is explicitly supplied, and a missing store is created only with `--initialize-revocation-state` after the supplied list passes all trust and freshness checks.
 
 Initialize once with a fresh trusted list by adding:
 
@@ -110,7 +108,9 @@ Initialize once with a fresh trusted list by adding:
 
 On later invocations, supply the same path without the initialization flag. The verifier then rejects lower sequences, conflicting repeated sequences, broken predecessor links, authority/framework mismatches, malformed stores, stale lists, and cumulative lists that omit a previously trusted revocation. Invalid or unavailable state produces `REVOCATION_STATUS_UNKNOWN` and `NOT_PERMITTED`; it is never evidence of non-revocation.
 
-This is deterministic local reference rollback protection relative to an intact trusted local store. It does not prevent host or database rollback, replacement, or deletion. It does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects, and it is not production IAM, runtime containment, certification, a legal determination, or a universal safety guarantee. The current-main implementation remains unreleased until a separate governed release.
+This is deterministic local reference rollback protection relative to an intact trusted local store. It does not prevent host or database rollback, replacement, or deletion. It does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects, and it is not production IAM, runtime containment, certification, a legal determination, or a universal safety guarantee. The local continuity implementation is released in `v0.1.0-alpha.2` within these bounded limitations.
+
+One revocation-state path is a single-writer reference continuity store. Concurrent writers to the same state path are outside the supported Alpha.2 reference boundary.
 
 ## Repository map
 
@@ -138,7 +138,7 @@ pytest -q
 
 The repository verifier also enforces grounded Claims Register evidence requirements, performs case-insensitive exact-phrase scanning over declared repository surfaces, validates cataloged schema content digests, and resolves every cataloged `$ref`. Human review remains required for paraphrases and external surfaces.
 
-Passing these checks confirms that the bundled examples and implemented Alpha.1 validation subset remain internally consistent. It does not establish operational safety, factual truth of declarations, production key custody, legal compliance, certification, or institutional authorization.
+Passing these checks confirms that the bundled examples, preserved Alpha.1 normative distribution, and released Alpha.2 reference tooling remain internally consistent. It does not establish operational safety, factual truth of declarations, production key custody, legal compliance, certification, or institutional authorization.
 
 See [CONFORMANCE.md](CONFORMANCE.md), [CONTRIBUTING.md](CONTRIBUTING.md), and [SECURITY.md](SECURITY.md).
 

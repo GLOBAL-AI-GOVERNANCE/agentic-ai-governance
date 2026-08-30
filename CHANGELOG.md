@@ -3,7 +3,11 @@
 
 ## Unreleased
 
-- Added an explicitly initialized, atomic local revocation continuity store to the reference verifier, with subprocess regressions for restart persistence, monotonic chaining, fail-closed corruption and freshness handling, and terminal cumulative revocation. This post-Alpha.1 implementation remains unreleased and provides rollback detection only relative to an intact trusted local store.
+_No unreleased changes recorded at the Alpha.2 release boundary._
+
+## v0.1.0-alpha.2 - 2026-08-30
+
+- Added an explicitly initialized, atomic local revocation continuity store to the reference verifier, with subprocess regressions for restart persistence, monotonic chaining, fail-closed corruption and freshness handling, and terminal cumulative revocation. This Alpha.2 reference capability provides rollback detection only relative to an intact trusted local store.
 - Added a regression-checked sole-public-project-identity statement for GLOBAL AI GOVERNANCE.
 - Established continuous V&V, one-active-increment sequencing, and the Stateful Revocation-first public roadmap.
 - Added machine-readable Claims Register, prohibited-claims controls, and mixed-version schema catalog governance.
@@ -12,6 +16,7 @@
 - Enforced evidence references, verification method, and verification date for every `VERIFIED` claim.
 - Added deterministic prohibited-wording scans for declared repository paths while retaining release review for external surfaces.
 - Added catalog-wide local and cross-schema `$ref` resolution plus protected baseline schema identities.
+- Recorded the steward-approved Alpha.2 release decision, promoted released current-main claims where justified, and advanced the one-active-increment program boundary to OPA without implementing OPA.
 
 ## v0.1.0-alpha.1
 

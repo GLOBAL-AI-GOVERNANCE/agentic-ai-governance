@@ -76,7 +76,8 @@
         "spec/07-revocation.md"
       ],
       "limitations": [
-        "The tagged v0.1.0-alpha.1 CLI does not persist the highest accepted revocation state across executions; the optional stateful reference mechanism is a post-release current-main addition."
+        "The tagged Alpha.1 CLI evaluates the supplied signed revocation list for the current run and does not persist the highest trusted sequence across runs.",
+        "Persistent local continuity is a separate capability released in v0.1.0-alpha.2 and is not retroactively part of Alpha.1."
       ],
       "permitted_wording": [
         "Alpha.1 publishes cumulative revocation semantics."
@@ -88,12 +89,12 @@
     {
       "claim_id": "AAG-RVK-002",
       "claim_kind": "CAPABILITY",
-      "statement": "The reference verifier retains trusted revocation continuity across normal process restarts and rejects rollback relative to an intact trusted local store.",
-      "delivery_status": "DEFINED",
+      "statement": "v0.1.0-alpha.2 ships optional persistent rollback-aware Stateful Revocation continuity across normal verifier restarts relative to an intact trusted local store.",
+      "delivery_status": "SHIPPED",
       "evidence_status": "VERIFIED",
-      "verification_scope": "Current-main optional local reference continuity state across separate verifier processes on supported Python platforms; not the tagged v0.1.0-alpha.1 release.",
+      "verification_scope": "v0.1.0-alpha.2 released optional local reference revocation continuity relative to an intact trusted local store at an explicitly supplied single-writer path.",
       "verification_method": "Subprocess CLI regression tests covering explicit initialization, persistence, monotonic advance, idempotence, rollback, conflicting repeats, predecessor linkage, corruption, freshness, authority/framework binding, and cumulative terminal revocation.",
-      "last_verified": "2026-08-29",
+      "last_verified": "2026-08-30",
       "supporting_artifacts": [
         "governance/PROGRAM_BASELINE.md",
         "ROADMAP.md",
@@ -104,23 +105,24 @@
       "evidence_refs": [
         "tools/revocation_state.py",
         "tools/validate_artifact.py",
-        "tests/test_cli.py"
+        "tests/test_cli.py",
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/releases/tag/v0.1.0-alpha.2"
       ],
       "limitations": [
-        "The implementation is unreleased current-main reference tooling and is not part of v0.1.0-alpha.1.",
-        "Continuity is relative only to an intact trusted local store at the explicitly supplied path.",
-        "Host or database rollback, store replacement or deletion, compromised time, and host compromise remain outside the claim.",
-        "The verifier does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects and is not production IAM or runtime containment."
+        "Continuity remains bounded to an intact trusted local store at the explicitly supplied path.",
+        "One revocation-state path is a single-writer reference continuity store; concurrent writers to the same path are outside the supported Alpha.2 boundary.",
+        "The local store does not prevent host or database rollback, replacement, deletion, compromised time, or host compromise.",
+        "The capability does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects.",
+        "Stateful Revocation is not part of v0.1.0-alpha.1."
       ],
       "permitted_wording": [
-        "Persistent Stateful Revocation is the active defined increment.",
-        "Current main verifies local rollback continuity relative to an intact explicitly supplied trusted store and remains unreleased."
+        "v0.1.0-alpha.2 ships persistent rollback-aware Stateful Revocation relative to an intact trusted local store.",
+        "Stateful Revocation is SHIPPED / VERIFIED in Alpha.2 within its documented local-store boundary."
       ],
       "prohibited_wording": [
-        "Persistent Stateful Revocation has shipped.",
-        "Rollback protection is verified.",
         "Stateful Revocation is part of v0.1.0-alpha.1.",
-        "The local reference store prevents host rollback."
+        "The local state store prevents host-level rollback.",
+        "Stateful Revocation proves operational containment."
       ]
     },
     {
@@ -152,12 +154,12 @@
     {
       "claim_id": "AAG-GOV-001",
       "claim_kind": "TOOLING",
-      "statement": "Current main implements repository tooling that validates the Claims Register, scans governed repository surfaces for prohibited wording, enforces the schema catalog, checks the roadmap, and preserves generated-distribution integrity.",
-      "delivery_status": "DEFINED",
+      "statement": "v0.1.0-alpha.2 ships repository tooling that enforces the machine-readable Claims Register, grounded evidence for VERIFIED claims, prohibited-claim checks over governed repository surfaces, schema-catalog integrity, and generated-distribution consistency.",
+      "delivery_status": "SHIPPED",
       "evidence_status": "VERIFIED",
-      "verification_scope": "The repository controls and regression tests present on current main; not the separately tagged v0.1.0-alpha.1 release.",
+      "verification_scope": "v0.1.0-alpha.2 released repository governance and conformance tooling.",
       "verification_method": "Claims-register, schema-catalog, roadmap, generated-distribution, and full repository verification tests.",
-      "last_verified": "2026-08-29",
+      "last_verified": "2026-08-30",
       "supporting_artifacts": [
         "tools/validate_claims_register.py",
         "tools/schema_catalog.py",
@@ -168,18 +170,21 @@
       "evidence_refs": [
         "tools/validate_claims_register.py",
         "tests/test_claims_register.py",
-        "tests/test_schema_catalog.py"
+        "tests/test_schema_catalog.py",
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/releases/tag/v0.1.0-alpha.2"
       ],
       "limitations": [
-        "These controls were implemented after the v0.1.0-alpha.1 tag and are not part of that release.",
-        "Current-main implementation does not make the controls SHIPPED; release promotion remains a separate governed action."
+        "The controls are repository-local and do not establish factual truth, certification, production authorization, or complete detection of paraphrased or external overclaims.",
+        "These controls are not retroactively part of v0.1.0-alpha.1."
       ],
       "permitted_wording": [
-        "Current main implements and verifies the Claims Gate repository controls; this post-Alpha.1 work remains unreleased."
+        "v0.1.0-alpha.2 ships the repository Claims Gate and conformance controls.",
+        "Release Alpha.2 verifies the bounded repository controls represented by AAG-GOV-001."
       ],
       "prohibited_wording": [
-        "v0.1.0-alpha.1 includes the Claims Gate repository controls.",
-        "The GOVERN controls are shipped."
+        "v0.1.0-alpha.1 includes the Claims Gate.",
+        "The Claims Gate proves all public claims are true.",
+        "The Claims Gate certifies Agentic AI Governance."
       ]
     },
     {

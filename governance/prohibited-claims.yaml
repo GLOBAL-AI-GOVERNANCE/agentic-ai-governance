@@ -47,7 +47,7 @@
         "production-grade authorization service",
         "enterprise-safe by default"
       ],
-      "rationale": "Alpha.1 and the planned local reference store do not establish production operational assurance.",
+      "rationale": "The experimental alpha releases and bounded local reference store do not establish production operational assurance.",
       "permitted_alternative": "Experimental reference specifications and tooling with explicit assurance boundaries.",
       "enforcement": "BOTH",
       "repository_globs": [
