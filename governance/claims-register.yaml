@@ -190,22 +190,34 @@
     {
       "claim_id": "AAG-OPA-001",
       "claim_kind": "CAPABILITY",
-      "statement": "An OPA Enforcement Bridge consumes validated trust results and returns permit, deny, or require-approval decisions.",
-      "delivery_status": "PROPOSED",
-      "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "Locked future increment after Stateful Revocation.",
+      "statement": "The unreleased current-main OPA Enforcement Bridge consumes established validation results and returns existing Agentic operating dispositions with stable reason codes without performing external enforcement.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Bounded Python reference adapter, OPA v1.19.1 policy, synthetic examples, adversarial regressions, and hosted matrix verification on current main.",
+      "verification_method": "Repository verification, deterministic Python regression tests, OPA policy tests and example evaluation, and protected hosted CI.",
+      "last_verified": "2026-08-30",
       "supporting_artifacts": [
-        "ROADMAP.md"
+        "ROADMAP.md",
+        "policies/opa/README.md",
+        "tools/opa_bridge.py"
       ],
-      "evidence_refs": [],
+      "evidence_refs": [
+        "examples/opa/permitted-read.json",
+        "policies/opa/bridge.rego",
+        "policies/opa/bridge_test.rego",
+        "tests/test_opa_bridge.py"
+      ],
       "limitations": [
-        "No OPA adapter is implemented or released."
+        "The implementation is unreleased current-main development and is not included in v0.1.0-alpha.2; no later release contains it as of the verification date.",
+        "The bridge consumes an established validation result; it does not verify raw passports or duplicate canonical revocation continuity.",
+        "The bridge makes a policy decision only and does not terminate credentials, sessions, workloads, tools, or network actions."
       ],
       "permitted_wording": [
-        "The OPA Enforcement Bridge is the next planned increment after Stateful Revocation."
+        "Current main contains a verified, unreleased, non-enforcing OPA Enforcement Bridge reference implementation."
       ],
       "prohibited_wording": [
-        "The repository currently enforces actions through OPA."
+        "The repository currently enforces actions through OPA.",
+        "The OPA bridge provides runtime containment."
       ]
     },
     {

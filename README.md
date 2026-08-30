@@ -7,6 +7,7 @@ An experimental, machine-readable trust layer for describing what an AI agent is
 **Status:** Experimental public alpha. The specification and schemas are not frozen.
 **Stateful Revocation:** `SHIPPED / VERIFIED` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
+**OPA Enforcement Bridge:** current-main `DEFINED / VERIFIED` reference implementation; unreleased and non-enforcing.
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
@@ -28,6 +29,7 @@ Designed for AI platform teams, security architects, governance engineers, assur
 3. **Issue a passport.** Produce an unsigned declaration or issuer-signed Agent Trust Passport.
 4. **Validate trust.** Check strict JSON, supported versions, schema, semantics, identifiers, critical extensions, signatures, signing-key trust, profile and evaluator support, complete bound evidence, inventory and action-authority consistency, validity, and revocation.
 5. **Expire or revoke authority.** Apply time limits and a signed cumulative revocation list.
+6. **Evaluate bounded policy.** An optional current-main OPA bridge consumes the established validation result and returns the existing operating-disposition vocabulary without performing external enforcement.
 
 ## Five-minute validation
 
@@ -110,6 +112,12 @@ On later invocations, supply the same path without the initialization flag. The 
 This is deterministic local reference rollback protection relative to an intact trusted local store. It does not prevent host or database rollback, replacement, or deletion. It does not terminate credentials, sessions, tools, workloads, network paths, or downstream effects, and it is not production IAM, runtime containment, certification, a legal determination, or a universal safety guarantee. The local continuity implementation is released in `v0.1.0-alpha.2` within these bounded limitations.
 
 One revocation-state path is a single-writer reference continuity store. Concurrent writers to the same state path are outside the supported Alpha.2 reference boundary.
+
+### Unreleased OPA Enforcement Bridge
+
+Current `main` includes a bounded Python reference adapter, OPA policy, synthetic vectors, and adversarial tests under [`policies/opa/`](policies/opa/README.md). The bridge accepts only an already-established canonical validation result plus a requested action, resource, policy, and context. It cannot expand validated authority, and it keeps policy denial distinct from passport revocation.
+
+This current-main implementation is not part of `v0.1.0-alpha.2`. It makes a deterministic policy decision only; it does not verify raw passports, terminate credentials or sessions, contain workloads, enforce network or tool actions, provide production IAM, or establish certification or compliance.
 
 ## Repository map
 

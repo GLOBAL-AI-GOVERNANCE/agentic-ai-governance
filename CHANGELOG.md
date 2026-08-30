@@ -3,7 +3,7 @@
 
 ## Unreleased
 
-_No unreleased changes recorded at the Alpha.2 release boundary._
+- Added a bounded, non-enforcing OPA bridge reference adapter, policy, synthetic vectors, stable reason codes, adversarial tests, and hosted OPA v1.19.1 verification. The implementation consumes established validation results, preserves canonical operating dispositions, and remains unreleased.
 
 ## v0.1.0-alpha.2 - 2026-08-30
 
