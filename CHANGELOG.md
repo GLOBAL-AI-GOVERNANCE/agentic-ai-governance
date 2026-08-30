@@ -3,6 +3,7 @@
 
 ## Unreleased
 
+- Added an explicitly initialized, atomic local revocation continuity store to the reference verifier, with subprocess regressions for restart persistence, monotonic chaining, fail-closed corruption and freshness handling, and terminal cumulative revocation. This post-Alpha.1 implementation remains unreleased and provides rollback detection only relative to an intact trusted local store.
 - Added a regression-checked sole-public-project-identity statement for GLOBAL AI GOVERNANCE.
 - Established continuous V&V, one-active-increment sequencing, and the Stateful Revocation-first public roadmap.
 - Added machine-readable Claims Register, prohibited-claims controls, and mixed-version schema catalog governance.
