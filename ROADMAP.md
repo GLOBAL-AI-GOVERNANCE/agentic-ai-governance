@@ -7,6 +7,8 @@
 
 Preserve the Alpha.1 revocation-list contract while adding an explicitly initialized, rollback-aware persistent reference verifier. The increment must retain trusted state across normal process restarts, reject broken continuity, return unknown status when current state cannot be established, and keep revoked passports terminally revoked.
 
+Current main now contains the verified local reference implementation and subprocess regressions. Stateful Revocation remains Delivery Status `DEFINED` and Evidence Status `VERIFIED`; the increment remains active, and the implementation remains unreleased until a separate governed release. The OPA Enforcement Bridge remains locked as the next planned increment and has not begun.
+
 ## Locked Sequence
 
 1. **Stateful Revocation**

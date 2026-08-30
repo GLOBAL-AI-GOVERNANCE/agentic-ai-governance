@@ -71,6 +71,20 @@ def test_implemented_claims_gate_is_not_stale_or_attributed_to_alpha1() -> None:
     assert any("remains unreleased" in item for item in claim["permitted_wording"])
 
 
+def test_stateful_revocation_claim_is_defined_verified_and_unreleased() -> None:
+    claim = next(
+        item for item in _claims()["claims"]
+        if item["claim_id"] == "AAG-RVK-002"
+    )
+    assert claim["delivery_status"] == "DEFINED"
+    assert claim["evidence_status"] == "VERIFIED"
+    assert claim["verification_method"]
+    assert claim["last_verified"] == "2026-08-29"
+    assert "tests/test_cli.py" in claim["evidence_refs"]
+    assert any("unreleased" in item for item in claim["limitations"])
+    assert any("intact trusted local store" in item for item in claim["limitations"])
+
+
 def test_partial_status_is_rejected() -> None:
     document = copy.deepcopy(_claims())
     document["claims"][0]["evidence_status"] = "PARTIALLY_VERIFIED"

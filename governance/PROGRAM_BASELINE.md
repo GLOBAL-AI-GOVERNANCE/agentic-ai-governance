@@ -87,8 +87,10 @@ Stateful Revocation remains:
 
 ```text
 Delivery Status: DEFINED
-Evidence Status: NOT_YET_ESTABLISHED
+Evidence Status: VERIFIED
 ```
+
+The verified evidence is the post-`v0.1.0-alpha.1`, current-main optional local reference implementation and subprocess regression suite. It establishes rollback-aware continuity only relative to an intact explicitly supplied trusted local store. It remains unreleased pending a separate governed release; Delivery Status therefore remains `DEFINED`, and Stateful Revocation remains the one active increment. This does not advance the program to the OPA Enforcement Bridge.
 
 ## Change Control
 

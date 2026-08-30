@@ -21,6 +21,7 @@ from tools.reference_policy import (
     CURRENT_PROFILE_VERSION,
     CURRENT_SCHEMA_VERSION,
 )
+from tools.revocation_state import RevocationStateError, apply_revocation_state
 from tools.crypto import trusted_key_errors, verify_jws
 from tools.semantic_rules import (
     SUPPORTED_CRITICAL_EXTENSIONS,
@@ -162,17 +163,17 @@ def _evaluate_revocation(
     key: dict[str, Any],
     at_time: datetime,
     store: Any,
-) -> tuple[str, list[dict[str, str]], bool]:
+) -> tuple[str, list[dict[str, str]], bool, dict[str, Any] | None]:
     errors: list[dict[str, str]] = []
     try:
         revocation = load_strict(path, require_object=True)
     except StrictJSONError as exc:
-        return "FAIL", [_error("INVALID_REVOCATION_JSON", str(exc), "revocation")], False
+        return "FAIL", [_error("INVALID_REVOCATION_JSON", str(exc), "revocation")], False, None
 
     for message in validate_value_schema(ROOT, "revocation-list.schema.json", revocation, store):
         errors.append(_error("REVOCATION_SCHEMA", message, "revocation"))
     if errors:
-        return "FAIL", errors, False
+        return "FAIL", errors, False, None
 
     for message in validate_revocation_semantics(revocation):
         errors.append(_error("REVOCATION_SEMANTICS", message, "revocation"))
@@ -220,11 +221,11 @@ def _evaluate_revocation(
         errors.append(_error("REVOCATION_TIME", str(exc), "revocation"))
 
     if errors:
-        return "FAIL", errors, False
+        return "FAIL", errors, False, None
 
     passport_id = passport["passport_id"]
     revoked = any(entry.get("passport_id") == passport_id for entry in revocation.get("entries", []))
-    return ("REVOKED" if revoked else "PASS"), [], revoked
+    return ("REVOKED" if revoked else "PASS"), [], revoked, revocation
 
 
 def _artifact_validation_status(checks: dict[str, str]) -> str:
@@ -416,6 +417,16 @@ def main() -> int:
         help="Current signed cumulative revocation-list JSON for passport trust validation.",
     )
     parser.add_argument(
+        "--revocation-state",
+        type=Path,
+        help="Explicit trusted local revocation continuity-state JSON for passport validation.",
+    )
+    parser.add_argument(
+        "--initialize-revocation-state",
+        action="store_true",
+        help="Initialize a missing --revocation-state after all supplied-list trust checks pass.",
+    )
+    parser.add_argument(
         "--bundle-manifest",
         type=Path,
         help="Canonical bound-input bundle manifest required for passport validation.",
@@ -431,6 +442,11 @@ def main() -> int:
     )
     parser.add_argument("artifact", type=Path)
     args = parser.parse_args()
+
+    if args.initialize_revocation_state and args.revocation_state is None:
+        parser.error("--initialize-revocation-state requires --revocation-state")
+    if args.revocation_state is not None and (args.kind != "passport" or args.revocation_list is None):
+        parser.error("--revocation-state requires passport validation with --revocation-list")
 
     checks = {name: "NOT_RUN" for name in CHECK_NAMES}
     errors: list[dict[str, str]] = []
@@ -817,7 +833,7 @@ def main() -> int:
                 fully_validated=False,
             )
         assert key is not None
-        revocation_status, revocation_errors, revoked = _evaluate_revocation(
+        revocation_status, revocation_errors, revoked, revocation = _evaluate_revocation(
             args.revocation_list,
             passport=value,
             key=key,
@@ -826,17 +842,6 @@ def main() -> int:
         )
         checks["revocation"] = revocation_status
         errors.extend(revocation_errors)
-        if revoked:
-            return _emit(
-                kind=args.kind,
-                artifact=args.artifact,
-                at_time=at_time,
-                checks=checks,
-                errors=errors,
-                result_hint="REVOKED",
-                structurally_valid=True,
-                fully_validated=False,
-            )
         if revocation_errors:
             return _emit(
                 kind=args.kind,
@@ -848,9 +853,58 @@ def main() -> int:
                 structurally_valid=True,
                 fully_validated=False,
             )
-        limitations.append(
-            "Revocation was evaluated against the supplied signed list; rollback state is not persisted by this stateless CLI."
-        )
+        if args.revocation_state is not None:
+            assert revocation is not None
+            try:
+                cumulative_revocations = apply_revocation_state(
+                    args.revocation_state,
+                    revocation,
+                    initialize=args.initialize_revocation_state,
+                )
+            except (RevocationStateError, OSError) as exc:
+                checks["revocation"] = "FAIL"
+                errors.append(_error("REVOCATION_STATE_UNKNOWN", str(exc), "revocation"))
+                return _emit(
+                    kind=args.kind,
+                    artifact=args.artifact,
+                    at_time=at_time,
+                    checks=checks,
+                    errors=errors,
+                    result_hint="INDETERMINATE",
+                    structurally_valid=True,
+                    fully_validated=False,
+                )
+            if value["passport_id"] in cumulative_revocations:
+                checks["revocation"] = "REVOKED"
+                return _emit(
+                    kind=args.kind,
+                    artifact=args.artifact,
+                    at_time=at_time,
+                    checks=checks,
+                    errors=[],
+                    result_hint="REVOKED",
+                    structurally_valid=True,
+                    fully_validated=False,
+                )
+            limitations.append(
+                "Rollback continuity was evaluated relative to an intact explicitly supplied trusted local store."
+            )
+        else:
+            limitations.append(
+                "Revocation was evaluated against the supplied signed list; rollback state is not persisted by this stateless CLI."
+            )
+        if revoked:
+            return _emit(
+                kind=args.kind,
+                artifact=args.artifact,
+                at_time=at_time,
+                checks=checks,
+                errors=[],
+                result_hint="REVOKED",
+                structurally_valid=True,
+                fully_validated=False,
+                limitations=limitations,
+            )
         return _emit(
             kind=args.kind,
             artifact=args.artifact,
