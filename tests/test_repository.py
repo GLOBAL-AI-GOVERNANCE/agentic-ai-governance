@@ -85,3 +85,34 @@ def test_changelog_keeps_shipped_alpha1_work_out_of_unreleased() -> None:
     for bullet in shipped_bullets:
         assert bullet not in unreleased
         assert bullet in alpha1
+
+
+def test_changelog_keeps_alpha2_release_work_out_of_unreleased() -> None:
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    unreleased, alpha2_and_rest = changelog.split("## v0.1.0-alpha.2", maxsplit=1)
+    alpha2, _alpha1 = alpha2_and_rest.split("## v0.1.0-alpha.1", maxsplit=1)
+    shipped_bullets = [
+        "atomic local revocation continuity store",
+        "machine-readable Claims Register",
+        "schema catalog",
+        "steward-approved Alpha.2 release decision",
+    ]
+    for bullet in shipped_bullets:
+        assert bullet not in unreleased
+        assert bullet in alpha2
+
+
+def test_alpha2_single_writer_boundary_is_explicit() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    phrase = "One revocation-state path is a single-writer reference continuity store."
+    assert phrase in readme
+    claims = json.loads((ROOT / "governance/claims-register.yaml").read_text(encoding="utf-8"))
+    claim = next(item for item in claims["claims"] if item["claim_id"] == "AAG-RVK-002")
+    assert any("single-writer reference continuity store" in item for item in claim["limitations"])
+
+
+def test_alpha2_readme_release_header_is_not_duplicated() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert readme.count("**Latest tagged release:**") == 1
+    assert "**Tagged release:**" not in readme
+    assert "**Current main:**" not in readme

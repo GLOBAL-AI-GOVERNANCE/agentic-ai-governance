@@ -4,6 +4,6 @@ message: Please cite the repository release and specification version used. Lice
 type: software
 authors:
   - name: Global AI Governance
-version: 0.1.0-alpha.1
+version: 0.1.0-alpha.2
 repository-code: https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance
 abstract: Experimental machine-readable specifications, schemas, examples, conformance fixtures, and reference validation utilities for governed agentic systems. Code and machine-readable artifacts are Apache-2.0; specification and documentation prose are CC-BY-4.0.
