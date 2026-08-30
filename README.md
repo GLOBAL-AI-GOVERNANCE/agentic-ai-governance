@@ -7,7 +7,6 @@ An experimental, machine-readable trust layer for describing what an AI agent is
 **Status:** Experimental public alpha. The specification and schemas are not frozen.
 **Stateful Revocation:** `SHIPPED / VERIFIED` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
-**Status:** Experimental public alpha. The specification and schemas are not frozen.
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
