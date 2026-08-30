@@ -1,0 +1,19 @@
+{
+  "receipt_version": "1.0.0",
+  "result": "NOT_RUN",
+  "maintainer": {"name": "REQUIRED", "organization": "REQUIRED", "contact": "REQUIRED"},
+  "control_boundary": {"separate_from_project": false, "description": "REQUIRED"},
+  "independent_implementation": {"repository": "REQUIRED", "commit": "REQUIRED", "license": "REQUIRED"},
+  "controlling_agentic_commit": "60d5755299531f0e8c17e6beb559e7e1dc7e4910",
+  "executed_at_utc": "REQUIRED",
+  "environment": {"os": "REQUIRED", "architecture": "REQUIRED", "runtime": "REQUIRED", "dependencies": []},
+  "manifest_sha256": "REQUIRED",
+  "vectors": [],
+  "discrepancies": [],
+  "attestation": {
+    "project_decision_logic_reused": null,
+    "results_complete_and_unmodified": null,
+    "limitations_acknowledged": null
+  },
+  "signature_or_attribution_evidence": "REQUIRED"
+}
