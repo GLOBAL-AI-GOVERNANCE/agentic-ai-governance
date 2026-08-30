@@ -27,9 +27,9 @@ This index identifies the controlling architecture, active increment, normative 
 
 The only active implementation increment is:
 
-> **STATEFUL REVOCATION: FROM SIGNED SNAPSHOT TO TRUSTED LIFECYCLE STATE**
+> **OPA ENFORCEMENT BRIDGE**
 
-No parallel identity-lifecycle, infrastructure-trust, runtime-containment, or decision-record implementation may interrupt this increment without a superseding governance decision.
+Stateful Revocation shipped in `v0.1.0-alpha.2`. No parallel identity-lifecycle, infrastructure-trust, runtime-containment, decision-record, or later-roadmap implementation may interrupt the OPA increment without a superseding governance decision.
 
 ## Normative Precedence
 
@@ -81,16 +81,25 @@ Agentic AI Governance remains canonical for passports, evidence bindings, author
 
 ## Current Boundary
 
-Agentic AI Governance Alpha.1 is a verified experimental open-source foundation within its published boundary. GitHub reports hosted conformance success. Independent clean-room reproduction of the current public repository and production assurance remain separately classified.
+Agentic AI Governance `v0.1.0-alpha.2` is a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
 
-Stateful Revocation remains:
+Stateful Revocation is:
 
 ```text
-Delivery Status: DEFINED
+Delivery Status: SHIPPED
 Evidence Status: VERIFIED
 ```
 
-The verified evidence is the post-`v0.1.0-alpha.1`, current-main optional local reference implementation and subprocess regression suite. It establishes rollback-aware continuity only relative to an intact explicitly supplied trusted local store. It remains unreleased pending a separate governed release; Delivery Status therefore remains `DEFINED`, and Stateful Revocation remains the one active increment. This does not advance the program to the OPA Enforcement Bridge.
+The released evidence is the optional local reference continuity implementation and subprocess regression suite. It establishes rollback-aware continuity only relative to an intact explicitly supplied trusted local store. One revocation-state path is a single-writer reference continuity store; concurrent writers to the same path are outside the supported Alpha.2 boundary.
+
+The OPA Enforcement Bridge is now the one active increment and remains:
+
+```text
+Delivery Status: PROPOSED
+Evidence Status: NOT_YET_ESTABLISHED
+```
+
+No OPA implementation, runtime enforcement, or external containment claim is established by Alpha.2.
 
 ## Change Control
 

@@ -3,20 +3,22 @@
 
 ## Active Priority
 
-### Stateful Revocation: From Signed Snapshot to Trusted Lifecycle State
+### OPA Enforcement Bridge
 
-Preserve the Alpha.1 revocation-list contract while adding an explicitly initialized, rollback-aware persistent reference verifier. The increment must retain trusted state across normal process restarts, reject broken continuity, return unknown status when current state cannot be established, and keep revoked passports terminally revoked.
+Stateful Revocation shipped in `v0.1.0-alpha.2` with Delivery Status `SHIPPED` and Evidence Status `VERIFIED`. Its claim remains bounded to rollback-aware continuity relative to an intact trusted local store.
 
-Current main now contains the verified local reference implementation and subprocess regressions. Stateful Revocation remains Delivery Status `DEFINED` and Evidence Status `VERIFIED`; the increment remains active, and the implementation remains unreleased until a separate governed release. The OPA Enforcement Bridge remains locked as the next planned increment and has not begun.
+The OPA Enforcement Bridge is now the one active implementation increment. It is `PROPOSED / NOT_YET_ESTABLISHED` and no OPA implementation is included in `v0.1.0-alpha.2`.
+
+The bridge must consume validated passport, authority, and revocation results plus bounded policy/context and emit only the governed decision vocabulary required by the active design. It must not silently duplicate passport validation or claim external enforcement that it cannot evidence.
 
 ## Locked Sequence
 
-1. **Stateful Revocation**
-2. **OPA Enforcement Bridge**
-3. **Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized demonstration**
-4. **Second independently maintained verifier**
-5. **Agent Governance Decision Record Profile**
-6. **Infrastructure Trust Profile**
+1. **Stateful Revocation** — shipped and verified in `v0.1.0-alpha.2`.
+2. **OPA Enforcement Bridge** — active increment; not yet implemented.
+3. **Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized demonstration**.
+4. **Second independently maintained verifier**.
+5. **Agent Governance Decision Record Profile**.
+6. **Infrastructure Trust Profile**.
 
 ## Continuing Interoperability
 
