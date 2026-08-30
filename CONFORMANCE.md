@@ -38,6 +38,12 @@ The OPA Enforcement Bridge is a separately bounded current-main reference implem
 
 The bridge returns policy dispositions and stable reason codes. It performs no external enforcement and establishes no runtime containment.
 
+## Unreleased current-main lifecycle demonstration
+
+The synthetic Agent Incident Readiness trace composes established validator results, OPA bridge decisions, and Stateful Revocation continuity. Deterministic positive and adversarial tests cover policy denial without revocation, terminal revoked-passport rejection, rollback and same-sequence conflict rejection, unknown evidence, human-attribution failure, authority violations, stale input, malformed evidence, distinct new-passport reauthorization, and unsupported enforcement or containment claims.
+
+This current-main demonstration is not part of `v0.1.0-alpha.2`, introduces no schema, and performs no external action.
+
 
 ## Canonical policy and authority semantics
 

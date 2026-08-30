@@ -3,6 +3,7 @@
 
 ## Unreleased
 
+- Added the synthetic Agent Incident Readiness reference trace and deterministic verifier for the Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized lifecycle. The original passport remains terminally revoked, reauthorization requires a distinct passport, and no external enforcement is performed.
 - Added a bounded, non-enforcing OPA bridge reference adapter, policy, synthetic vectors, stable reason codes, adversarial tests, and hosted OPA v1.19.1 verification. The implementation consumes established validation results, preserves canonical operating dispositions, and remains unreleased.
 
 ## v0.1.0-alpha.2 - 2026-08-30
