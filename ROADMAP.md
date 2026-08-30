@@ -11,7 +11,7 @@ The OPA Enforcement Bridge engineering increment is governance-closed by `DR-008
 
 The bridge consumes validated passport, authority, and revocation results plus bounded policy/context and emits the existing Agentic operating-disposition vocabulary with stable reason codes and evidence references. It does not duplicate passport validation or claim external enforcement.
 
-The one active implementation increment is the synthetic **Agent Incident Readiness** lifecycle demonstration: Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized. At activation it remains Delivery Status `PROPOSED` and Evidence Status `NOT_YET_ESTABLISHED` until objective implementation evidence exists.
+The active synthetic **Agent Incident Readiness** lifecycle demonstration is implemented on current `main`: Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized. It is Delivery Status `DEFINED`, Evidence Status `VERIFIED`, and unreleased.
 
 Policy denial does not mutate revocation state. A revoked passport cannot be restored; reauthorization requires a new governed passport. OPA produces a policy decision, not external enforcement. Human authority remains explicit.
 
@@ -19,8 +19,8 @@ Policy denial does not mutate revocation state. A revoked passport cannot be res
 
 1. **Stateful Revocation** — shipped and verified in `v0.1.0-alpha.2`.
 2. **OPA Enforcement Bridge** — governance-closed increment; current-main verified, unreleased.
-3. **Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized demonstration** — active increment; synthetic Agent Incident Readiness scenario.
-4. **Second independently maintained verifier**.
+3. **Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized demonstration** — current-main verified, unreleased synthetic Agent Incident Readiness scenario.
+4. **Second independently maintained verifier** — waiting on genuinely external independent maintenance; project-authored work cannot satisfy this gate.
 5. **Agent Governance Decision Record Profile**.
 6. **Infrastructure Trust Profile**.
 

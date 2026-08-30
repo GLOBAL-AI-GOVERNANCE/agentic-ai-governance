@@ -9,6 +9,8 @@ An experimental, machine-readable trust layer for describing what an AI agent is
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
 **OPA Enforcement Bridge:** current-main `DEFINED / VERIFIED` reference implementation; unreleased and non-enforcing.
 
+**Agent Incident Readiness:** current-main `DEFINED / VERIFIED` synthetic lifecycle reference demonstration; unreleased and non-operational.
+
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
 > This is not an MCP scanner, autonomous remediation platform, certification service, production policy engine, or legal-compliance guarantee.
@@ -118,6 +120,12 @@ One revocation-state path is a single-writer reference continuity store. Concurr
 Current `main` includes a bounded Python reference adapter, OPA policy, synthetic vectors, and adversarial tests under [`policies/opa/`](policies/opa/README.md). The bridge accepts only an already-established canonical validation result plus a requested action, resource, policy, and context. It cannot expand validated authority, and it keeps policy denial distinct from passport revocation.
 
 This current-main implementation is not part of `v0.1.0-alpha.2`. It makes a deterministic policy decision only; it does not verify raw passports, terminate credentials or sessions, contain workloads, enforce network or tool actions, provide production IAM, or establish certification or compliance.
+
+### Unreleased Agent Incident Readiness
+
+Current `main` includes a deterministic synthetic trace under [`examples/agent-incident-readiness/`](examples/agent-incident-readiness/README.md). It demonstrates Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized while preserving terminal revocation of the original passport. Reauthorization uses a distinct newly validated passport.
+
+The demonstration composes existing validation-result, OPA bridge, operating-disposition, reason-code, and Stateful Revocation semantics. It adds no schema and performs no external action. It is not proof of runtime enforcement, containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.
 
 ## Repository map
 

@@ -103,14 +103,16 @@ The evidence is the current-main Python adapter, OPA policy, synthetic vectors, 
 
 The bridge remains unreleased current-main development. `v0.1.0-alpha.2` remains the current public release, no new release identity is selected, and no release is authorized.
 
-The lifecycle demonstration is the one active increment. Until objective implementation evidence exists, it remains:
+The lifecycle demonstration remains the authorized increment and now has objective current-main reference evidence:
 
 ```text
-Delivery Status: PROPOSED
-Evidence Status: NOT_YET_ESTABLISHED
+Delivery Status: DEFINED
+Evidence Status: VERIFIED
 ```
 
 Policy denial is not passport revocation. A revoked passport is not restorable. New authorization requires a new governed passport. An OPA policy decision is not external enforcement. Human authority remains explicit.
+
+The evidence is the deterministic synthetic Agent Incident Readiness trace, reference orchestrator, human-readable walkthrough, and adversarial regressions. It is unreleased and non-operational. The next locked gate is a second independently maintained verifier, which remains waiting on genuinely external maintenance.
 
 ## Change Control
 

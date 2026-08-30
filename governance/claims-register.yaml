@@ -225,24 +225,34 @@
     {
       "claim_id": "AAG-LIFECYCLE-001",
       "claim_kind": "CAPABILITY",
-      "statement": "The active Agent Incident Readiness increment will provide a synthetic reference demonstration of authorized, policy-denied, revoked, rollback-rejected, and new-passport reauthorized operation.",
-      "delivery_status": "PROPOSED",
-      "evidence_status": "NOT_YET_ESTABLISHED",
-      "verification_scope": "Active synthetic lifecycle demonstration increment; implementation evidence is not yet established.",
+      "statement": "Unreleased current main contains a synthetic Agent Incident Readiness reference demonstration of authorized, policy-denied, revoked, rollback-rejected, and distinct new-passport reauthorized operation.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Deterministic synthetic current-main reference trace only; no external enforcement or production containment.",
+      "verification_method": "Repository verification, lifecycle positive and adversarial regressions, existing Stateful Revocation regressions, OPA tests, and protected hosted CI.",
+      "last_verified": "2026-08-30",
       "supporting_artifacts": [
         "ROADMAP.md",
-        "decisions/DR-008-opa-closure-and-lifecycle-activation.md"
+        "decisions/DR-008-opa-closure-and-lifecycle-activation.md",
+        "examples/agent-incident-readiness/README.md",
+        "tools/agent_incident_readiness.py"
       ],
-      "evidence_refs": [],
+      "evidence_refs": [
+        "examples/agent-incident-readiness/synthetic-lifecycle.json",
+        "tests/test_agent_incident_readiness.py"
+      ],
       "limitations": [
-        "No lifecycle reference demonstration is implemented yet.",
-        "The increment cannot establish external enforcement or production containment."
+        "The demonstration is synthetic, unreleased current-main development and non-operational.",
+        "It does not establish external enforcement, runtime containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.",
+        "Rollback rejection remains relative to an intact explicitly supplied trusted local continuity store."
       ],
       "permitted_wording": [
-        "Agent Incident Readiness is the active synthetic lifecycle demonstration increment."
+        "Current main contains a verified, unreleased synthetic Agent Incident Readiness lifecycle reference demonstration."
       ],
       "prohibited_wording": [
-        "The complete lifecycle has been demonstrated."
+        "Agent Incident Readiness provides production containment.",
+        "Agent Incident Readiness performs external enforcement.",
+        "The revoked passport is restored during reauthorization."
       ]
     },
     {
