@@ -34,7 +34,7 @@ def test_release_dependency_pins() -> None:
         if line.strip() and not line.startswith("#")
     }
     assert "pytest==9.0.3" in requirements
-    assert "cryptography==50.0.0" in requirements
+    assert "cryptography==50.0.1" in requirements
     assert "jsonschema==4.26.0" in requirements
 
 
