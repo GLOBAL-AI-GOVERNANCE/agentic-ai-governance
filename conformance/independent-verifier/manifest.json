@@ -2,7 +2,8 @@
   "manifest_version": "1.0.0",
   "status": "NEUTRAL_REPRODUCTION_MATERIAL",
   "controlling_repository": "GLOBAL-AI-GOVERNANCE/agentic-ai-governance",
-  "controlling_commit": "60d5755299531f0e8c17e6beb559e7e1dc7e4910",
+  "controlling_commit": "e951798d64e247612f625bf50f23b10a0e30992e",
+  "controlling_tree": "5e035f538bf427f619e5055499ca22abe09ac653",
   "published_release": "v0.1.0-alpha.2",
   "independent_verification_established": false,
   "normative_artifacts": [
