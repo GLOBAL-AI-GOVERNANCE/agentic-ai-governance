@@ -3,7 +3,7 @@
 
 ## Purpose and audience
 
-This implementation-neutral kit is for a genuinely separate verifier maintainer reproducing Agentic AI Governance outcomes at commit `60d5755299531f0e8c17e6beb559e7e1dc7e4910`. It provides pinned normative and fixture inventories, expected outcomes, discrepancy reporting, and an independent receipt template. It does not provide or prescribe a second implementation.
+This implementation-neutral kit is for a genuinely separate verifier maintainer reproducing Agentic AI Governance outcomes at commit `e951798d64e247612f625bf50f23b10a0e30992e` (tree `5e035f538bf427f619e5055499ca22abe09ac653`). It provides pinned normative and fixture inventories, expected outcomes, discrepancy reporting, and an independent receipt template. It does not provide or prescribe a second implementation.
 
 > Independent implementation is not the same as a project-maintained second implementation.
 

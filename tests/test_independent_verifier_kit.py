@@ -12,7 +12,8 @@ KIT = ROOT / "conformance/independent-verifier"
 
 def test_neutral_manifest_is_complete_and_digest_pinned() -> None:
     manifest = json.loads((KIT / "manifest.json").read_text(encoding="utf-8"))
-    assert manifest["controlling_commit"] == "60d5755299531f0e8c17e6beb559e7e1dc7e4910"
+    assert manifest["controlling_commit"] == "e951798d64e247612f625bf50f23b10a0e30992e"
+    assert manifest["controlling_tree"] == "5e035f538bf427f619e5055499ca22abe09ac653"
     assert manifest["independent_verification_established"] is False
     assert manifest["status"] == "NEUTRAL_REPRODUCTION_MATERIAL"
     records = manifest["normative_artifacts"] + manifest["vectors"]
