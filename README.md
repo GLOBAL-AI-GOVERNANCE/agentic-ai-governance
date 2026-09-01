@@ -127,6 +127,10 @@ Current `main` includes a deterministic synthetic trace under [`examples/agent-i
 
 The demonstration composes existing validation-result, OPA bridge, operating-disposition, reason-code, and Stateful Revocation semantics. It adds no schema and performs no external action. It is not proof of runtime enforcement, containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.
 
+### Unreleased Zero Trust Agent Readiness mapping
+
+Current main includes a [Zero Trust Agent Readiness mapping](governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md) that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to Zero Trust agent-security concepts and records [deferred runtime controls](requirements/deferred-zero-trust-agent-controls.md). These primitives do not themselves enforce Zero Trust. The mapping is not part of `v0.1.0-alpha.2` and does not implement production workload identity, continuous authorization, runtime isolation, behavioral monitoring, or credential or session termination; institutional authority remains necessary.
+
 ## Repository map
 
 ```text

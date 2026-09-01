@@ -322,6 +322,45 @@
       "prohibited_wording": [
         "Current passports verify infrastructure trust."
       ]
+    },
+    {
+      "claim_id": "AAG-ZTAR-001",
+      "claim_kind": "PUBLIC_POSITION",
+      "statement": "Unreleased current main contains a repository-local Zero Trust Agent Readiness mapping that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to an approved agent-security concept set without itself providing runtime enforcement.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Repository-local current-main mapping, its reuse of existing Agentic reference primitives, its deferred-control record, and its documented non-enforcement and release boundaries.",
+      "verification_method": "Artifact inspection, Claims Register validation, repository verification, protected hosted conformance, and public-boundary review.",
+      "last_verified": "2026-09-01",
+      "supporting_artifacts": [
+        "governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md",
+        "requirements/deferred-zero-trust-agent-controls.md",
+        "spec/05-agent-trust-passport.md",
+        "spec/06-signature-profile.md",
+        "spec/07-revocation.md",
+        "spec/08-action-authority.md",
+        "spec/09-data-authority-interop.md",
+        "profiles/mcp-governance-profile.md"
+      ],
+      "evidence_refs": [
+        "governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md",
+        "requirements/deferred-zero-trust-agent-controls.md"
+      ],
+      "limitations": [
+        "The mapping is unreleased current-main documentation and is not part of v0.1.0-alpha.2.",
+        "It is a concept-to-repository mapping, not third-party traceability, certification, compliance assurance, production authorization, or proof of operational safety.",
+        "It does not implement or verify workload identity, service authentication, short-lived credentials, sandboxing, runtime isolation, telemetry, behavioral monitoring, continuous runtime authorization, session termination, production IAM, SOAR execution, or external enforcement."
+      ],
+      "permitted_wording": [
+        "Current main contains a verified, unreleased Zero Trust Agent Readiness reference mapping.",
+        "Agentic AI Governance provides machine-readable reference primitives for declared authority, evidence binding, verification, validity, and revocation that can support—but do not themselves enforce—Zero Trust governance for AI agents."
+      ],
+      "prohibited_wording": [
+        "Agentic AI Governance implements production Zero Trust enforcement.",
+        "The Zero Trust Agent Readiness mapping is part of v0.1.0-alpha.2.",
+        "The mapping certifies Zero Trust compliance or production safety.",
+        "Agentic AI Governance provides continuous workload authentication, runtime isolation, behavioral monitoring, or credential termination."
+      ]
     }
   ]
 }
