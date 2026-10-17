@@ -361,6 +361,43 @@
         "The mapping certifies Zero Trust compliance or production safety.",
         "Agentic AI Governance provides continuous workload authentication, runtime isolation, behavioral monitoring, or credential termination."
       ]
+    },
+    {
+      "claim_id": "AAG-IA-001",
+      "claim_kind": "PUBLIC_POSITION",
+      "statement": "The proposed Intelligence Assurance Gateway mapping relates existing Agentic trust primitives to ontology-neutral consequential-authority concepts, downstream authority non-amplification, and independently governed consequence classification without changing released Alpha semantics or providing runtime enforcement.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "VERIFIED",
+      "verification_scope": "Repository-local Intelligence Assurance Gateway mapping and deferred requirements integrated on PR #24 with exact five-file scope, repository-native verification, hosted Conformance on Python 3.11/3.12/3.13, PR Identity Gate, prohibited-wording negative testing, and semantic/public-boundary review. This verifies only the bounded documentation/governance mapping and does not establish runtime enforcement, release inclusion, production authorization, independent verification, or real-world control effectiveness.",
+      "verification_method": "Repository-native build, repository verification, dependency audit, pytest, OPA validation, hosted Python 3.11/3.12/3.13 Conformance, PR Identity Gate, exact-diff review, prohibited-wording negative testing, and human semantic/OPSEC review.",
+      "last_verified": "2026-10-17",
+      "supporting_artifacts": [
+        "governance/INTELLIGENCE_ASSURANCE_GATEWAY_MAPPING.md",
+        "requirements/deferred-intelligence-assurance-controls.md"
+      ],
+      "evidence_refs": [
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/pull/24",
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/actions/runs/39065649625",
+        "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/actions/runs/39065649614"
+      ],
+      "limitations": [
+        "The mapping is proposed documentation and is not part of v0.1.0-alpha.2.",
+        "It adds no machine-readable Gateway profile, schema, evaluator, runtime enforcement, production IAM, containment, recovery, certification, compliance assurance, or production authorization.",
+        "It does not establish AI consciousness, sentience, anomalous origin, safety, alignment, or real-world control effectiveness.",
+        "The active Agentic roadmap and one-active-increment sequencing remain unchanged.",
+        "A future consequence-classification source and runtime evidence adapters require separate design authority, implementation, V&V, and release decisions."
+      ],
+      "permitted_wording": [
+        "A proposed Intelligence Assurance Gateway mapping is defined for repository review.",
+        "The mapping is ontology-neutral, non-enforcing, and does not change released Alpha authority semantics."
+      ],
+      "prohibited_wording": [
+        "Agentic AI Governance implements Gateway Assurance.",
+        "Gateway Assurance automatically authorizes agent actions.",
+        "Gateway Assurance detects sentient AI.",
+        "Gateway Assurance provides production runtime enforcement.",
+        "The Intelligence Assurance Gateway mapping is part of v0.1.0-alpha.2."
+      ]
     }
   ]
 }
