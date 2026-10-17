@@ -322,6 +322,58 @@
         "product materials",
         "sales materials"
       ]
+    },
+    {
+      "claim_id": "PROHIBITED-GATEWAY-ASSURANCE-PREMATURE",
+      "prohibited_wording": [
+        "Agentic AI Governance implements Gateway Assurance.",
+        "Agentic AI Governance implements Gateway Assurance",
+        "Gateway Assurance automatically authorizes agent actions.",
+        "Gateway Assurance automatically authorizes agent actions",
+        "Gateway Assurance detects sentient AI.",
+        "Gateway Assurance detects sentient AI",
+        "Gateway Assurance provides production runtime enforcement.",
+        "Gateway Assurance provides production runtime enforcement",
+        "The Intelligence Assurance Gateway mapping is part of v0.1.0-alpha.2.",
+        "The Intelligence Assurance Gateway mapping is part of v0.1.0-alpha.2",
+        "Gateway Assurance proves AI consciousness.",
+        "Gateway Assurance proves AI consciousness",
+        "Gateway Assurance is independently certified.",
+        "Gateway Assurance is independently certified"
+      ],
+      "rationale": "The Phase 0 Intelligence Assurance Gateway work is a proposed non-enforcing mapping and deferred-requirements record. No accepted machine-readable Gateway profile, production enforcement, consciousness detector, certification, or release exists.",
+      "permitted_alternative": "Proposed ontology-neutral Intelligence Assurance Gateway mapping and deferred requirements with no runtime or release effect.",
+      "enforcement": "BOTH",
+      "repository_globs": [
+        "README.md",
+        "ROADMAP.md",
+        "RELEASE_NOTES.md",
+        "CHANGELOG.md",
+        "CONFORMANCE.md",
+        "CONTRIBUTING.md",
+        "GOVERNANCE.md",
+        "SECURITY.md",
+        ".github/**/*.md",
+        "decisions/**/*.md",
+        "governance/**/*.md",
+        "requirements/**/*.md",
+        "spec/**/*.md",
+        "profiles/**/*.json",
+        "examples/**/*.md",
+        ".github/**/*.yml",
+        "profiles/**/*.md"
+      ],
+      "repository_exclusions": [
+        "governance/claims-register.yaml",
+        "governance/prohibited-claims.yaml",
+        "tests/**"
+      ],
+      "external_surfaces": [
+        "website",
+        "presentations",
+        "funding applications",
+        "sales materials"
+      ]
     }
   ]
 }

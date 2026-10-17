@@ -137,6 +137,12 @@ The demonstration composes existing validation-result, OPA bridge, operating-dis
 
 Current main includes a [Zero Trust Agent Readiness mapping](governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md) that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to Zero Trust agent-security concepts and records [deferred runtime controls](requirements/deferred-zero-trust-agent-controls.md). These primitives do not themselves enforce Zero Trust. The mapping is not part of `v0.1.0-alpha.2` and does not implement production workload identity, continuous authorization, runtime isolation, behavioral monitoring, or credential or session termination; institutional authority remains necessary.
 
+### Unreleased Intelligence Assurance Gateway mapping
+
+A proposed [Intelligence Assurance Gateway mapping](governance/INTELLIGENCE_ASSURANCE_GATEWAY_MAPPING.md) relates existing Agentic trust primitives to ontology-neutral consequential-authority concepts while preserving current Action Authority, validation, policy, validity, revocation, and reauthorization boundaries. Its [deferred controls](requirements/deferred-intelligence-assurance-controls.md) record future requirements without changing the locked roadmap or creating a profile, evaluator, runtime-control claim, or release.
+
+The mapping is non-normative, unreleased, and non-enforcing. It does not determine consciousness or sentience, attribute unexplained behavior, authorize production use, or change released Alpha semantics.
+
 ## Repository map
 
 ```text
