@@ -83,7 +83,7 @@ REQUIRED_PATHS = [
     "LICENSE",
     "LICENSE_POLICY.md",
     "SECURITY.md",
-    "CONTRIBUTING.md",
+    "governance/DEVELOPMENT.md",
     "GOVERNANCE.md",
     "ROADMAP.md",
     ".gitignore",
@@ -295,9 +295,6 @@ def check_project_metadata(root: Path) -> list[str]:
     citation = (root / "CITATION.cff").read_text(encoding="utf-8")
     if not all(marker in citation for marker in ["Apache-2.0", "CC-BY-4.0", "file-scoped"]):
         errors.append("CITATION.cff must disclose the file-scoped mixed-license policy")
-    contributing = (root / "CONTRIBUTING.md").read_text(encoding="utf-8")
-    if "git commit --signoff" not in contributing:
-        errors.append("CONTRIBUTING.md must explain contribution sign-off")
     roadmap = (root / "ROADMAP.md").read_text(encoding="utf-8")
     for marker in [
         "Stateful Revocation",

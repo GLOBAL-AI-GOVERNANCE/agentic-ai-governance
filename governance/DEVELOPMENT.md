@@ -1,13 +1,13 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
-# Contributing
+# Development
 
 Changes may address specification defects, interoperability concerns, schemas, examples, profiles, governance controls, and conformance tests.
 
 ## Normative Precedence
 
-Contributions must follow the precedence recorded in [PROGRAM_BASELINE.md](governance/PROGRAM_BASELINE.md). A README, example, implementation detail, or test helper may not silently override a versioned schema, normative specification, profile, or accepted decision record.
+Changes must follow the precedence recorded in [PROGRAM_BASELINE.md](PROGRAM_BASELINE.md). A README, example, implementation detail, or test helper may not silently override a versioned schema, normative specification, profile, or accepted decision record.
 
-## Before Opening a Pull Request
+## Change Requirements
 
 1. Identify the problem, threat, authority, trust boundary, evidence, stop condition, and recovery or reauthorization path.
 2. Update normative text, schemas, profiles, the schema catalog, Claims Register, and prohibited claims where applicable.
@@ -22,15 +22,3 @@ Governance files ending in `.yaml` use the JSON-compatible subset of YAML 1.2 an
 ## Generated Distributions
 
 Alpha.1 remains an immutable versioned distribution. New specification or profile material must use a separately versioned generated artifact and must not be inserted into an aggregate still identified as Alpha.1.
-
-## Sign-Off
-
-The pull-request template requests a `Signed-off-by` line under the Developer Certificate of Origin. Add it automatically with:
-
-```bash
-git commit --signoff
-```
-
-The sign-off states that you have the right to submit the contribution under the repository's licenses. Read the [Developer Certificate of Origin 1.1](https://developercertificate.org/).
-
-Security vulnerabilities must follow [SECURITY.md](SECURITY.md), not a public issue.

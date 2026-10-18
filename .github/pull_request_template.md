@@ -36,4 +36,3 @@ Normative requirement → Schema or profile → Positive vector → Negative vec
 - [ ] `python tools/build_dist.py --check` passes
 - [ ] `python tools/verify_repository.py .` passes
 - [ ] `pytest -q` passes
-- [ ] `Signed-off-by` line present
