@@ -14,10 +14,24 @@
     {"path":"spec/07-revocation.md","sha256":"a9f119b6caac55de94d038e52bff62fe31073a89aa9b9512105237aaf21e204f"},
     {"path":"spec/08-action-authority.md","sha256":"5fb5fe6519f4c1fcea7a2939b98a429375f4fe5ca24a294a659f52606f0cefb2"}
   ],
+  "evaluation_contexts": {
+    "passport-quickstart-2026-07-18": {
+      "at_time": "2026-07-18T12:00:00Z",
+      "inputs": {
+        "trusted_key": {"path":"examples/trusted-keys/test-ed25519-key.json","sha256":"12aced78e53f588e1e5c29d44f57ba1eea9684c14322769451f484e9b8cba8d5"},
+        "revocation_list": {"path":"examples/revocation/valid-revocation-list.json","sha256":"1a0f71185269d21e15abc3b7360465a9b1ae541fb910b1fa4d18033d66343212"},
+        "bundle_manifest": {"path":"examples/bundles/valid-bundle-manifest.json","sha256":"abf8c861380e9f7d51841286b45f583f8d8b1559afc2d867a0392d3e553bcc34"}
+      },
+      "bundle_root": ".",
+      "bundle_root_description": "Repository root at the controlling commit; bundle contents are bound by the digest-listed bundle manifest.",
+      "revocation_state": "STATELESS",
+      "revocation_state_description": "Signed revocation list evaluated without a Stateful Revocation continuity store."
+    }
+  },
   "vectors": [
-    {"path":"examples/passports/signed-unrevoked.json","sha256":"51d3e06011e72a85ad14c3f888b42fe34a3b6aca24d58fdec71dd26561c39297","expected":{"primary_status":"VALID","operating_disposition":"PERMITTED"}},
-    {"path":"examples/passports/signed-revoked.json","sha256":"f58136acf4a68d82792f4577e1add50c9944d7d3c23689b1258cdc77d60fe303","expected":{"primary_status":"REVOKED","operating_disposition":"NOT_PERMITTED"}},
-    {"path":"examples/revocation/valid-revocation-list.json","sha256":"1a0f71185269d21e15abc3b7360465a9b1ae541fb910b1fa4d18033d66343212","expected":{"signature":"VALID","sequence_number":1,"continuity":"INITIALIZABLE"}},
+    {"path":"examples/passports/signed-unrevoked.json","sha256":"51d3e06011e72a85ad14c3f888b42fe34a3b6aca24d58fdec71dd26561c39297","evaluation_context":"passport-quickstart-2026-07-18","expected":{"primary_status":"VALID","operating_disposition":"PERMITTED"}},
+    {"path":"examples/passports/signed-revoked.json","sha256":"f58136acf4a68d82792f4577e1add50c9944d7d3c23689b1258cdc77d60fe303","evaluation_context":"passport-quickstart-2026-07-18","expected":{"primary_status":"REVOKED","operating_disposition":"NOT_PERMITTED"}},
+    {"path":"examples/revocation/valid-revocation-list.json","sha256":"1a0f71185269d21e15abc3b7360465a9b1ae541fb910b1fa4d18033d66343212","continuity_store_assumption":"FRESH_TRUSTED_STORE_NO_PREVIOUSLY_ACCEPTED_STATE","expected":{"signature":"VALID","sequence_number":1,"continuity":"INITIALIZABLE"}},
     {"path":"examples/opa/permitted-read.json","sha256":"1f3f34e4d7ca7435dd0f2b34f39cfef5d9afb6415063a483248e451ebf25dec7","expected":{"operating_disposition":"PERMITTED","reason_codes":["POLICY_AND_AUTHORITY_MATCH"],"external_enforcement":"NOT_PERFORMED"}},
     {"path":"examples/opa/policy-denied-read.json","sha256":"17262e709e683e7d3d9d9d0e670c13b275cc767975c5c054135f6eea68bce779","expected":{"operating_disposition":"NOT_PERMITTED","reason_codes":["POLICY_DENIED"],"revocation_mutated":false,"external_enforcement":"NOT_PERFORMED"}},
     {"path":"examples/agent-incident-readiness/synthetic-lifecycle.json","sha256":"6489cec48fd46628537ba9886bf479752c5010621461aca838aa816961c271b8","expected":{"status":"VERIFIED","states":["AUTHORIZED","POLICY_DENIED","REVOKED","ROLLBACK_REJECTED","NEW_PASSPORT_REAUTHORIZED"],"revoked_passport_remains_revoked":true,"replacement_passport_distinct":true,"external_enforcement":"NOT_PERFORMED"}},
@@ -28,6 +42,7 @@
     "conflicting_same_sequence":"REJECTED_CONFLICT",
     "broken_predecessor":"REJECTED",
     "unknown_or_corrupt_current_state":"FAIL_CLOSED",
+    "initializable_continuity_assumption":"FRESH_TRUSTED_STORE_NO_PREVIOUSLY_ACCEPTED_STATE",
     "cumulative_omission":"REJECTED",
     "host_level_rollback_resistance":"NOT_ESTABLISHED"
   },

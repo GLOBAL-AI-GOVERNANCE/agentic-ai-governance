@@ -7,6 +7,8 @@
   "controlling_agentic_commit": "e951798d64e247612f625bf50f23b10a0e30992e",
   "controlling_agentic_tree": "5e035f538bf427f619e5055499ca22abe09ac653",
   "executed_at_utc": "REQUIRED",
+  "evaluation_time": null,
+  "evaluation_context": {"name": null, "manifest_reference": null, "inputs_verified": null},
   "environment": {"os": "REQUIRED", "architecture": "REQUIRED", "runtime": "REQUIRED", "dependencies": []},
   "manifest_sha256": "REQUIRED",
   "vectors": [],
