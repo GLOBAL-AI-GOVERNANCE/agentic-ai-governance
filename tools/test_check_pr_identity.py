@@ -11,19 +11,19 @@ class PublicIdentityGateTests(unittest.TestCase):
     def test_canonical_commit_passes(self):
         self.assertEqual([], gate.inspect_commit(record()))
 
-    def test_historical_bridge_identity_blocks_in_all_positions(self):
-        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(an="Bridge-Node-7", ae="bridge@" + "example.invalid")))
-        self.assertIn("COMMITTER_NOT_AUTHORIZED", gate.inspect_commit(record(cn="Bridge Node 7", ce="bridge@" + "example.invalid")))
+    def test_unauthorized_identity_blocks_in_all_positions(self):
+        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(an="Unauthorized-User", ae="unauthorized@" + "example.invalid")))
+        self.assertIn("COMMITTER_NOT_AUTHORIZED", gate.inspect_commit(record(cn="Unauthorized User", ce="unauthorized@" + "example.invalid")))
         for trailer in ("Co-authored-by", "Signed-off-by", "Reviewed-by", "Acked-by", "Tested-by", "Reported-by", "Helped-by", "Suggested-by"):
             with self.subTest(trailer=trailer):
-                value = record(message=f"Change\n\n{trailer}: Bridge-Node-7 <bridge@{'example.invalid'}>")
+                value = record(message=f"Change\n\n{trailer}: Unauthorized-User <unauthorized@{'example.invalid'}>")
                 self.assertIn("IDENTITY_TRAILER_NOT_AUTHORIZED", gate.inspect_commit(value))
 
-    def test_historical_numeric_id_blocks(self):
-        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(ae="291729790+Bridge-Node-7@" + "users.noreply.github.com")))
+    def test_untrusted_numeric_id_blocks(self):
+        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(ae="999999998+Unauthorized-User@" + "users.noreply.github.com")))
 
     def test_canonical_looking_wrong_numeric_id_blocks(self):
-        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(ae="291729790+GLOBAL-AI-GOVERNANCE@" + "users.noreply.github.com")))
+        self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(ae="999999999+GLOBAL-AI-GOVERNANCE@" + "users.noreply.github.com")))
 
     def test_foreign_numeric_noreply_blocks(self):
         self.assertIn("AUTHOR_NOT_AUTHORIZED", gate.inspect_commit(record(an="Other", ae="123+other@" + "users.noreply.github.com")))
