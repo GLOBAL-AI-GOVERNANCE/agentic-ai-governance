@@ -29,7 +29,7 @@ The active external increment authorized by `DR-009` is:
 
 > **SECOND INDEPENDENTLY MAINTAINED VERIFIER**
 
-Agent Incident Readiness is governance-closed at its verified unreleased boundary. Priority 4 remains `PROPOSED / NOT_YET_ESTABLISHED` pending attributable evidence from a genuinely separate maintainer and control boundary. Project- or Codex-authored verification is not independent verification. No AGDR, Infrastructure Trust, or later-roadmap implementation may interrupt this gate without a superseding governance decision.
+Agent Incident Readiness is governance-closed at its verified unreleased boundary. Priority 4 remains `PROPOSED / NOT_YET_ESTABLISHED` pending attributable evidence from a genuinely separate maintainer and control boundary. Project-authored or otherwise same-control-boundary verification is not independent verification. No AGDR, Infrastructure Trust, or later-roadmap implementation may interrupt this gate without a superseding governance decision.
 
 ## Normative Precedence
 

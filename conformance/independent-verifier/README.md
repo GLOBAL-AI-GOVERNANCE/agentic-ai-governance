@@ -7,7 +7,7 @@ This implementation-neutral kit is for a genuinely separate verifier maintainer 
 
 > Independent implementation is not the same as a project-maintained second implementation.
 
-Project-authored or Codex-authored verification is not independent verification. Independence requires a separate maintainer and control boundary, attributable execution evidence, and no reuse of project implementation decision logic.
+Project-authored or otherwise same-control-boundary verification is not independent verification. Independence requires a separate maintainer and control boundary, attributable execution evidence, and no reuse of project implementation decision logic.
 
 ## Reproduction procedure
 

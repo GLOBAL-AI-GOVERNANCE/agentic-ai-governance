@@ -18,7 +18,7 @@ Delivery Status: PROPOSED
 Evidence Status: NOT_YET_ESTABLISHED
 ```
 
-Project-authored verification is not independent verification. A Codex-authored verifier is not independently maintained merely because it uses a second language or implementation. Independent maintenance requires a genuinely separate maintainer and control boundary that reproduces normative outcomes without reusing project implementation decision logic.
+Project-authored verification is not independent verification. A project-authored verifier is not independently maintained merely because it uses a second language or implementation. Independent maintenance requires a genuinely separate maintainer and control boundary that reproduces normative outcomes without reusing project implementation decision logic.
 
 Agent Governance Decision Record Profile work remains deferred until Priority 4 is genuinely satisfied. Infrastructure Trust remains deferred until the locked sequence permits it. Human and steward authority remain explicit.
 

@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Contributing
 
-Public issues and pull requests are welcome for specification defects, interoperability concerns, schemas, examples, profiles, governance controls, and conformance tests.
+Changes may address specification defects, interoperability concerns, schemas, examples, profiles, governance controls, and conformance tests.
 
 ## Normative Precedence
 
