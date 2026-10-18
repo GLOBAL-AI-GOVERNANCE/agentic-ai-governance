@@ -64,7 +64,7 @@
   ],
   "limitations": [
     "This manifest does not establish independent verification.",
-    "Project- or Codex-authored implementations do not satisfy independent maintenance.",
+    "Project-authored or otherwise same-control-boundary implementations do not satisfy independent maintenance.",
     "No production safety, enforcement, containment, certification, compliance, or release claim is established."
   ]
 }

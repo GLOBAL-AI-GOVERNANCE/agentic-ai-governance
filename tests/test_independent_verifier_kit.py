@@ -33,7 +33,7 @@ def test_templates_cannot_be_mistaken_for_completed_evidence() -> None:
     assert receipt["attestation"]["project_decision_logic_reused"] is None
     readme = (KIT / "README.md").read_text(encoding="utf-8")
     assert "does not establish independent maintenance" in readme
-    assert "Project-authored or Codex-authored verification is not independent" in readme
+    assert "Project-authored or otherwise same-control-boundary verification is not independent" in readme
 
 
 PASSPORT_VECTOR_PREFIX = "examples/passports/"

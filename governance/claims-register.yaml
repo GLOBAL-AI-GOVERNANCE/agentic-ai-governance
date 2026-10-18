@@ -271,7 +271,7 @@
       "evidence_refs": [],
       "limitations": [
         "Only project-maintained reference verification currently exists.",
-        "A project- or Codex-authored second implementation does not establish independent maintenance.",
+        "A project-authored or otherwise same-control-boundary second implementation does not establish independent maintenance.",
         "Independent maintenance requires a genuinely separate maintainer and control boundary."
       ],
       "permitted_wording": [

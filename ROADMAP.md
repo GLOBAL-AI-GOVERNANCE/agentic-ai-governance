@@ -15,7 +15,7 @@ The synthetic **Agent Incident Readiness** lifecycle demonstration is governance
 
 Policy denial does not mutate revocation state. A revoked passport cannot be restored; reauthorization requires a new governed passport. OPA produces a policy decision, not external enforcement. Human authority remains explicit.
 
-Priority 4, **Second Independently Maintained Verifier**, is now the active external increment at Delivery Status `PROPOSED` and Evidence Status `NOT_YET_ESTABLISHED`. A second project- or Codex-authored implementation does not satisfy the gate. Evidence must come from a genuinely separate maintainer and control boundary.
+Priority 4, **Second Independently Maintained Verifier**, is now the active external increment at Delivery Status `PROPOSED` and Evidence Status `NOT_YET_ESTABLISHED`. A second project-authored or otherwise same-control-boundary implementation does not satisfy the gate. Evidence must come from a genuinely separate maintainer and control boundary.
 
 ## Locked Sequence
 
