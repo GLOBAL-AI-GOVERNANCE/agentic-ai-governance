@@ -39,7 +39,7 @@ A release candidate must provide:
 
 ## Hosted Platform Controls
 
-Branch protection, required checks, secret scanning, Dependabot, and private vulnerability reporting require platform-generated evidence. Documentation alone does not establish that a hosting control is active.
+Branch protection, required checks, secret scanning, dependency security controls, and other hosted security settings require platform-generated evidence. Documentation alone does not establish that a hosting control is active.
 
 ## Release Blockers
 
