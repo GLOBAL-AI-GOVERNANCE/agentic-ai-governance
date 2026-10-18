@@ -16,7 +16,7 @@ Project-authored or otherwise same-control-boundary verification is not independ
 3. Evaluate the positive, negative, Stateful Revocation, OPA-boundary, and Agent Incident lifecycle vectors listed in the manifest, using each declared evaluation context.
 4. Record every actual result, reason code, and disposition. Do not coerce discrepancies into expected outcomes.
 5. File discrepancies using `DISCREPANCY_REPORT.md` and complete `INDEPENDENT_RECEIPT_TEMPLATE.json` with maintainer attribution, repository/commit, environment, and artifact digests.
-6. Submit the independently maintained implementation and receipt for steward review. Submission does not itself establish acceptance or release readiness.
+6. A qualifying evidence set consists of an independently maintained implementation, complete declared results, discrepancy records, and the specified receipt. Acceptance remains a steward decision.
 
 ## Reproduction context
 
