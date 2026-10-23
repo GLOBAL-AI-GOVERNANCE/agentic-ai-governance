@@ -1,11 +1,11 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Agentic AI Governance
 
-<!-- gag:nav -->
+<!-- gaig:nav -->
 [![Global AI Governance](https://img.shields.io/badge/Global_AI_Governance-portfolio-0b100d)](https://github.com/GLOBAL-AI-GOVERNANCE/GLOBAL-AI-GOVERNANCE) ![Status](https://img.shields.io/badge/status-v0.1.0--alpha.2_experimental-orange) ![authority_effect](https://img.shields.io/badge/authority__effect-NONE-lightgrey)
 
 **[Connect your agent](https://global-ai-governance.github.io/global-ai-governance-toolkit/connect.html#agents)** · **[Read the spec](https://global-ai-governance.github.io/global-ai-governance-toolkit/connect.html#spec)** · [All products](https://github.com/GLOBAL-AI-GOVERNANCE/GLOBAL-AI-GOVERNANCE#product-map)
-<!-- /gag:nav -->
+<!-- /gaig:nav -->
 
 An experimental, machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
@@ -181,7 +181,7 @@ Code, schemas, tests, utilities, and machine-readable fixtures are Apache-2.0. S
 
 The reference validator does not accept a submitted bundle as the authority for redefining a supported profile. It independently pins the canonical profile descriptor and profile-document hashes for Alpha.1. The permitted decision path also applies active condition ceilings and controlled minimum action levels for agent capabilities, MCP scopes, tool effects, and graph edge types. Unknown declaration terms fail closed.
 
-<!-- gag:footer -->
+<!-- gaig:footer -->
 ## Part of Global AI Governance
 
 This repository is the **AUTHORIZE** layer: machine-readable agent authority, passport, evidence, expiry, and revocation artifacts.
@@ -190,4 +190,4 @@ This repository is the **AUTHORIZE** layer: machine-readable agent authority, pa
 - **Read the spec:** [versioned specifications](https://global-ai-governance.github.io/global-ai-governance-toolkit/connect.html#spec) and the [product map](https://github.com/GLOBAL-AI-GOVERNANCE/GLOBAL-AI-GOVERNANCE#product-map).
 
 Outputs are non-authorizing (`authority_effect: NONE`). Not affiliated with or endorsed by any AI lab or platform.
-<!-- /gag:footer -->
+<!-- /gaig:footer -->
