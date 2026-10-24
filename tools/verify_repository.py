@@ -134,6 +134,15 @@ REQUIRED_PATHS = [
     "decisions/DR-004-decision-state-model.md",
     "decisions/DR-005-release-sequencing.md",
     "decisions/DR-006-continuous-vv-and-program-sequencing.md",
+    "decisions/DR-011-alpha4-agent-fleet-controls.md",
+    "spec/11-agent-fleet-controls.md",
+    "profiles/agent-fleet-controls-profile.json",
+    "profiles/agent-fleet-controls-profile.md",
+    "tools/fleet_controls.py",
+    "tests/test_fleet_controls.py",
+    "conformance/fleet-controls/README.md",
+    "conformance/fleet-controls/manifest.json",
+    "examples/fleet-controls/README.md",
 ]
 
 
@@ -508,6 +517,29 @@ def check_generated_distribution(root: Path) -> list[str]:
     return []
 
 
+def validate_fleet_controls(root: Path) -> list[str]:
+    """Reproduce every pinned Agent Fleet Controls vector with the reference evaluator."""
+    from tools.fleet_controls import evaluate, load_profile
+
+    errors = [f"fleet profile: {error}" for error in load_profile(root)[1]]
+    manifest = load(root / "conformance/fleet-controls/manifest.json")
+    if manifest.get("independent_verification_established") is not False:
+        errors.append("fleet conformance manifest must not claim independent verification")
+    for record in manifest.get("normative_artifacts", []) + manifest.get("vectors", []):
+        path = root / record["path"]
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != record["sha256"]:
+            errors.append(f"fleet conformance digest mismatch: {record['path']}")
+            continue
+        expected = record.get("expected")
+        if expected is None:
+            continue
+        result = evaluate(load(path), root)
+        for key, value in expected.items():
+            if result.get(key) != value:
+                errors.append(f"{record['path']}: fleet outcome {key} differs from manifest")
+    return errors
+
+
 def main() -> int:
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
     errors: list[str] = []
@@ -540,6 +572,7 @@ def main() -> int:
     errors.extend(validate_strict_json_fixtures(root))
     if schema_ready:
         errors.extend(validate_end_user_cli(root))
+        errors.extend(validate_fleet_controls(root))
     errors.extend(check_generated_distribution(root))
 
     if errors:
@@ -551,6 +584,7 @@ def main() -> int:
     print("CONFORMANCE PASSED")
     print("schemas:", len(schema_paths))
     print("negative fixtures:", negative_count)
+    print("fleet-controls vectors: reproduced")
     print("repository invariants: clean")
     return 0
 

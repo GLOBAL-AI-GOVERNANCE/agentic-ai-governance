@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "Agent Fleet Controls Common Definitions",
+  "$defs": {
+    "actionLevel": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "actionTerm": {
+      "enum": [
+        "install_tool",
+        "network_call",
+        "provision_compute",
+        "spawn_agent",
+        "spend_funds"
+      ]
+    },
+    "actionTerms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actionTerm"
+      },
+      "uniqueItems": true,
+      "maxItems": 5
+    },
+    "delegationDepth": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 8
+    },
+    "maxAgeSeconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 604800
+    },
+    "maxAgeByLevel": {
+      "type": "object",
+      "required": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "properties": {
+        "0": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "1": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "2": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "3": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "4": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "5": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        }
+      },
+      "additionalProperties": false
+    },
+    "partialMaxAgeByLevel": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "0": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "1": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "2": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "3": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "4": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        },
+        "5": {
+          "$ref": "#/$defs/maxAgeSeconds"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

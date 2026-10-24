@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/sub-agent-passport-binding.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "Sub-Agent Passport Binding",
+  "type": "object",
+  "required": [
+    "binding_kind",
+    "binding_version",
+    "binding_id",
+    "child_passport_id",
+    "child_subject_id",
+    "parent_passport_id",
+    "issued_by",
+    "delegation_depth",
+    "maximum_action_level",
+    "action_terms",
+    "not_before",
+    "expires_at"
+  ],
+  "properties": {
+    "binding_kind": {
+      "const": "global-ai-governance.sub-agent-passport-binding"
+    },
+    "binding_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "binding_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+    },
+    "child_passport_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+    },
+    "child_subject_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+    },
+    "parent_passport_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+    },
+    "issued_by": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+    },
+    "delegation_depth": {
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/delegationDepth"
+        },
+        {
+          "minimum": 1
+        }
+      ]
+    },
+    "maximum_action_level": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+    },
+    "action_terms": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionTerms"
+    },
+    "not_before": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "expires_at": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+    }
+  },
+  "additionalProperties": false
+}

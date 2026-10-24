@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0-alpha.4",
+  "profile_id": "global-ai-governance.agent-fleet-controls",
+  "profile_version": "0.1.0-alpha.4",
+  "control_profile": {
+    "media_type": "application/agentic-ai-control-profile+markdown",
+    "hash": "sha256:99c20851f51d3c3f9c3a26dc119b1c433d9372b8e3dcce829bf5c3ef82a9f720"
+  },
+  "revocation_max_age_seconds": {
+    "0": 86400,
+    "1": 86400,
+    "2": 43200,
+    "3": 3600,
+    "4": 900,
+    "5": 300
+  },
+  "delegation_max_depth": 3,
+  "action_term_minimum_levels": {
+    "install_tool": 4,
+    "network_call": 4,
+    "provision_compute": 4,
+    "spawn_agent": 4,
+    "spend_funds": 5
+  },
+  "level_5_permitted": false,
+  "production_use_permitted": false
+}

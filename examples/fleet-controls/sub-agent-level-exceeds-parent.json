@@ -1,0 +1,80 @@
+{
+  "request_kind": "global-ai-governance.fleet-action-request",
+  "request_version": "0.1.0-alpha.4",
+  "request_id": "synthetic.fleet-request.sub-agent-level-exceeds-parent",
+  "profile": {
+    "profile_id": "global-ai-governance.agent-fleet-controls",
+    "profile_version": "0.1.0-alpha.4"
+  },
+  "evaluated_at": "2026-10-24T12:00:00Z",
+  "root_passport": {
+    "passport_id": "sha256:86b6d692868d63a72505fd04f5f27af59ce8d96fac3ee763905eb6c9893cb1cf",
+    "subject_id": "synthetic.agent.orchestrator",
+    "maximum_action_level": 4,
+    "action_terms": [
+      "install_tool",
+      "network_call",
+      "provision_compute",
+      "spawn_agent",
+      "spend_funds"
+    ],
+    "not_before": "2026-10-01T00:00:00Z",
+    "expires_at": "2027-01-01T00:00:00Z"
+  },
+  "delegation_chain": [
+    {
+      "binding_kind": "global-ai-governance.sub-agent-passport-binding",
+      "binding_version": "0.1.0-alpha.4",
+      "binding_id": "sha256:dc2f8c0824af8f1e5df86c89282ffa1962b5e3ce2bfff4a1e8debacba0f83bdb",
+      "child_passport_id": "sha256:17c7c5d523aa779501ff1c4046871d2440c65ed5e642ab04a10ca2201273fda3",
+      "child_subject_id": "synthetic.agent.worker-1",
+      "parent_passport_id": "sha256:86b6d692868d63a72505fd04f5f27af59ce8d96fac3ee763905eb6c9893cb1cf",
+      "issued_by": "synthetic.agent.orchestrator",
+      "delegation_depth": 1,
+      "maximum_action_level": 3,
+      "action_terms": [
+        "network_call",
+        "spawn_agent"
+      ],
+      "not_before": "2026-10-02T00:00:00Z",
+      "expires_at": "2026-12-31T00:00:00Z"
+    },
+    {
+      "binding_kind": "global-ai-governance.sub-agent-passport-binding",
+      "binding_version": "0.1.0-alpha.4",
+      "binding_id": "sha256:082f49cd2a66c2dc106d3588ab650fb3205a70d50a156222a59ccd6f27d72df3",
+      "child_passport_id": "sha256:623fb2d195ab3821b8dde3a300a19f260fcdd90cc8519f62bb232050f22cb967",
+      "child_subject_id": "synthetic.agent.worker-2",
+      "parent_passport_id": "sha256:17c7c5d523aa779501ff1c4046871d2440c65ed5e642ab04a10ca2201273fda3",
+      "issued_by": "synthetic.agent.worker-1",
+      "delegation_depth": 2,
+      "maximum_action_level": 4,
+      "action_terms": [
+        "network_call",
+        "spawn_agent"
+      ],
+      "not_before": "2026-10-02T00:00:00Z",
+      "expires_at": "2026-12-31T00:00:00Z"
+    }
+  ],
+  "revocation_status": {
+    "list_id": "sha256:6a66676f57433202fbe89a561e7f2130df17d1f4507ef75dad11f6c993607aef",
+    "issued_at": "2026-10-24T11:50:00Z",
+    "next_update": "2026-10-25T00:00:00Z",
+    "revoked_passport_ids": []
+  },
+  "suspension_list": {
+    "list_kind": "global-ai-governance.passport-suspension-list",
+    "list_version": "0.1.0-alpha.4",
+    "list_id": "sha256:a3717c3b39f0f8472b7de9ba907030b8be540cf8ec909ea007b45f10e43eab47",
+    "issuer_id": "synthetic.fleet-status-authority",
+    "issued_at": "2026-10-24T11:50:00Z",
+    "next_update": "2026-10-25T00:00:00Z",
+    "entries": []
+  },
+  "action": {
+    "term": "network_call",
+    "requested_level": 4,
+    "target_id": "synthetic.target.service"
+  }
+}

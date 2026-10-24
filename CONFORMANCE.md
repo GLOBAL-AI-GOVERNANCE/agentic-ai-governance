@@ -44,6 +44,11 @@ The synthetic Agent Incident Readiness trace composes established validator resu
 
 This demonstration is included in the `v0.1.0-alpha.3` source with Delivery Status `DEFINED`, is not promoted to a shipped capability, introduces no schema, and performs no external action.
 
+## Agent Fleet Controls (v0.1.0-alpha.4)
+
+`tools/fleet_controls.py` evaluates fleet action requests against `spec/11-agent-fleet-controls.md` and the hash-anchored Agent Fleet Controls profile. `conformance/fleet-controls/manifest.json` pins the normative artifacts and 23 synthetic vectors with expected dispositions, passport states, and reason codes. `tools/verify_repository.py` and `tests/test_fleet_controls.py` reproduce every vector and cover profile tampering, override tightening and loosening, depth mismatch, delegation cycles, lineage validity, suspension-list integrity, unknown terms, and CLI exit codes.
+
+These are project-authored tests. Independent verification is `NOT_YET_ESTABLISHED`. The independent-verifier kit stays pinned to its `v0.1.0-alpha.2` controlling commit and does not include these vectors (`DR-011`).
 
 ## Canonical policy and authority semantics
 

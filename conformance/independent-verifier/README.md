@@ -9,6 +9,10 @@ This implementation-neutral kit is for a genuinely separate verifier maintainer 
 
 Project-authored or otherwise same-control-boundary verification is not independent verification. Independence requires a separate maintainer and control boundary, attributable execution evidence, and no reuse of project implementation decision logic.
 
+## Target version
+
+The kit stays pinned to the controlling commit above, on the `v0.1.0-alpha.2` line. The `v0.1.0-alpha.4` Agent Fleet Controls vectors are published separately in [`conformance/fleet-controls/`](../fleet-controls/README.md) and are not part of this kit. Moving the kit target to `v0.1.0-alpha.4`, or adding those vectors, requires a separate steward decision (`DR-011`).
+
 ## Reproduction procedure
 
 1. Obtain the repository at the exact controlling commit and verify every SHA-256 entry in `manifest.json`.

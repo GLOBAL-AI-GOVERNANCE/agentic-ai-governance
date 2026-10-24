@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-action-request.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "Agent Fleet Action Request",
+  "type": "object",
+  "required": [
+    "request_kind",
+    "request_version",
+    "request_id",
+    "profile",
+    "evaluated_at",
+    "root_passport",
+    "delegation_chain",
+    "revocation_status",
+    "suspension_list",
+    "action"
+  ],
+  "properties": {
+    "request_kind": {
+      "const": "global-ai-governance.fleet-action-request"
+    },
+    "request_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "request_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "profile_id",
+        "profile_version"
+      ],
+      "properties": {
+        "profile_id": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+        },
+        "profile_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      },
+      "additionalProperties": false
+    },
+    "evaluated_at": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "policy_overrides": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "revocation_max_age_seconds": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/partialMaxAgeByLevel"
+        },
+        "delegation_max_depth": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/delegationDepth"
+        }
+      },
+      "additionalProperties": false
+    },
+    "root_passport": {
+      "type": "object",
+      "required": [
+        "passport_id",
+        "subject_id",
+        "maximum_action_level",
+        "action_terms",
+        "not_before",
+        "expires_at"
+      ],
+      "properties": {
+        "passport_id": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+        },
+        "subject_id": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+        },
+        "maximum_action_level": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "action_terms": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionTerms"
+        },
+        "not_before": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+        },
+        "expires_at": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+        }
+      },
+      "additionalProperties": false
+    },
+    "delegation_chain": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/sub-agent-passport-binding.schema.json"
+      }
+    },
+    "revocation_status": {
+      "type": "object",
+      "required": [
+        "list_id",
+        "issued_at",
+        "next_update",
+        "revoked_passport_ids"
+      ],
+      "properties": {
+        "list_id": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+        },
+        "issued_at": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+        },
+        "next_update": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+        },
+        "revoked_passport_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+          },
+          "uniqueItems": true,
+          "maxItems": 10000
+        }
+      },
+      "additionalProperties": false
+    },
+    "suspension_list": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/passport-suspension-list.schema.json"
+    },
+    "action": {
+      "type": "object",
+      "required": [
+        "term",
+        "requested_level",
+        "target_id"
+      ],
+      "properties": {
+        "term": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionTerm"
+        },
+        "requested_level": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "target_id": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

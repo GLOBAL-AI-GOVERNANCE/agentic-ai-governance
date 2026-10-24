@@ -3,6 +3,16 @@
 
 ## Unreleased
 
+## v0.1.0-alpha.4 - 2026-10-24
+
+- Recorded the steward-approved Alpha.4 Agent Fleet Controls release in DR-011. It adds claim `AAG-FLEET-001` with Delivery Status `DEFINED` and Evidence Status `NOT_YET_ESTABLISHED`, promotes no claim, and leaves the active increment unchanged.
+- Added specification section `spec/11-agent-fleet-controls.md` and five `v0.1.0-alpha.4` schemas: fleet controls common definitions, fleet controls profile, fleet action request, Sub-Agent Passport Binding, and Passport Suspension List.
+- Added the hash-anchored Agent Fleet Controls profile with per-level status maximum ages (Level 0-1 24 hours, Level 2 12 hours, Level 3 1 hour, Level 4 15 minutes, Level 5 5 minutes), minimum levels for the `spawn_agent`, `provision_compute`, `install_tool`, `network_call`, and `spend_funds` action terms, and a delegation depth cap of 3.
+- Added a reinstatable `SUSPENDED` passport state distinct from terminal revocation, with content-addressed suspension lists.
+- Added content-addressed sub-agent passport bindings: each sub-agent has its own passport, and its action level, action terms, and validity never exceed its parent's. Ancestor revocation and suspension apply to every descendant.
+- Added the reference evaluator `tools/fleet_controls.py`, 23 synthetic conformance vectors with a digest-pinned manifest, repository verification of every vector, and regression tests.
+- Documented that the independent-verifier kit stays pinned to its `v0.1.0-alpha.2` controlling commit; the Alpha.4 vectors are published separately.
+
 ## v0.1.0-alpha.3 - 2026-10-24
 
 - Recorded the steward-approved Alpha.3 packaging release in DR-010. No claim is promoted; the OPA bridge, Agent Incident Readiness demonstration, and readiness mappings are included as references with Delivery Status `DEFINED`.
