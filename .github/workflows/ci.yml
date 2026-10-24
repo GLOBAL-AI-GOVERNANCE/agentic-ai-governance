@@ -24,8 +24,20 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Check out shared history-privacy control
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: GLOBAL-AI-GOVERNANCE/.github
+          ref: 201113e1fdf92892ab8864abe8ae446bb2a9109b
+          path: .gaig-shared-controls
+          sparse-checkout: tools/check_history_privacy.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - name: Check reachable history privacy
-        run: python -B tools/check_history_privacy.py
+        run: python -B .gaig-shared-controls/tools/check_history_privacy.py
+      - name: Remove shared history-privacy control
+        if: always()
+        run: rm -rf -- .gaig-shared-controls
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:

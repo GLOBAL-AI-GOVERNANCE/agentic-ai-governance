@@ -22,7 +22,19 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.11"
+      - name: Check out shared PR-identity control
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: GLOBAL-AI-GOVERNANCE/.github
+          ref: 201113e1fdf92892ab8864abe8ae446bb2a9109b
+          path: .gaig-shared-controls
+          sparse-checkout: tools/check_pr_identity.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - name: Verify every PR-introduced commit identity
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -B tools/check_pr_identity.py --event "$GITHUB_EVENT_PATH"
+        run: python -B .gaig-shared-controls/tools/check_pr_identity.py --event "$GITHUB_EVENT_PATH"
+      - name: Remove shared PR-identity control
+        if: always()
+        run: rm -rf -- .gaig-shared-controls
