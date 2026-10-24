@@ -39,6 +39,8 @@ Designed for AI platform teams, security architects, governance engineers, assur
 5. **Expire or revoke authority.** Apply time limits and a signed cumulative revocation list.
 6. **Evaluate bounded policy.** An optional current-main OPA bridge consumes the established validation result and returns the existing operating-disposition vocabulary without performing external enforcement.
 
+**Lead agents and sub-agents.** A lead agent (orchestrator) that coordinates a fleet declares its sub-agents as `SUBAGENT` nodes and its delegations as `DELEGATES` edges in its action graph. Any declared delegation sets a minimum of Level 3 ([Action Levels](spec/08-action-authority.md)), so the lead agent is assessed for everything it can reach through other agents. Delegation-chain depth, authority inheritance, and termination are not yet modeled.
+
 ## Five-minute validation
 
 Install the development dependencies. A virtual environment can live inside or outside the checkout: the schema-catalog check skips `.venv/`, `venv/`, `node_modules/`, and similar local environment folders.
