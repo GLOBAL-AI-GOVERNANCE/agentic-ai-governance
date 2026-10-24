@@ -15,3 +15,5 @@ dist/*.tmp
 Thumbs.db
 .idea/
 .vscode/
+build/
+*.egg-info/

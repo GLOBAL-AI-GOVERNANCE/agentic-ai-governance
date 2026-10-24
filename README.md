@@ -97,6 +97,27 @@ The three public state fields are deliberately separate. The issued assessment r
 
 A signed passport is never reported as fully validated or permitted when its version, profile, evaluator, policy, or critical extensions are unsupported; required evidence is missing, expired, invalid, or untrusted; conditions or evidence references disagree with the bound assessment; inventories or action authority are inconsistent; its signature or key fails; its identifier or validity fails; or current revocation state was not supplied.
 
+### Install as a package
+
+The reference validator also installs from Git as an importable package with a `validate-passport` command. The wheel carries the validator, schemas, profiles, and synthetic examples, so no checkout is needed:
+
+```bash
+python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git"
+validate-passport --example signed-unrevoked     # exit 0, artifact_validation_status PASS
+validate-passport --example signed-revoked       # exit 1, verification_primary_status REVOKED
+validate-passport passport.json --trusted-key key.json \
+  --bundle-manifest bundle.json --bundle-root . --revocation-list revocations.json
+```
+
+```python
+from agentic_ai_governance import validate_example, validate_passport
+
+result = validate_example("signed-unrevoked")
+print(result.exit_code, result.report["verification_primary_status"])
+```
+
+`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a3.dev0` is unreleased current-main code. Verification is not authorization.
+
 ## Validation levels
 
 - **Structural validation:** strict JSON parsing, schema validation, and semantic consistency.

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: Apache-2.0
+include LICENSE NOTICE LICENSE_POLICY.md README.md setup.py
+recursive-include LICENSES *
+recursive-include tools *.py
+recursive-include schemas *.json *.md
+recursive-include profiles *.json *.md
+recursive-include examples *
+include governance/*.schema.json
+global-exclude __pycache__ *.py[cod]
