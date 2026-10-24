@@ -41,9 +41,10 @@ Designed for AI platform teams, security architects, governance engineers, assur
 
 ## Five-minute validation
 
-Install the development dependencies:
+Install the development dependencies. Keep any virtual environment outside the checkout: the schema-catalog check scans the checkout for `*.schema.json` files and currently fails on the ones that installed packages place inside a `.venv/` folder.
 
 ```bash
+python -m venv ../agentic-venv && . ../agentic-venv/bin/activate   # optional; outside the checkout
 python -m pip install -r requirements-dev.txt
 ```
 
@@ -92,6 +93,8 @@ A successful trust decision returns exit code `0` and reports:
   }
 }
 ```
+
+> **This is an assessment, not authorization.** `APPROVED` and `PERMITTED` in this sample come from a synthetic passport checked against the reference policy. They mean the passport passed every check against the supplied key, evidence, and revocation list at the stated time. They do not authorize a deployment, an action, or access. An accountable human decides whether the agent may act, and any system that acts on this report needs its own control.
 
 The three public state fields are deliberately separate. The issued assessment records what was approved, the verification status records what was established at presentation time, and the operating disposition records what the reference policy permits now.
 
