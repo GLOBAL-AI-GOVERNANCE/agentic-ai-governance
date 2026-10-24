@@ -44,6 +44,21 @@ jobs:
           sha256sum -- "${name}.zip" > SHA256SUMS.txt
           cat SHA256SUMS.txt
 
+      - name: Install the archive into a clean environment
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          python3 -m venv check
+          check/bin/python -m pip install --disable-pip-version-check "dist/agentic-ai-governance-${TAG}.zip"
+          check/bin/python -m pip check
+          check/bin/validate-passport --example signed-unrevoked > unrevoked.json
+          python3 -c "import json; r = json.load(open('unrevoked.json')); assert r['artifact_validation_status'] == 'PASS', r"
+          if check/bin/validate-passport --example signed-revoked > revoked.json; then
+            echo "revoked example must fail" >&2; exit 1
+          fi
+          python3 -c "import json; r = json.load(open('revoked.json')); assert r['verification_primary_status'] == 'REVOKED', r"
+
       - name: Upload build output
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:

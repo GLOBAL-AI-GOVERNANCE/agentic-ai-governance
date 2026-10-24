@@ -117,3 +117,18 @@ def test_alpha2_readme_release_header_is_not_duplicated() -> None:
     assert readme.count("**Latest tagged release:**") == 1
     assert "**Tagged release:**" not in readme
     assert "**Current main:**" not in readme
+
+
+def test_changelog_keeps_alpha3_release_work_out_of_unreleased() -> None:
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    unreleased, alpha3_and_rest = changelog.split("## v0.1.0-alpha.3", maxsplit=1)
+    alpha3, _rest = alpha3_and_rest.split("## v0.1.0-alpha.2", maxsplit=1)
+    shipped_bullets = [
+        "steward-approved Alpha.3 packaging release",
+        "Added Python packaging metadata",
+        "Agent Incident Readiness reference trace",
+        "non-enforcing OPA bridge reference adapter",
+    ]
+    for bullet in shipped_bullets:
+        assert bullet not in unreleased
+        assert bullet in alpha3

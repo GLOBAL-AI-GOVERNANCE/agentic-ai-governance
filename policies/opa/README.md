@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # OPA Enforcement Bridge
 
-**Status:** Current-main reference implementation; `DEFINED / VERIFIED`; unreleased.
+**Status:** Reference implementation; `DEFINED / VERIFIED`; included in `v0.1.0-alpha.3`; not promoted.
 
 The bridge is a deterministic policy-decision adapter. It consumes an already-established canonical Agentic validation result, a bounded request, the pinned bridge policy identity, and explicit context. It returns the existing Agentic operating-disposition vocabulary plus stable reason codes and evidence references.
 

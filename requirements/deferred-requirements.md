@@ -9,7 +9,7 @@ This record preserves requirements learned from enterprise non-human identity go
 
 ### OPA Enforcement Bridge
 
-This requirement is implemented as bounded, verified, unreleased current-main reference work. The bridge consumes validated passport, authority, and revocation results rather than raw declarations; returns the existing `PERMITTED`, `PERMITTED_WITH_CONDITIONS`, or `NOT_PERMITTED` operating dispositions; and fails safe for invalid, expired, revoked, unsupported, inconsistent, stale, or insufficiently evidenced authority. External enforcement remains outside the bridge.
+This requirement is implemented as bounded, verified reference work, included in the `v0.1.0-alpha.3` source without promotion. The bridge consumes validated passport, authority, and revocation results rather than raw declarations; returns the existing `PERMITTED`, `PERMITTED_WITH_CONDITIONS`, or `NOT_PERMITTED` operating dispositions; and fails safe for invalid, expired, revoked, unsupported, inconsistent, stale, or insufficiently evidenced authority. External enforcement remains outside the bridge.
 
 ### Lifecycle Demonstration and Second Verifier
 

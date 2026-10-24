@@ -84,17 +84,30 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
-      - name: Install the package into a clean virtual environment
+      - name: Build the sdist, wheel, and release-style source archive
         run: |
-          python -m venv "$RUNNER_TEMP/pkg"
-          "$RUNNER_TEMP/pkg/bin/python" -m pip install --disable-pip-version-check .
-      - name: Validate example passports outside the checkout
+          python -m pip install --disable-pip-version-check build==1.6.1
+          python -m build --sdist --wheel --outdir "$RUNNER_TEMP/dist" .
+          git archive --format=zip --prefix=agentic-ai-governance-ci/ -o "$RUNNER_TEMP/dist/agentic-ai-governance-ci.zip" HEAD
+          ls -l "$RUNNER_TEMP/dist"
+      - name: Install each archive into a clean environment and validate example passports
         working-directory: ${{ runner.temp }}
         run: |
-          "$RUNNER_TEMP/pkg/bin/validate-passport" --example signed-unrevoked > unrevoked.json
-          python -c "import json; r = json.load(open('unrevoked.json')); assert r['artifact_validation_status'] == 'PASS', r"
-          if "$RUNNER_TEMP/pkg/bin/validate-passport" --example signed-revoked > revoked.json; then
-            echo "revoked example must fail" >&2; exit 1
-          fi
-          python -c "import json; r = json.load(open('revoked.json')); assert r['verification_primary_status'] == 'REVOKED', r"
-          "$RUNNER_TEMP/pkg/bin/python" -c "import agentic_ai_governance as a; assert a.reference_root().name == '_reference'"
+          set -euo pipefail
+          check() {
+            env="$RUNNER_TEMP/env-$1"
+            python -m venv "$env"
+            "$env/bin/python" -m pip install --disable-pip-version-check "$2"
+            "$env/bin/python" -m pip check
+            "$env/bin/validate-passport" --example signed-unrevoked > "unrevoked-$1.json"
+            python -c "import json, sys; r = json.load(open(sys.argv[1])); assert r['artifact_validation_status'] == 'PASS', r" "unrevoked-$1.json"
+            if "$env/bin/validate-passport" --example signed-revoked > "revoked-$1.json"; then
+              echo "revoked example must fail ($1)" >&2; exit 1
+            fi
+            python -c "import json, sys; r = json.load(open(sys.argv[1])); assert r['verification_primary_status'] == 'REVOKED', r" "revoked-$1.json"
+            "$env/bin/python" -c "import agentic_ai_governance as a; assert a.reference_root().name == '_reference'"
+            echo "$1: PASS"
+          }
+          check wheel "$(ls "$RUNNER_TEMP"/dist/*.whl)"
+          check sdist "$(ls "$RUNNER_TEMP"/dist/*.tar.gz)"
+          check archive "$RUNNER_TEMP/dist/agentic-ai-governance-ci.zip"

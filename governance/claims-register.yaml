@@ -190,7 +190,7 @@
     {
       "claim_id": "AAG-OPA-001",
       "claim_kind": "CAPABILITY",
-      "statement": "The unreleased current-main OPA Enforcement Bridge consumes established validation results and returns existing Agentic operating dispositions with stable reason codes without performing external enforcement.",
+      "statement": "The OPA Enforcement Bridge reference implementation consumes established validation results and returns existing Agentic operating dispositions with stable reason codes without performing external enforcement.",
       "delivery_status": "DEFINED",
       "evidence_status": "VERIFIED",
       "verification_scope": "Bounded Python reference adapter, OPA v1.19.1 policy, synthetic examples, adversarial regressions, and hosted matrix verification on current main.",
@@ -201,7 +201,8 @@
         "decisions/DR-008-opa-closure-and-lifecycle-activation.md",
         "decisions/DR-009-lifecycle-closure-and-independent-verifier-activation.md",
         "policies/opa/README.md",
-        "tools/opa_bridge.py"
+        "tools/opa_bridge.py",
+        "decisions/DR-010-alpha3-packaging-release.md"
       ],
       "evidence_refs": [
         "examples/opa/permitted-read.json",
@@ -210,13 +211,13 @@
         "tests/test_opa_bridge.py"
       ],
       "limitations": [
-        "The implementation is unreleased current-main development and is not included in v0.1.0-alpha.2; no later release contains it as of the verification date.",
+        "The implementation is not included in v0.1.0-alpha.2. It is included in the v0.1.0-alpha.3 source under DR-010 without promotion; Delivery Status remains DEFINED and it is not a shipped capability.",
         "The OPA engineering increment is governance-closed by DR-008 without creating or authorizing a release.",
         "The bridge consumes an established validation result; it does not verify raw passports or duplicate canonical revocation continuity.",
         "The bridge makes a policy decision only and does not terminate credentials, sessions, workloads, tools, or network actions."
       ],
       "permitted_wording": [
-        "Current main contains a verified, unreleased, non-enforcing OPA Enforcement Bridge reference implementation."
+        "Agentic AI Governance contains a verified, non-enforcing OPA Enforcement Bridge reference implementation that is not promoted to a shipped capability."
       ],
       "prohibited_wording": [
         "The repository currently enforces actions through OPA.",
@@ -226,30 +227,31 @@
     {
       "claim_id": "AAG-LIFECYCLE-001",
       "claim_kind": "CAPABILITY",
-      "statement": "Unreleased current main contains a synthetic Agent Incident Readiness reference demonstration of authorized, policy-denied, revoked, rollback-rejected, and distinct new-passport reauthorized operation.",
+      "statement": "Agentic AI Governance contains a synthetic Agent Incident Readiness reference demonstration of authorized, policy-denied, revoked, rollback-rejected, and distinct new-passport reauthorized operation.",
       "delivery_status": "DEFINED",
       "evidence_status": "VERIFIED",
-      "verification_scope": "Deterministic synthetic current-main reference trace only; no external enforcement or production containment.",
+      "verification_scope": "Deterministic synthetic reference trace only; no external enforcement or production containment.",
       "verification_method": "Repository verification, lifecycle positive and adversarial regressions, existing Stateful Revocation regressions, OPA tests, and protected hosted CI.",
       "last_verified": "2026-08-30",
       "supporting_artifacts": [
         "ROADMAP.md",
         "decisions/DR-008-opa-closure-and-lifecycle-activation.md",
         "examples/agent-incident-readiness/README.md",
-        "tools/agent_incident_readiness.py"
+        "tools/agent_incident_readiness.py",
+        "decisions/DR-010-alpha3-packaging-release.md"
       ],
       "evidence_refs": [
         "examples/agent-incident-readiness/synthetic-lifecycle.json",
         "tests/test_agent_incident_readiness.py"
       ],
       "limitations": [
-        "The demonstration is synthetic, unreleased current-main development and non-operational.",
+        "The demonstration is synthetic and non-operational. It is included in the v0.1.0-alpha.3 source under DR-010 without promotion; Delivery Status remains DEFINED.",
         "The lifecycle engineering increment is governance-closed by DR-009 without creating or authorizing a release.",
         "It does not establish external enforcement, runtime containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.",
         "Rollback rejection remains relative to an intact explicitly supplied trusted local continuity store."
       ],
       "permitted_wording": [
-        "Current main contains a verified, unreleased synthetic Agent Incident Readiness lifecycle reference demonstration."
+        "Agentic AI Governance contains a verified synthetic Agent Incident Readiness lifecycle reference demonstration that is not promoted to a shipped capability."
       ],
       "prohibited_wording": [
         "Agent Incident Readiness provides production containment.",
@@ -326,10 +328,10 @@
     {
       "claim_id": "AAG-ZTAR-001",
       "claim_kind": "PUBLIC_POSITION",
-      "statement": "Unreleased current main contains a repository-local Zero Trust Agent Readiness mapping that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to an approved agent-security concept set without itself providing runtime enforcement.",
+      "statement": "Agentic AI Governance contains a repository-local Zero Trust Agent Readiness mapping that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to an approved agent-security concept set without itself providing runtime enforcement.",
       "delivery_status": "DEFINED",
       "evidence_status": "VERIFIED",
-      "verification_scope": "Repository-local current-main mapping, its reuse of existing Agentic reference primitives, its deferred-control record, and its documented non-enforcement and release boundaries.",
+      "verification_scope": "Repository-local mapping, its reuse of existing Agentic reference primitives, its deferred-control record, and its documented non-enforcement and release boundaries.",
       "verification_method": "Artifact inspection, Claims Register validation, repository verification, protected hosted conformance, and public-boundary review.",
       "last_verified": "2026-09-01",
       "supporting_artifacts": [
@@ -340,19 +342,20 @@
         "spec/07-revocation.md",
         "spec/08-action-authority.md",
         "spec/09-data-authority-interop.md",
-        "profiles/mcp-governance-profile.md"
+        "profiles/mcp-governance-profile.md",
+        "decisions/DR-010-alpha3-packaging-release.md"
       ],
       "evidence_refs": [
         "governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md",
         "requirements/deferred-zero-trust-agent-controls.md"
       ],
       "limitations": [
-        "The mapping is unreleased current-main documentation and is not part of v0.1.0-alpha.2.",
+        "The mapping is not part of v0.1.0-alpha.2. It is included in the v0.1.0-alpha.3 source under DR-010 without promotion; Delivery Status remains DEFINED.",
         "It is a concept-to-repository mapping, not third-party traceability, certification, compliance assurance, production authorization, or proof of operational safety.",
         "It does not implement or verify workload identity, service authentication, short-lived credentials, sandboxing, runtime isolation, telemetry, behavioral monitoring, continuous runtime authorization, session termination, production IAM, SOAR execution, or external enforcement."
       ],
       "permitted_wording": [
-        "Current main contains a verified, unreleased Zero Trust Agent Readiness reference mapping.",
+        "Agentic AI Governance contains a verified Zero Trust Agent Readiness reference mapping that is not promoted to a shipped capability.",
         "Agentic AI Governance provides machine-readable reference primitives for declared authority, evidence binding, verification, validity, and revocation that can support—but do not themselves enforce—Zero Trust governance for AI agents."
       ],
       "prohibited_wording": [

@@ -3,10 +3,15 @@
 
 ## Unreleased
 
-- Added Python packaging metadata so `pip install git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git` provides the importable `agentic_ai_governance` package and a `validate-passport` console script. The wheel bundles the reference validator, schemas, profiles, and synthetic examples; results are the unchanged `tools/validate_artifact.py` report.
+## v0.1.0-alpha.3 - 2026-10-24
+
+- Recorded the steward-approved Alpha.3 packaging release in DR-010. No claim is promoted; the OPA bridge, Agent Incident Readiness demonstration, and readiness mappings are included as references with Delivery Status `DEFINED`.
+- Added a CI job that builds the sdist, wheel, and release-style source archive and installs each into a clean environment before validating the example passports. The release workflow repeats the archive install before attesting.
+- Moved package license metadata to an SPDX expression with explicit license files.
+- Added Python packaging metadata so `pip install git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.3` provides the importable `agentic_ai_governance` package and a `validate-passport` console script. The wheel bundles the reference validator, schemas, profiles, and synthetic examples; results are the unchanged `tools/validate_artifact.py` report.
 - Updated the validation environment to `cryptography==50.0.1`, retaining the established pytest contract while taking the patch release's refreshed OpenSSL-backed wheels.
 - Added the synthetic Agent Incident Readiness reference trace and deterministic verifier for the Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized lifecycle. The original passport remains terminally revoked, reauthorization requires a distinct passport, and no external enforcement is performed.
-- Added a bounded, non-enforcing OPA bridge reference adapter, policy, synthetic vectors, stable reason codes, adversarial tests, and hosted OPA v1.19.1 verification. The implementation consumes established validation results, preserves canonical operating dispositions, and remains unreleased.
+- Added a bounded, non-enforcing OPA bridge reference adapter, policy, synthetic vectors, stable reason codes, adversarial tests, and hosted OPA v1.19.1 verification. The implementation consumes established validation results, and preserves canonical operating dispositions.
 
 ## v0.1.0-alpha.2 - 2026-08-30
 

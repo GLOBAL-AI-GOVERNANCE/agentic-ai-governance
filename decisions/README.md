@@ -21,3 +21,4 @@ Architecture decision records define technical interoperability choices. Governa
 - [DR-007: Stateful Revocation Alpha.2 Release and OPA Transition](DR-007-stateful-revocation-alpha2-release.md)
 - [DR-008: OPA Closure and Lifecycle Activation](DR-008-opa-closure-and-lifecycle-activation.md)
 - [DR-009: Lifecycle Closure and Independent Verifier Activation](DR-009-lifecycle-closure-and-independent-verifier-activation.md)
+- [DR-010: Alpha.3 Packaging Release](DR-010-alpha3-packaging-release.md)

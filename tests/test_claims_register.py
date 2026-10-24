@@ -86,7 +86,7 @@ def test_stateful_revocation_claim_is_shipped_verified_in_alpha2() -> None:
     assert any("not part of v0.1.0-alpha.1" in item for item in claim["limitations"])
 
 
-def test_opa_claim_is_verified_current_main_and_unreleased() -> None:
+def test_opa_claim_is_verified_and_not_promoted() -> None:
     claim = next(
         item for item in _claims()["claims"]
         if item["claim_id"] == "AAG-OPA-001"
@@ -95,7 +95,7 @@ def test_opa_claim_is_verified_current_main_and_unreleased() -> None:
     assert claim["evidence_status"] == "VERIFIED"
     assert claim["last_verified"] == "2026-08-30"
     assert "tests/test_opa_bridge.py" in claim["evidence_refs"]
-    assert any("unreleased" in item.lower() for item in claim["limitations"])
+    assert any("without promotion" in item.lower() for item in claim["limitations"])
     assert "external enforcement" in claim["statement"].lower()
 
 

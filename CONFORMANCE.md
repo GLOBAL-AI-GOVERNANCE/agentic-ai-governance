@@ -32,17 +32,17 @@ python -m pip_audit --strict -r requirements-dev.txt
 pytest -q
 ```
 
-## Unreleased current-main OPA bridge
+## OPA bridge (reference, not promoted)
 
-The OPA Enforcement Bridge is a separately bounded current-main reference implementation, not part of the Alpha.1 normative distribution or the Alpha.2 release. Its Python adapter validates the local bridge contract; its OPA policy is verified with OPA v1.19.1 in every hosted Python matrix job. Positive and adversarial vectors confirm that policy cannot widen established authority and that invalid, stale, expired, revoked, unknown, incomplete, mismatched, or insufficiently contextualized inputs remain `NOT_PERMITTED`.
+The OPA Enforcement Bridge is a separately bounded reference implementation, not part of the Alpha.1 normative distribution. It is included in the `v0.1.0-alpha.3` source with Delivery Status `DEFINED` and is not promoted to a shipped capability. Its Python adapter validates the local bridge contract; its OPA policy is verified with OPA v1.19.1 in every hosted Python matrix job. Positive and adversarial vectors confirm that policy cannot widen established authority and that invalid, stale, expired, revoked, unknown, incomplete, mismatched, or insufficiently contextualized inputs remain `NOT_PERMITTED`.
 
 The bridge returns policy dispositions and stable reason codes. It performs no external enforcement and establishes no runtime containment.
 
-## Unreleased current-main lifecycle demonstration
+## Lifecycle demonstration (reference, not promoted)
 
 The synthetic Agent Incident Readiness trace composes established validator results, OPA bridge decisions, and Stateful Revocation continuity. Deterministic positive and adversarial tests cover policy denial without revocation, terminal revoked-passport rejection, rollback and same-sequence conflict rejection, unknown evidence, human-attribution failure, authority violations, stale input, malformed evidence, distinct new-passport reauthorization, and unsupported enforcement or containment claims.
 
-This current-main demonstration is not part of `v0.1.0-alpha.2`, introduces no schema, and performs no external action.
+This demonstration is included in the `v0.1.0-alpha.3` source with Delivery Status `DEFINED`, is not promoted to a shipped capability, introduces no schema, and performs no external action.
 
 
 ## Canonical policy and authority semantics

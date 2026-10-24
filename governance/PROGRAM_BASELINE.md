@@ -29,7 +29,7 @@ The active external increment authorized by `DR-009` is:
 
 > **SECOND INDEPENDENTLY MAINTAINED VERIFIER**
 
-Agent Incident Readiness is governance-closed at its verified unreleased boundary. Priority 4 remains `PROPOSED / NOT_YET_ESTABLISHED` pending attributable evidence from a genuinely separate maintainer and control boundary. Project-authored or otherwise same-control-boundary verification is not independent verification. No AGDR, Infrastructure Trust, or later-roadmap implementation may interrupt this gate without a superseding governance decision.
+Agent Incident Readiness is governance-closed at its verified, unpromoted boundary. Priority 4 remains `PROPOSED / NOT_YET_ESTABLISHED` pending attributable evidence from a genuinely separate maintainer and control boundary. Project-authored or otherwise same-control-boundary verification is not independent verification. No AGDR, Infrastructure Trust, or later-roadmap implementation may interrupt this gate without a superseding governance decision.
 
 ## Normative Precedence
 
@@ -81,7 +81,7 @@ Agentic AI Governance remains canonical for passports, evidence bindings, author
 
 ## Current Boundary
 
-Agentic AI Governance `v0.1.0-alpha.2` is a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
+Agentic AI Governance `v0.1.0-alpha.3` is the current experimental prerelease. `DR-010` approved it as a packaging release without claim promotion. `v0.1.0-alpha.2` remains a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
 
 Stateful Revocation is:
 
@@ -99,11 +99,11 @@ Delivery Status: DEFINED
 Evidence Status: VERIFIED
 ```
 
-The evidence is the current-main Python adapter, OPA policy, synthetic vectors, adversarial tests, and hosted OPA verification. The bridge remains unreleased and is not part of Alpha.2. It performs a policy decision only; no runtime enforcement or external containment claim is established.
+The evidence is the Python adapter, OPA policy, synthetic vectors, adversarial tests, and hosted OPA verification. The bridge is not part of Alpha.2. It is included in the `v0.1.0-alpha.3` source without promotion. It performs a policy decision only; no runtime enforcement or external containment claim is established.
 
-The bridge remains unreleased current-main development. `v0.1.0-alpha.2` remains the current public release, no new release identity is selected, and no release is authorized.
+Its Delivery Status remains `DEFINED`; promotion requires a separate steward decision.
 
-The lifecycle demonstration is governance-closed by `DR-009` with objective current-main reference evidence:
+The lifecycle demonstration is governance-closed by `DR-009` with objective reference evidence:
 
 ```text
 Delivery Status: DEFINED
@@ -112,7 +112,7 @@ Evidence Status: VERIFIED
 
 Policy denial is not passport revocation. A revoked passport is not restorable. New authorization requires a new governed passport. An OPA policy decision is not external enforcement. Human authority remains explicit.
 
-The evidence is the deterministic synthetic Agent Incident Readiness trace, reference orchestrator, human-readable walkthrough, and adversarial regressions. It is unreleased and non-operational.
+The evidence is the deterministic synthetic Agent Incident Readiness trace, reference orchestrator, human-readable walkthrough, and adversarial regressions. It is non-operational and is included in the `v0.1.0-alpha.3` source without promotion.
 
 The Second Independently Maintained Verifier is the active external increment:
 
@@ -121,7 +121,7 @@ Delivery Status: PROPOSED
 Evidence Status: NOT_YET_ESTABLISHED
 ```
 
-Independent maintenance requires a genuinely separate maintainer and control boundary. Neutral reproduction material prepared by this project does not establish independent verification. AGDR and Infrastructure Trust remain deferred, `v0.1.0-alpha.2` remains the current release, and no new release is authorized.
+Independent maintenance requires a genuinely separate maintainer and control boundary. Neutral reproduction material prepared by this project does not establish independent verification. AGDR and Infrastructure Trust remain deferred. `DR-010` authorizes only the `v0.1.0-alpha.3` packaging release and promotes no claim.
 
 ## Change Control
 
