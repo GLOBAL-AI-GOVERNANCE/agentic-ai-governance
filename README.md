@@ -93,6 +93,8 @@ A successful trust decision returns exit code `0` and reports:
 }
 ```
 
+> **This is an assessment, not authorization.** `APPROVED` and `PERMITTED` in this sample come from a synthetic passport checked against the reference policy. They mean the passport passed every check against the supplied key, evidence, and revocation list at the stated time. They do not authorize a deployment, an action, or access. An accountable human decides whether the agent may act, and any system that acts on this report needs its own control.
+
 The three public state fields are deliberately separate. The issued assessment records what was approved, the verification status records what was established at presentation time, and the operating disposition records what the reference policy permits now.
 
 A signed passport is never reported as fully validated or permitted when its version, profile, evaluator, policy, or critical extensions are unsupported; required evidence is missing, expired, invalid, or untrusted; conditions or evidence references disagree with the bound assessment; inventories or action authority are inconsistent; its signature or key fails; its identifier or validity fails; or current revocation state was not supplied.
