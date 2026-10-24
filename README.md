@@ -41,10 +41,10 @@ Designed for AI platform teams, security architects, governance engineers, assur
 
 ## Five-minute validation
 
-Install the development dependencies. Keep any virtual environment outside the checkout: the schema-catalog check scans the checkout for `*.schema.json` files and currently fails on the ones that installed packages place inside a `.venv/` folder.
+Install the development dependencies. A virtual environment can live inside or outside the checkout: the schema-catalog check skips `.venv/`, `venv/`, `node_modules/`, and similar local environment folders.
 
 ```bash
-python -m venv ../agentic-venv && . ../agentic-venv/bin/activate   # optional; outside the checkout
+python -m venv ../agentic-venv && . ../agentic-venv/bin/activate   # optional
 python -m pip install -r requirements-dev.txt
 ```
 
