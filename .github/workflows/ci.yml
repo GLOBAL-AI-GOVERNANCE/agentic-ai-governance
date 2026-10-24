@@ -59,3 +59,30 @@ jobs:
           test "$(opa eval --format raw --data policies/opa/bridge.rego --input examples/opa/permitted-read.json 'data.agentic.opa_bridge.decision.operating_disposition')" = "PERMITTED"
           test "$(opa eval --format raw --data policies/opa/bridge.rego --input examples/opa/policy-denied-read.json 'data.agentic.opa_bridge.decision.operating_disposition')" = "NOT_PERMITTED"
       - run: pytest -q
+
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install the package into a clean virtual environment
+        run: |
+          python -m venv "$RUNNER_TEMP/pkg"
+          "$RUNNER_TEMP/pkg/bin/python" -m pip install --disable-pip-version-check .
+      - name: Validate example passports outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: |
+          "$RUNNER_TEMP/pkg/bin/validate-passport" --example signed-unrevoked > unrevoked.json
+          python -c "import json; r = json.load(open('unrevoked.json')); assert r['artifact_validation_status'] == 'PASS', r"
+          if "$RUNNER_TEMP/pkg/bin/validate-passport" --example signed-revoked > revoked.json; then
+            echo "revoked example must fail" >&2; exit 1
+          fi
+          python -c "import json; r = json.load(open('revoked.json')); assert r['verification_primary_status'] == 'REVOKED', r"
+          "$RUNNER_TEMP/pkg/bin/python" -c "import agentic_ai_governance as a; assert a.reference_root().name == '_reference'"
