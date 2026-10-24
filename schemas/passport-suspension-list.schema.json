@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/passport-suspension-list.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "Passport Suspension List",
+  "type": "object",
+  "required": [
+    "list_kind",
+    "list_version",
+    "list_id",
+    "issuer_id",
+    "issued_at",
+    "next_update",
+    "entries"
+  ],
+  "properties": {
+    "list_kind": {
+      "const": "global-ai-governance.passport-suspension-list"
+    },
+    "list_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "list_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+    },
+    "issuer_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+    },
+    "issued_at": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "next_update": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "entries": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "required": [
+          "passport_id",
+          "suspended_at",
+          "reason_code",
+          "reinstated_at"
+        ],
+        "properties": {
+          "passport_id": {
+            "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+          },
+          "suspended_at": {
+            "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+          },
+          "reason_code": {
+            "enum": [
+              "ANOMALY_UNDER_REVIEW",
+              "CONTROL_REVIEW",
+              "INCIDENT_INVESTIGATION",
+              "OPERATOR_HOLD",
+              "OTHER"
+            ]
+          },
+          "reinstated_at": {
+            "oneOf": [
+              {
+                "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/timestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

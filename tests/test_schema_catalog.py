@@ -68,7 +68,7 @@ def _add_unprotected_schema(root: Path, filename: str, schema: dict) -> str:
 
 
 def test_schema_catalog_and_all_references_resolve() -> None:
-    assert len(catalog_schema_paths(ROOT)) == 17
+    assert len(catalog_schema_paths(ROOT)) == 22
 
 
 def test_uncataloged_schema_is_rejected(tmp_path: Path) -> None:

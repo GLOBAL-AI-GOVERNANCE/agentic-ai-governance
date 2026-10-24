@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-profile.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "Agent Fleet Controls Profile Descriptor",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile_id",
+    "profile_version",
+    "control_profile",
+    "revocation_max_age_seconds",
+    "delegation_max_depth",
+    "action_term_minimum_levels",
+    "level_5_permitted",
+    "production_use_permitted"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "profile_id": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/id"
+    },
+    "profile_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "control_profile": {
+      "type": "object",
+      "required": [
+        "media_type",
+        "hash"
+      ],
+      "properties": {
+        "media_type": {
+          "const": "application/agentic-ai-control-profile+markdown"
+        },
+        "hash": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/common.schema.json#/$defs/hash"
+        }
+      },
+      "additionalProperties": false
+    },
+    "revocation_max_age_seconds": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/maxAgeByLevel"
+    },
+    "delegation_max_depth": {
+      "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/delegationDepth"
+    },
+    "action_term_minimum_levels": {
+      "type": "object",
+      "required": [
+        "install_tool",
+        "network_call",
+        "provision_compute",
+        "spawn_agent",
+        "spend_funds"
+      ],
+      "properties": {
+        "install_tool": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "network_call": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "provision_compute": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "spawn_agent": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        },
+        "spend_funds": {
+          "$ref": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json#/$defs/actionLevel"
+        }
+      },
+      "additionalProperties": false
+    },
+    "level_5_permitted": {
+      "const": false
+    },
+    "production_use_permitted": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

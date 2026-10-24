@@ -81,7 +81,7 @@ Agentic AI Governance remains canonical for passports, evidence bindings, author
 
 ## Current Boundary
 
-Agentic AI Governance `v0.1.0-alpha.3` is the current experimental prerelease. `DR-010` approved it as a packaging release without claim promotion. `v0.1.0-alpha.2` remains a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
+Agentic AI Governance `v0.1.0-alpha.4` is the current experimental prerelease. `DR-011` approved it as a bounded, additive Agent Fleet Controls release; it adds claim `AAG-FLEET-001` as `DEFINED / NOT_YET_ESTABLISHED` and promotes no claim. `v0.1.0-alpha.3` remains the packaging release approved by `DR-010`. `v0.1.0-alpha.2` remains a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
 
 Stateful Revocation is:
 
@@ -121,7 +121,7 @@ Delivery Status: PROPOSED
 Evidence Status: NOT_YET_ESTABLISHED
 ```
 
-Independent maintenance requires a genuinely separate maintainer and control boundary. Neutral reproduction material prepared by this project does not establish independent verification. AGDR and Infrastructure Trust remain deferred. `DR-010` authorizes only the `v0.1.0-alpha.3` packaging release and promotes no claim.
+Independent maintenance requires a genuinely separate maintainer and control boundary. Neutral reproduction material prepared by this project does not establish independent verification. AGDR and Infrastructure Trust remain deferred. `DR-010` authorizes only the `v0.1.0-alpha.3` packaging release and promotes no claim. `DR-011` is the superseding governance decision for the bounded Agent Fleet Controls reference in `v0.1.0-alpha.4`; it does not replace or interrupt this active increment, and it leaves the independent-verifier kit target unchanged.
 
 ## Change Control
 

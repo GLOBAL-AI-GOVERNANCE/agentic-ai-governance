@@ -1,0 +1,345 @@
+{
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "manifest_kind": "global-ai-governance.fleet-controls-conformance",
+  "manifest_version": "0.1.0-alpha.4",
+  "target_release": "v0.1.0-alpha.4",
+  "status": "NEUTRAL_REPRODUCTION_MATERIAL",
+  "independent_verification_established": false,
+  "independent_verifier_kit_target": "v0.1.0-alpha.2",
+  "evaluation_time": "2026-10-24T12:00:00Z",
+  "normative_artifacts": [
+    {
+      "path": "spec/11-agent-fleet-controls.md",
+      "sha256": "24111b2f5823c258d62576146e6bef13721365e62189a845d25e276d27f45004"
+    },
+    {
+      "path": "schemas/fleet-action-request.schema.json",
+      "sha256": "3867d3e6d90b66880f6a742fbf9a5d595c968ca15a220ab2012df9864d46cc42"
+    },
+    {
+      "path": "schemas/fleet-controls-common.schema.json",
+      "sha256": "ed8a12246f47c1988ea3160e2252a99d5a28b451c4e0967635395062e9f9f15d"
+    },
+    {
+      "path": "schemas/fleet-controls-profile.schema.json",
+      "sha256": "ec69c59e159ef4c6d74ae38056c7940601d2ef53bb6c524a958bc7d8ac525f0a"
+    },
+    {
+      "path": "schemas/passport-suspension-list.schema.json",
+      "sha256": "478194e23082d501a97d3ba03bc5855d366ee1a3947043cd13e36c37e90b9d85"
+    },
+    {
+      "path": "schemas/sub-agent-passport-binding.schema.json",
+      "sha256": "12913987774dc5737050d0cafd081ca0b15fcc659d08449d13d8c12dc1edef43"
+    },
+    {
+      "path": "profiles/agent-fleet-controls-profile.json",
+      "sha256": "38a675d7f197d79f8b968f69103a2faf4d1f65226100719981c6721745dfb225"
+    },
+    {
+      "path": "profiles/agent-fleet-controls-profile.md",
+      "sha256": "99c20851f51d3c3f9c3a26dc119b1c433d9372b8e3dcce829bf5c3ef82a9f720"
+    }
+  ],
+  "vectors": [
+    {
+      "path": "examples/fleet-controls/root-network-call-permitted.json",
+      "sha256": "ccad7f76522fc1d9f4b1ff70474253711fdeb3d21bf120c45ad8fda9fd43ba36",
+      "expected": {
+        "operating_disposition": "PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-spawn-permitted.json",
+      "sha256": "53a8401b40f655515bdae28cce2bed0653391e7d8e769a7602e53c057a8f4783",
+      "expected": {
+        "operating_disposition": "PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [],
+        "effective_level": 4,
+        "delegation_depth": 2
+      }
+    },
+    {
+      "path": "examples/fleet-controls/spend-funds-level-5-not-permitted.json",
+      "sha256": "9e2d2c2780c9e9eb9c2740d5f7b1cb2b3c18e5a7c4558c7cde0e2d4883b376ce",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "ACTION_LEVEL_EXCEEDS_CEILING",
+          "LEVEL_5_NOT_PERMITTED"
+        ],
+        "effective_level": 5,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/status-stale-for-level-4.json",
+      "sha256": "0b2d4e00513c20ac4bc174685c464bfa98acba9c2c17c47c6d053e9c23b7c68b",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "UNKNOWN",
+        "reason_codes": [
+          "REVOCATION_STATUS_STALE_FOR_LEVEL"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/status-stale-for-level-5.json",
+      "sha256": "6ba20c0d0e78a135d74d7bc837fe9252990eb51263493104c459c2a845ecbf1a",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "UNKNOWN",
+        "reason_codes": [
+          "REVOCATION_STATUS_STALE_FOR_LEVEL",
+          "SUSPENSION_STATUS_STALE_FOR_LEVEL",
+          "ACTION_LEVEL_EXCEEDS_CEILING",
+          "LEVEL_5_NOT_PERMITTED"
+        ],
+        "effective_level": 5,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/status-issued-in-future.json",
+      "sha256": "27648ea963f54218e0cdeabc1be164f91677200853af9fa4be9c841e314f1ea2",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "UNKNOWN",
+        "reason_codes": [
+          "REVOCATION_STATUS_UNKNOWN"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/override-tightens-max-age.json",
+      "sha256": "b2cf11a369a51f3b626da368370cc95606e73a3e7750e747d53e5efaa8d2a806",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "UNKNOWN",
+        "reason_codes": [
+          "REVOCATION_STATUS_STALE_FOR_LEVEL",
+          "SUSPENSION_STATUS_STALE_FOR_LEVEL"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/override-loosens-max-age.json",
+      "sha256": "418175d2482eddeb7368bc172fc9514f23d20caf1d4439eaf76b2f946262e07d",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "POLICY_OVERRIDE_LOOSENS"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/override-loosens-depth.json",
+      "sha256": "541ac77f5af0fdbfd75b6d80eec98b9e340c263e45543a8151d58a3b87e9b080",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "POLICY_OVERRIDE_LOOSENS"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-suspended.json",
+      "sha256": "0bed590f8e7c81557a9a165491905454934479ca6ea0eff5c4273d0401f5fe41",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "SUSPENDED",
+        "reason_codes": [
+          "PASSPORT_SUSPENDED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/suspension-reinstated-same-passport.json",
+      "sha256": "c642f0a145b3b7e17ad6382140095fea1fb52070e9a39b0d394a235345ee4fb6",
+      "expected": {
+        "operating_disposition": "PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/revoked-not-reinstated-by-suspension-entry.json",
+      "sha256": "88d24b2281431ebe003d965e0b17cd5bdb63d8dfb5ee9ef5ceb4e50fbc7a16ab",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "REVOKED",
+        "reason_codes": [
+          "PASSPORT_REVOKED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/revoked-on-stale-list-stays-revoked.json",
+      "sha256": "8d99a34ca5ad373ac3611c26fa753a6648db23e7e1ad6047703128ab4787728b",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "REVOKED",
+        "reason_codes": [
+          "REVOCATION_STATUS_UNKNOWN",
+          "PASSPORT_REVOKED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 0
+      }
+    },
+    {
+      "path": "examples/fleet-controls/ancestor-revoked.json",
+      "sha256": "6d7cad9dee3fa80e7d1891587a13f3c0b9449160c83972a8c4731d0a5c10f48b",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "REVOKED",
+        "reason_codes": [
+          "ANCESTOR_REVOKED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 2
+      }
+    },
+    {
+      "path": "examples/fleet-controls/ancestor-suspended.json",
+      "sha256": "0738d5eae457311534f6241c9902111ecf5c9c6244f3ab9aad102babbff9dd76",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "SUSPENDED",
+        "reason_codes": [
+          "ANCESTOR_SUSPENDED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 2
+      }
+    },
+    {
+      "path": "examples/fleet-controls/delegation-depth-exceeded.json",
+      "sha256": "7e3ff6710e613b25c68451306bb591d0a6a8f45728b466c4ff1d24af36402b02",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_DEPTH_EXCEEDED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 4
+      }
+    },
+    {
+      "path": "examples/fleet-controls/spawn-at-depth-cap.json",
+      "sha256": "203c0296c097370b851d3b2838bccc477d26ca3b998bd7457f63332b5cc0ebdc",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "SPAWN_WOULD_EXCEED_DEPTH"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 3
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-level-exceeds-parent.json",
+      "sha256": "721b0d29b16fa77915974d8f4491ecfad61d703a8f81ebb5d3192f1ffacb2c86",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_LEVEL_EXCEEDS_PARENT"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 2
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-terms-exceed-parent.json",
+      "sha256": "8e8fefa5fb96bc64e21e04c958690ae1047cd28aaea6f47556efcc1f2b1d61c0",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_TERMS_EXCEED_PARENT"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 2
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-outlives-parent.json",
+      "sha256": "8c66dc7aae2f422f331d16d357ef86e9013f21b826600c01d2b613b17a74888b",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_VALIDITY_EXCEEDS_PARENT"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-parent-mismatch.json",
+      "sha256": "cc4b57235f324e1ffeac847e027ed4f4f1c32184d1dba9877d23af25d6f0b2a4",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_PARENT_MISMATCH"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/sub-agent-binding-tampered.json",
+      "sha256": "b1843aa2a00194386d54094bb07daa4fcdf097ff7e1037332f595ab13f02196f",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "DELEGATION_BINDING_ID_MISMATCH"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    },
+    {
+      "path": "examples/fleet-controls/action-term-not-authorized.json",
+      "sha256": "ea889d061888065f620619850cb66847bfb85a631285faa68ec213733b0fbc46",
+      "expected": {
+        "operating_disposition": "NOT_PERMITTED",
+        "passport_state": "ACTIVE",
+        "reason_codes": [
+          "ACTION_TERM_NOT_AUTHORIZED"
+        ],
+        "effective_level": 4,
+        "delegation_depth": 1
+      }
+    }
+  ]
+}

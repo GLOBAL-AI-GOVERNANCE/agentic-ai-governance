@@ -1,0 +1,45 @@
+{
+  "request_kind": "global-ai-governance.fleet-action-request",
+  "request_version": "0.1.0-alpha.4",
+  "request_id": "synthetic.fleet-request.spend-funds-level-5-not-permitted",
+  "profile": {
+    "profile_id": "global-ai-governance.agent-fleet-controls",
+    "profile_version": "0.1.0-alpha.4"
+  },
+  "evaluated_at": "2026-10-24T12:00:00Z",
+  "root_passport": {
+    "passport_id": "sha256:86b6d692868d63a72505fd04f5f27af59ce8d96fac3ee763905eb6c9893cb1cf",
+    "subject_id": "synthetic.agent.orchestrator",
+    "maximum_action_level": 4,
+    "action_terms": [
+      "install_tool",
+      "network_call",
+      "provision_compute",
+      "spawn_agent",
+      "spend_funds"
+    ],
+    "not_before": "2026-10-01T00:00:00Z",
+    "expires_at": "2027-01-01T00:00:00Z"
+  },
+  "delegation_chain": [],
+  "revocation_status": {
+    "list_id": "sha256:6a66676f57433202fbe89a561e7f2130df17d1f4507ef75dad11f6c993607aef",
+    "issued_at": "2026-10-24T11:58:00Z",
+    "next_update": "2026-10-25T00:00:00Z",
+    "revoked_passport_ids": []
+  },
+  "suspension_list": {
+    "list_kind": "global-ai-governance.passport-suspension-list",
+    "list_version": "0.1.0-alpha.4",
+    "list_id": "sha256:53046228b684c68d43c7fcb46fb55ec22536af8f67940db94ce9da3bb71bee8d",
+    "issuer_id": "synthetic.fleet-status-authority",
+    "issued_at": "2026-10-24T11:58:00Z",
+    "next_update": "2026-10-25T00:00:00Z",
+    "entries": []
+  },
+  "action": {
+    "term": "spend_funds",
+    "requested_level": 5,
+    "target_id": "synthetic.target.service"
+  }
+}

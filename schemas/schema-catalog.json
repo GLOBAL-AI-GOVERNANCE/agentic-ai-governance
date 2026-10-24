@@ -124,6 +124,42 @@
       "content_sha256": "057131725866f7be67eee487831875168504dd9ff8b19234ffea468024203625"
     },
     {
+      "schema_file": "schemas/fleet-action-request.schema.json",
+      "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-action-request.schema.json",
+      "artifact_kind": "PROTOCOL_SCHEMA",
+      "artifact_version": "0.1.0-alpha.4",
+      "id_strategy": "TAGGED_RAW_GITHUB",
+      "status": "ACTIVE",
+      "introduced_in": "v0.1.0-alpha.4",
+      "supersedes": null,
+      "license": "Apache-2.0",
+      "content_sha256": "3867d3e6d90b66880f6a742fbf9a5d595c968ca15a220ab2012df9864d46cc42"
+    },
+    {
+      "schema_file": "schemas/fleet-controls-common.schema.json",
+      "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-common.schema.json",
+      "artifact_kind": "PROTOCOL_SCHEMA",
+      "artifact_version": "0.1.0-alpha.4",
+      "id_strategy": "TAGGED_RAW_GITHUB",
+      "status": "ACTIVE",
+      "introduced_in": "v0.1.0-alpha.4",
+      "supersedes": null,
+      "license": "Apache-2.0",
+      "content_sha256": "ed8a12246f47c1988ea3160e2252a99d5a28b451c4e0967635395062e9f9f15d"
+    },
+    {
+      "schema_file": "schemas/fleet-controls-profile.schema.json",
+      "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/fleet-controls-profile.schema.json",
+      "artifact_kind": "PROTOCOL_SCHEMA",
+      "artifact_version": "0.1.0-alpha.4",
+      "id_strategy": "TAGGED_RAW_GITHUB",
+      "status": "ACTIVE",
+      "introduced_in": "v0.1.0-alpha.4",
+      "supersedes": null,
+      "license": "Apache-2.0",
+      "content_sha256": "ec69c59e159ef4c6d74ae38056c7940601d2ef53bb6c524a958bc7d8ac525f0a"
+    },
+    {
       "schema_file": "schemas/mcp-inventory.schema.json",
       "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.1/schemas/mcp-inventory.schema.json",
       "artifact_kind": "PROTOCOL_SCHEMA",
@@ -134,6 +170,18 @@
       "supersedes": null,
       "license": "Apache-2.0",
       "content_sha256": "1f5c8adda16a5bc2cafec710f93df4b7d3e61a51569e697ed89ecf6d4942a60d"
+    },
+    {
+      "schema_file": "schemas/passport-suspension-list.schema.json",
+      "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/passport-suspension-list.schema.json",
+      "artifact_kind": "PROTOCOL_SCHEMA",
+      "artifact_version": "0.1.0-alpha.4",
+      "id_strategy": "TAGGED_RAW_GITHUB",
+      "status": "ACTIVE",
+      "introduced_in": "v0.1.0-alpha.4",
+      "supersedes": null,
+      "license": "Apache-2.0",
+      "content_sha256": "478194e23082d501a97d3ba03bc5855d366ee1a3947043cd13e36c37e90b9d85"
     },
     {
       "schema_file": "schemas/revocation-entry.schema.json",
@@ -170,6 +218,18 @@
       "supersedes": null,
       "license": "Apache-2.0",
       "content_sha256": "24ac94f005a591444e2c9e5022df794770c355be10106b3cd8882bd26eb4ea46"
+    },
+    {
+      "schema_file": "schemas/sub-agent-passport-binding.schema.json",
+      "schema_id": "https://raw.githubusercontent.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance/v0.1.0-alpha.4/schemas/sub-agent-passport-binding.schema.json",
+      "artifact_kind": "PROTOCOL_SCHEMA",
+      "artifact_version": "0.1.0-alpha.4",
+      "id_strategy": "TAGGED_RAW_GITHUB",
+      "status": "ACTIVE",
+      "introduced_in": "v0.1.0-alpha.4",
+      "supersedes": null,
+      "license": "Apache-2.0",
+      "content_sha256": "12913987774dc5737050d0cafd081ca0b15fcc659d08449d13d8c12dc1edef43"
     },
     {
       "schema_file": "schemas/tool-inventory.schema.json",

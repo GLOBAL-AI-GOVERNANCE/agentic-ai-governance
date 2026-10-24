@@ -8,6 +8,7 @@
 - `reference_policy.py` defines the exact Alpha.1 profile, evaluator, policy, and data-authority adapter identifiers accepted by the reference validator.
 - `canonical_json.py` implements the restricted RFC 8785 profile used by identifiers and signatures.
 - `verify_repository.py` checks schemas, examples, identifiers, signatures, negative fixtures, release hygiene, and the end-user validation path.
+- `fleet_controls.py` evaluates `v0.1.0-alpha.4` Agent Fleet Controls requests against the hash-anchored profile and returns a disposition, passport state, and reason codes. It consumes already-verified facts and performs no enforcement.
 - `build_dist.py` regenerates the aggregate specification.
 - `public_release_scrub.py` validates the canonical public project identity and optionally scans every tracked UTF-8 text file using a private denylist stored outside the repository. Public output is limited to result, accurate scope, scrub-policy version, bounded limitations, and whether private evidence is retained.
 

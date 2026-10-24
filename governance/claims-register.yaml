@@ -401,6 +401,34 @@
         "Gateway Assurance provides production runtime enforcement.",
         "The Intelligence Assurance Gateway mapping is part of v0.1.0-alpha.2."
       ]
+    },
+    {
+      "claim_id": "AAG-FLEET-001",
+      "claim_kind": "SPECIFICATION",
+      "statement": "Agent Fleet Controls define per-level status maximum ages, a reinstatable suspended state distinct from terminal revocation, fleet action terms, a delegation depth cap, and sub-agent passport bindings whose authority never exceeds the parent.",
+      "delivery_status": "DEFINED",
+      "evidence_status": "NOT_YET_ESTABLISHED",
+      "verification_scope": "Project-authored reference evaluator and synthetic conformance vectors only.",
+      "supporting_artifacts": [
+        "spec/11-agent-fleet-controls.md",
+        "profiles/agent-fleet-controls-profile.json",
+        "tools/fleet_controls.py",
+        "conformance/fleet-controls/manifest.json",
+        "tests/test_fleet_controls.py"
+      ],
+      "evidence_refs": [],
+      "limitations": [
+        "The reference evaluator consumes already-verified facts and does not verify signatures.",
+        "No enforcement is performed; results are decisions for an enforcement point to consume.",
+        "Vectors are synthetic and project-authored; independent verification is not established."
+      ],
+      "permitted_wording": [
+        "Agent Fleet Controls are a defined Alpha.4 reference with synthetic conformance vectors."
+      ],
+      "prohibited_wording": [
+        "Agent Fleet Controls are independently verified.",
+        "Agent Fleet Controls enforce fleet actions at runtime."
+      ]
     }
   ]
 }

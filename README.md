@@ -2,20 +2,22 @@
 # Agentic AI Governance
 
 <!-- gaig:nav -->
-**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.3 · available` · `authority_effect: NONE`
+**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.4 · available` · `authority_effect: NONE`
 
 [Connect your agent](https://ai-governance.solutions/connect.html#agents) · [Specifications](https://ai-governance.solutions/connect.html#spec) · [All products](https://ai-governance.solutions/#products)
 <!-- /gaig:nav -->
 
 A machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
-**Latest tagged release:** `v0.1.0-alpha.3`
-**Status:** Available. Schemas, validator, CLI, and the installable package ship in `v0.1.0-alpha.3` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
+**Latest tagged release:** `v0.1.0-alpha.4`
+**Status:** Available. Schemas, validator, CLI, and the installable package ship in `v0.1.0-alpha.4` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
 **Stateful Revocation:** `Released · tested` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
 **OPA Enforcement Bridge:** on main · `tested` reference implementation; non-enforcing.
 
 **Agent Incident Readiness:** on main · `tested` synthetic lifecycle demonstration; it does not act on live systems.
+
+**Agent Fleet Controls:** `v0.1.0-alpha.4` · `tested` reference. Per-level status freshness, suspension, fleet action terms, a delegation depth cap, and sub-agent passports bound to their parent. See [Agent Fleet Controls](#agent-fleet-controls).
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
@@ -107,7 +109,7 @@ A signed passport is never reported as fully validated or permitted when its ver
 The reference validator installs from the release tag as an importable package with a `validate-passport` command. The wheel carries the validator, schemas, profiles, and synthetic examples, so no checkout is needed:
 
 ```bash
-python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.3"
+python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.4"
 validate-passport --example signed-unrevoked     # exit 0, artifact_validation_status PASS
 validate-passport --example signed-revoked       # exit 1, verification_primary_status REVOKED
 validate-passport passport.json --trusted-key key.json \
@@ -121,7 +123,7 @@ result = validate_example("signed-unrevoked")
 print(result.exit_code, result.report["verification_primary_status"])
 ```
 
-`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a3` is the `v0.1.0-alpha.3` release; the attested release archive installs the same way with `python -m pip install agentic-ai-governance-v0.1.0-alpha.3.zip`. Verification is not authorization.
+`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a4` is the `v0.1.0-alpha.4` release; the attested release archive installs the same way with `python -m pip install agentic-ai-governance-v0.1.0-alpha.4.zip`. Verification is not authorization.
 
 ## Validation levels
 
@@ -162,6 +164,23 @@ The demonstration composes existing validation-result, OPA bridge, operating-dis
 ### Zero Trust Agent Readiness mapping (reference, not promoted)
 
 The repository includes a [Zero Trust Agent Readiness mapping](governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md) that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to Zero Trust agent-security concepts and records [deferred runtime controls](requirements/deferred-zero-trust-agent-controls.md). These primitives do not themselves enforce Zero Trust. The mapping is included in `v0.1.0-alpha.3` as a reference with Delivery Status `DEFINED`; it is not promoted to a shipped capability, and it does not implement production workload identity, continuous authorization, runtime isolation, behavioral monitoring, or credential or session termination; institutional authority remains necessary.
+
+### Agent Fleet Controls
+
+[`spec/11-agent-fleet-controls.md`](spec/11-agent-fleet-controls.md) defines how an evaluator decides whether an agent, or a sub-agent it started, may take a fleet action before it runs:
+
+- **Status freshness by level.** Revocation and suspension status must be newer than a maximum age set per action level: 24 hours at Levels 0-1, 12 hours at Level 2, 1 hour at Level 3, 15 minutes at Level 4, and 5 minutes at Level 5. A request may tighten these values, never loosen them.
+- **Suspension.** `SUSPENDED` is a reinstatable state. Revocation stays terminal, even when a suspension entry or a stale list is presented.
+- **Fleet action terms.** `spawn_agent`, `provision_compute`, `install_tool`, and `network_call` require Level 4; `spend_funds` requires Level 5, which stays not permitted.
+- **Delegation depth cap.** At most 3 levels below the root passport; a spawn that would exceed it is refused.
+- **Sub-agent passports.** Each sub-agent has its own passport, bound to its parent by a content-addressed Sub-Agent Passport Binding. Its level, terms, and validity never exceed the parent's, and revocation or suspension of any ancestor applies to every descendant.
+
+```bash
+python tools/fleet_controls.py examples/fleet-controls/sub-agent-spawn-permitted.json   # exit 0, PERMITTED
+python tools/fleet_controls.py examples/fleet-controls/ancestor-suspended.json          # exit 3, SUSPENDED
+```
+
+The profile is anchored by document and descriptor hashes pinned in the evaluator. Twenty-three synthetic vectors with pinned expected outcomes are in [`conformance/fleet-controls/`](conformance/fleet-controls/README.md). Approved by `DR-011` with Delivery Status `DEFINED` and Evidence Status `NOT_YET_ESTABLISHED`. The evaluator consumes already-verified passport and status facts; it does not verify signatures or enforce the decision. It runs from a source checkout and is not part of the installed package.
 
 ### Intelligence Assurance Gateway mapping (proposed)
 
