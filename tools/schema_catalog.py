@@ -13,6 +13,23 @@ from tools.strict_json import load_strict
 
 CATALOG_PATH = Path("schemas/schema-catalog.json")
 CATALOG_SCHEMA_PATH = Path("schemas/schema-catalog.schema.json")
+# Local tool and environment directories are never part of the repository's
+# schema set. Skipping them keeps the completeness check stable when a
+# contributor creates a virtual environment or installs tooling in the clone.
+LOCAL_ENVIRONMENT_DIRS = frozenset(
+    {
+        ".git",
+        ".venv",
+        "venv",
+        ".tox",
+        ".nox",
+        "node_modules",
+        "site-packages",
+        "__pycache__",
+        ".pytest_cache",
+        ".mypy_cache",
+    }
+)
 
 # These schema identities and raw-file digests existed when the final GOVERN
 # baseline was established. They prevent a released identifier from silently
@@ -98,6 +115,25 @@ def raw_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def is_local_environment_path(root: Path, path: Path) -> bool:
+    """Return True when ``path`` sits inside a local tool or environment directory."""
+    try:
+        parts = path.relative_to(root).parts
+    except ValueError:
+        parts = path.parts
+    return any(part in LOCAL_ENVIRONMENT_DIRS for part in parts[:-1])
+
+
+def discovered_schema_paths(root: Path) -> set[Path]:
+    """Return every repository ``*.schema.json`` file, excluding local environments."""
+    root = root.resolve()
+    return {
+        path.resolve()
+        for path in root.rglob("*.schema.json")
+        if not is_local_environment_path(root, path)
+    }
+
+
 def schema_catalog(root: Path) -> dict[str, Any]:
     schema_path = root / CATALOG_SCHEMA_PATH
     catalog_path = root / CATALOG_PATH
@@ -158,11 +194,7 @@ def catalog_schema_paths(root: Path) -> list[Path]:
             raise ValueError(f"{relative}: $id does not match catalog")
         paths.append(path)
 
-    actual = {
-        path.resolve()
-        for path in root.rglob("*.schema.json")
-        if ".git" not in path.parts
-    }
+    actual = discovered_schema_paths(root)
     cataloged = set(paths)
     if cataloged != actual:
         uncataloged = sorted(str(path.relative_to(root)) for path in actual - cataloged)

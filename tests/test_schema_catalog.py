@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.schema_catalog import catalog_schema_paths
+from tools.schema_catalog import catalog_schema_paths, discovered_schema_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -250,3 +250,26 @@ def test_cataloged_schemas_have_in_band_spdx_identifiers() -> None:
 def test_schema_catalog_record_has_in_band_spdx_identifier() -> None:
     catalog = _catalog(ROOT)
     assert catalog.get("$comment") == "SPDX-License-Identifier: Apache-2.0"
+
+
+@pytest.mark.parametrize(
+    "environment_dir",
+    [".venv/lib/python3.11/site-packages/somepkg", "venv/share", "node_modules/somepkg", ".tox/py311"],
+)
+def test_local_environment_schemas_are_ignored(tmp_path: Path, environment_dir: str) -> None:
+    root = _copy_catalog_tree(tmp_path)
+    expected = catalog_schema_paths(root)
+    stray = root / environment_dir / "third-party.schema.json"
+    stray.parent.mkdir(parents=True)
+    stray.write_text(json.dumps({"$schema": "https://json-schema.org/draft/2020-12/schema"}), encoding="utf-8")
+    assert stray.resolve() not in discovered_schema_paths(root)
+    assert catalog_schema_paths(root) == expected
+
+
+def test_uncataloged_schema_outside_environments_is_still_rejected(tmp_path: Path) -> None:
+    root = _copy_catalog_tree(tmp_path)
+    stray = root / "extras" / "venvish" / "uncataloged.schema.json"
+    stray.parent.mkdir(parents=True)
+    stray.write_text(json.dumps({"$id": "urn:example:uncataloged:1.0.0"}), encoding="utf-8")
+    with pytest.raises(ValueError, match="uncataloged"):
+        catalog_schema_paths(root)
