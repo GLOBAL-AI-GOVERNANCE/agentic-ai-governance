@@ -14,9 +14,12 @@ This synthetic scenario represents a read-only research agent that may retrieve 
 
 ## Run
 
-From the repository root:
+Requires Python 3.11 or later and Git.
 
 ```bash
+git clone https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git
+cd agentic-ai-governance
+python -m venv ../agentic-venv && . ../agentic-venv/bin/activate
 python -m pip install -r requirements-dev.txt
 python tools/validate_artifact.py \
   --kind passport \
