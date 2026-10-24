@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Intelligence Assurance Gateway Mapping
 
-**Status:** Proposed repository-local concept mapping; non-normative; non-enforcing; unreleased  
+**Status:** Proposed repository-local concept mapping; non-normative; non-enforcing; not promoted  
 **Applies to:** Agentic AI Governance current-main reference semantics  
 **Authority effect:** None  
 **Program-sequencing effect:** None
@@ -221,4 +221,4 @@ No executable Gateway Assurance increment should be activated until all of the f
 
 ## Public-safe summary
 
-> Intelligence Assurance Gateway Mapping is a proposed ontology-neutral extension pattern for reasoning about consequential AI authority using existing Agentic AI Governance trust primitives. It is non-normative, non-enforcing, unreleased, and does not determine consciousness, attribute unexplained behavior, authorize production use, or change released Alpha semantics.
+> Intelligence Assurance Gateway Mapping is a proposed ontology-neutral extension pattern for reasoning about consequential AI authority using existing Agentic AI Governance trust primitives. It is non-normative, non-enforcing, not promoted, and does not determine consciousness, attribute unexplained behavior, authorize production use, or change released Alpha semantics.

@@ -2,15 +2,15 @@
 # Agentic AI Governance
 
 <!-- gaig:nav -->
-**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.2 · available` · `authority_effect: NONE`
+**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.3 · available` · `authority_effect: NONE`
 
 [Connect your agent](https://ai-governance.solutions/connect.html#agents) · [Specifications](https://ai-governance.solutions/connect.html#spec) · [All products](https://ai-governance.solutions/#products)
 <!-- /gaig:nav -->
 
 A machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
-**Latest tagged release:** `v0.1.0-alpha.2`
-**Status:** Available. Schemas, validator, and CLI ship in `v0.1.0-alpha.2` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
+**Latest tagged release:** `v0.1.0-alpha.3`
+**Status:** Available. Schemas, validator, CLI, and the installable package ship in `v0.1.0-alpha.3` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
 **Stateful Revocation:** `Released · tested` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
 **OPA Enforcement Bridge:** on main · `tested` reference implementation; non-enforcing.
@@ -104,10 +104,10 @@ A signed passport is never reported as fully validated or permitted when its ver
 
 ### Install as a package
 
-The reference validator also installs from Git as an importable package with a `validate-passport` command. The wheel carries the validator, schemas, profiles, and synthetic examples, so no checkout is needed:
+The reference validator installs from the release tag as an importable package with a `validate-passport` command. The wheel carries the validator, schemas, profiles, and synthetic examples, so no checkout is needed:
 
 ```bash
-python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git"
+python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.3"
 validate-passport --example signed-unrevoked     # exit 0, artifact_validation_status PASS
 validate-passport --example signed-revoked       # exit 1, verification_primary_status REVOKED
 validate-passport passport.json --trusted-key key.json \
@@ -121,7 +121,7 @@ result = validate_example("signed-unrevoked")
 print(result.exit_code, result.report["verification_primary_status"])
 ```
 
-`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a3.dev0` is unreleased current-main code. Verification is not authorization.
+`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a3` is the `v0.1.0-alpha.3` release; the attested release archive installs the same way with `python -m pip install agentic-ai-governance-v0.1.0-alpha.3.zip`. Verification is not authorization.
 
 ## Validation levels
 
@@ -147,27 +147,27 @@ This is deterministic local reference rollback protection relative to an intact 
 
 One revocation-state path is a single-writer reference continuity store. Concurrent writers to the same state path are outside the supported Alpha.2 reference boundary.
 
-### Unreleased OPA Enforcement Bridge
+### OPA Enforcement Bridge (reference, not promoted)
 
-Current `main` includes a bounded Python reference adapter, OPA policy, synthetic vectors, and adversarial tests under [`policies/opa/`](policies/opa/README.md). The bridge accepts only an already-established canonical validation result plus a requested action, resource, policy, and context. It cannot expand validated authority, and it keeps policy denial distinct from passport revocation.
+The repository includes a bounded Python reference adapter, OPA policy, synthetic vectors, and adversarial tests under [`policies/opa/`](policies/opa/README.md). The bridge accepts only an already-established canonical validation result plus a requested action, resource, policy, and context. It cannot expand validated authority, and it keeps policy denial distinct from passport revocation.
 
-This current-main implementation is not part of `v0.1.0-alpha.2`. It makes a deterministic policy decision only; it does not verify raw passports, terminate credentials or sessions, contain workloads, enforce network or tool actions, provide production IAM, or establish certification or compliance.
+The bridge is included in `v0.1.0-alpha.3` as a reference with Delivery Status `DEFINED`; it is not promoted to a shipped capability. It makes a deterministic policy decision only; it does not verify raw passports, terminate credentials or sessions, contain workloads, enforce network or tool actions, provide production IAM, or establish certification or compliance.
 
-### Unreleased Agent Incident Readiness
+### Agent Incident Readiness (reference, not promoted)
 
-Current `main` includes a deterministic synthetic trace under [`examples/agent-incident-readiness/`](examples/agent-incident-readiness/README.md). It demonstrates Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized while preserving terminal revocation of the original passport. Reauthorization uses a distinct newly validated passport.
+The repository includes a deterministic synthetic trace under [`examples/agent-incident-readiness/`](examples/agent-incident-readiness/README.md). It demonstrates Authorized → Policy-Denied → Revoked → Rollback-Rejected → New-Passport Reauthorized while preserving terminal revocation of the original passport. Reauthorization uses a distinct newly validated passport.
 
-The demonstration composes existing validation-result, OPA bridge, operating-disposition, reason-code, and Stateful Revocation semantics. It adds no schema and performs no external action. It is not proof of runtime enforcement, containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.
+The demonstration composes existing validation-result, OPA bridge, operating-disposition, reason-code, and Stateful Revocation semantics. It adds no schema and performs no external action. It is included in `v0.1.0-alpha.3` as a reference with Delivery Status `DEFINED`; it is not promoted to a shipped capability, and it is not proof of runtime enforcement, containment, production IAM, credential or session termination, certification, compliance, or real-world effectiveness.
 
-### Unreleased Zero Trust Agent Readiness mapping
+### Zero Trust Agent Readiness mapping (reference, not promoted)
 
-Current main includes a [Zero Trust Agent Readiness mapping](governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md) that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to Zero Trust agent-security concepts and records [deferred runtime controls](requirements/deferred-zero-trust-agent-controls.md). These primitives do not themselves enforce Zero Trust. The mapping is not part of `v0.1.0-alpha.2` and does not implement production workload identity, continuous authorization, runtime isolation, behavioral monitoring, or credential or session termination; institutional authority remains necessary.
+The repository includes a [Zero Trust Agent Readiness mapping](governance/ZERO_TRUST_AGENT_READINESS_MAPPING.md) that relates existing Agentic reference primitives for declared authority, evidence binding, verification, validity, and revocation to Zero Trust agent-security concepts and records [deferred runtime controls](requirements/deferred-zero-trust-agent-controls.md). These primitives do not themselves enforce Zero Trust. The mapping is included in `v0.1.0-alpha.3` as a reference with Delivery Status `DEFINED`; it is not promoted to a shipped capability, and it does not implement production workload identity, continuous authorization, runtime isolation, behavioral monitoring, or credential or session termination; institutional authority remains necessary.
 
-### Unreleased Intelligence Assurance Gateway mapping
+### Intelligence Assurance Gateway mapping (proposed)
 
 A proposed [Intelligence Assurance Gateway mapping](governance/INTELLIGENCE_ASSURANCE_GATEWAY_MAPPING.md) relates existing Agentic trust primitives to ontology-neutral consequential-authority concepts while preserving current Action Authority, validation, policy, validity, revocation, and reauthorization boundaries. Its [deferred controls](requirements/deferred-intelligence-assurance-controls.md) record future requirements without changing the locked roadmap or creating a profile, evaluator, runtime-control claim, or release.
 
-The mapping is non-normative, unreleased, and non-enforcing. It does not determine consciousness or sentience, attribute unexplained behavior, authorize production use, or change released Alpha semantics.
+The mapping is non-normative, non-enforcing, and not promoted; it is included in the `v0.1.0-alpha.3` source as a proposal. It does not determine consciousness or sentience, attribute unexplained behavior, authorize production use, or change released Alpha semantics.
 
 ## Repository map
 

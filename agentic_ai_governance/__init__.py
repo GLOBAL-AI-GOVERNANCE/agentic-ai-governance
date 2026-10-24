@@ -13,7 +13,7 @@ from agentic_ai_governance.passport import (
     validate_passport,
 )
 
-__version__ = "0.1.0a3.dev0"
+__version__ = "0.1.0a3"
 
 __all__ = [
     "EXAMPLES",

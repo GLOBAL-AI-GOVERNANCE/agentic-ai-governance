@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # Zero Trust Agent Readiness Mapping
 
-**Status:** Current-main, unreleased reference mapping
+**Status:** Reference mapping included in `v0.1.0-alpha.3`; not promoted
 **Source boundary:** Concept-to-repository mapping based on the approved Phase 0 concept set
 
 ## Purpose and assurance boundary
@@ -97,4 +97,4 @@ A future machine-readable Zero Trust profile under `profiles/` would create a ma
 
 ## Current release boundary
 
-This mapping is current-main, unreleased work. It is not part of `v0.1.0-alpha.2`, does not change the status of other unreleased current-main capabilities, and does not authorize a tag or release.
+This mapping is included in the `v0.1.0-alpha.3` source with Delivery Status `DEFINED` and is not promoted. It is not part of `v0.1.0-alpha.2`, does not change the status of other capabilities, and does not authorize a tag or release.
