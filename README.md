@@ -2,20 +2,20 @@
 # Agentic AI Governance
 
 <!-- gaig:nav -->
-**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.2 · experimental` · `authority_effect: NONE`
+**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.2 · available` · `authority_effect: NONE`
 
 [Connect your agent](https://ai-governance.solutions/connect.html#agents) · [Specifications](https://ai-governance.solutions/connect.html#spec) · [All products](https://ai-governance.solutions/#products)
 <!-- /gaig:nav -->
 
-An experimental, machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
+A machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
 **Latest tagged release:** `v0.1.0-alpha.2`
-**Status:** Experimental public alpha. The specification and schemas are not frozen.
-**Stateful Revocation:** `SHIPPED / VERIFIED` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
+**Status:** Available. Schemas, validator, and CLI ship in `v0.1.0-alpha.2` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
+**Stateful Revocation:** `Released · tested` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
-**OPA Enforcement Bridge:** current-main `DEFINED / VERIFIED` reference implementation; unreleased and non-enforcing.
+**OPA Enforcement Bridge:** on main · `tested` reference implementation; non-enforcing.
 
-**Agent Incident Readiness:** current-main `DEFINED / VERIFIED` synthetic lifecycle reference demonstration; unreleased and non-operational.
+**Agent Incident Readiness:** on main · `tested` synthetic lifecycle demonstration; it does not act on live systems.
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
