@@ -240,7 +240,7 @@ def check_required_paths(root: Path) -> list[str]:
 
 def check_public_safety(root: Path) -> list[str]:
     errors: list[str] = []
-    ignored = {".git", "__pycache__", ".pytest_cache"}
+    ignored = {".git", "__pycache__", ".pytest_cache", ".venv", "venv", ".tox", ".nox", "node_modules"}
     allowed_suffixes = {".md", ".py", ".yml", ".yaml", ".json", ".toml", ".cff"}
     for path in root.rglob("*"):
         if not path.is_file() or any(part in ignored for part in path.parts):

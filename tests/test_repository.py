@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 from tools.build_dist import build
+from tools.schema_catalog import discovered_schema_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,7 +24,7 @@ def test_generated_spec_is_current() -> None:
 def test_schema_catalog_is_complete() -> None:
     catalog = json.loads((ROOT / "schemas/schema-catalog.json").read_text(encoding="utf-8"))
     cataloged = {entry["schema_file"] for entry in catalog["entries"]}
-    actual = {path.relative_to(ROOT).as_posix() for path in ROOT.rglob("*.schema.json") if ".git" not in path.parts}
+    actual = {path.relative_to(ROOT.resolve()).as_posix() for path in discovered_schema_paths(ROOT)}
     assert cataloged == actual
 
 
