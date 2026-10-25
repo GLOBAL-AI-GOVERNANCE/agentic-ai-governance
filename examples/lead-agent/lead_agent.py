@@ -495,7 +495,7 @@ class LeadAgent:
             if self.state_of(LEAD_ID) != "ACTIVE":
                 reply = f"The lead agent is {self.state_of(LEAD_ID).lower()}; no work was started."
                 self._record("reply", {"text": reply})
-                return {"reply": reply, "steps": [], "state": self.snapshot()}
+                return {"reply": reply, "plan": [], "steps": [], "state": self.snapshot()}
             plan = self.model.plan(message)
             self._record("plan", {"steps": [{"role": s["role"], "tool": s["tool"]} for s in plan]})
             results = []
@@ -520,7 +520,8 @@ class LeadAgent:
                      f"{counts[ALLOW]} ran, {counts[APPROVED]} approved by the operator's "
                      f"automated approver, {counts[ASK]} waiting for a person, {counts[DENY]} denied.")
             self._record("reply", {"text": reply})
-            return {"reply": reply, "steps": results, "state": self.snapshot()}
+            return {"reply": reply, "plan": [{"role": s["role"], "tool": s["tool"]} for s in plan], "steps": results,
+                    "state": self.snapshot()}
 
     def control(self, action: str, agent_id: str) -> dict[str, Any]:
         with self.lock:
