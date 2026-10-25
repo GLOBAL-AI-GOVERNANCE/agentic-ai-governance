@@ -3,6 +3,10 @@
 
 ## Unreleased
 
+- Added `tools/issue_passports.py` and the `issue-passports` console script. They issue signed passports and Sub-Agent Passport Bindings for every agent in a fleet policy file, write a signed revocation list, validate every passport, and handle revocation and refresh, with no manual step. The policy rejects Level 5, `spend_funds`, and any sub-agent that would exceed its parent.
+- Added the reference lead agent / orchestrator `examples/lead-agent/lead_agent.py` and the `lead-agent` console script. It runs a guard on every tool call, Agent Fleet Controls for fleet actions, a delegation depth cap of 3, suspend/reinstate/revoke cascades, shutdown tests, and a hash-chained audit ledger. The planner is a deterministic offline model by default, with OpenAI-, Anthropic- and xAI-compatible planners when a key is set. Level 5 is always denied; Level 4 goes to the approver the operator names (a person by default, or the operator's automated approver for listed calls). It also has a local JSON API with an A2A agent card for the browser app.
+- Added `AGENTS.md` with setup and check instructions for coding agents.
+
 ## v0.1.0-alpha.4 - 2026-10-24
 
 - Recorded the steward-approved Alpha.4 Agent Fleet Controls release in DR-011. It adds claim `AAG-FLEET-001` with Delivery Status `DEFINED` and Evidence Status `NOT_YET_ESTABLISHED`, promotes no claim, and leaves the active increment unchanged.
