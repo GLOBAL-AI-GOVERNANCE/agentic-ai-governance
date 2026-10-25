@@ -2,7 +2,7 @@
 # Agentic AI Governance
 
 <!-- gaig:nav -->
-**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.4 · available` · `authority_effect: NONE`
+**[Global AI Governance](https://ai-governance.solutions/)** · `v0.1.0-alpha.5 · available` · `authority_effect: NONE`
 
 [Start where you are](https://ai-governance.solutions/start.html) · [Connect your agent](https://ai-governance.solutions/connect.html#agents) · [Specifications](https://ai-governance.solutions/connect.html#spec) · [All products](https://ai-governance.solutions/#products)
 
@@ -11,8 +11,8 @@ Suite path, step 4 of 9: bound agent fleets · ← [AI Governance MCP](https://g
 
 A machine-readable trust layer for describing what an AI agent is, what it may reach, what it may do, what evidence supports it, and when its authority expires or is revoked.
 
-**Latest tagged release:** `v0.1.0-alpha.4`
-**Status:** Available. Schemas, validator, CLI, and the installable package ship in `v0.1.0-alpha.4` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
+**Latest tagged release:** `v0.1.0-alpha.5`
+**Status:** Available. Schemas, validator, CLI, and the installable package ship in `v0.1.0-alpha.5` and are tested on every change. Schemas stay open to change until a second, independent verifier confirms them; that review is open.
 **Stateful Revocation:** `Released · tested` in Alpha.2 as bounded optional local continuity relative to an intact trusted local store.
 **Alpha.1:** remains an immutable historical release and does not contain Stateful Revocation.
 **OPA Enforcement Bridge:** on main · `tested` reference implementation; non-enforcing.
@@ -20,6 +20,8 @@ A machine-readable trust layer for describing what an AI agent is, what it may r
 **Agent Incident Readiness:** on main · `tested` synthetic lifecycle demonstration; it does not act on live systems.
 
 **Agent Fleet Controls:** `v0.1.0-alpha.4` · `tested` reference. Per-level status freshness, suspension, fleet action terms, a delegation depth cap, and sub-agent passports bound to their parent. See [Agent Fleet Controls](#agent-fleet-controls).
+
+**Unattended issuance and the reference lead agent / orchestrator:** `v0.1.0-alpha.5` · `tested` references. `issue-passports` and `lead-agent`. See [Unattended issuance](#unattended-issuance-and-the-reference-lead-agent).
 
 The repository provides specifications, JSON Schemas, examples, conformance fixtures, and a reference validator for teams building governed agentic systems.
 
@@ -111,7 +113,7 @@ A signed passport is never reported as fully validated or permitted when its ver
 The reference validator installs from the release tag as an importable package with a `validate-passport` command. The wheel carries the validator, schemas, profiles, and synthetic examples, so no checkout is needed:
 
 ```bash
-python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.4"
+python -m pip install "git+https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git@v0.1.0-alpha.5"
 validate-passport --example signed-unrevoked     # exit 0, artifact_validation_status PASS
 validate-passport --example signed-revoked       # exit 1, verification_primary_status REVOKED
 validate-passport passport.json --trusted-key key.json \
@@ -125,7 +127,7 @@ result = validate_example("signed-unrevoked")
 print(result.exit_code, result.report["verification_primary_status"])
 ```
 
-`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a4` is the `v0.1.0-alpha.4` release; the attested release archive installs the same way with `python -m pip install agentic-ai-governance-v0.1.0-alpha.4.zip`. Verification is not authorization.
+`validate_passport()` and `validate-passport` run `tools/validate_artifact.py --kind passport` in a separate process and return its JSON report unchanged. Package version `0.1.0a5` is the `v0.1.0-alpha.5` release; the attested release archive installs the same way with `python -m pip install agentic-ai-governance-v0.1.0-alpha.5.zip`. It also provides the `issue-passports` and `lead-agent` commands. Verification is not authorization.
 
 ## Validation levels
 
