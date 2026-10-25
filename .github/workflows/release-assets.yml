@@ -58,6 +58,13 @@ jobs:
             echo "revoked example must fail" >&2; exit 1
           fi
           python3 -c "import json; r = json.load(open('revoked.json')); assert r['verification_primary_status'] == 'REVOKED', r"
+          if [ -x check/bin/lead-agent ]; then
+            check/bin/lead-agent demo > lead-agent.json
+            python3 -c "import json; r = json.load(open('lead-agent.json')); assert r['passed'] is True, r['checks']"
+            python3 -c "import zipfile; zipfile.ZipFile('dist/agentic-ai-governance-${TAG}.zip').extractall('src')"
+            check/bin/issue-passports issue "src/agentic-ai-governance-${TAG}/examples/fleet-issuance/fleet-policy.json" --out fleet > fleet.json
+            python3 -c "import json; r = json.load(open('fleet.json')); assert r['agents'] and all(a['verification_primary_status'] == 'VALID' for a in r['agents']), r"
+          fi
 
       - name: Upload build output
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

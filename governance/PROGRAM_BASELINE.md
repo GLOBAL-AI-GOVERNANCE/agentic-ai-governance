@@ -81,7 +81,7 @@ Agentic AI Governance remains canonical for passports, evidence bindings, author
 
 ## Current Boundary
 
-Agentic AI Governance `v0.1.0-alpha.4` is the current experimental prerelease. `DR-011` approved it as a bounded, additive Agent Fleet Controls release; it adds claim `AAG-FLEET-001` as `DEFINED / NOT_YET_ESTABLISHED` and promotes no claim. `v0.1.0-alpha.3` remains the packaging release approved by `DR-010`. `v0.1.0-alpha.2` remains a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
+Agentic AI Governance `v0.1.0-alpha.5` is the current experimental prerelease. `DR-012` approved it as a bounded tooling release: unattended passport issuance and a reference lead agent / orchestrator, with no schema, profile, or claim change. `v0.1.0-alpha.4` remains the Agent Fleet Controls release approved by `DR-011`; it adds claim `AAG-FLEET-001` as `DEFINED / NOT_YET_ESTABLISHED` and promotes no claim. `v0.1.0-alpha.3` remains the packaging release approved by `DR-010`. `v0.1.0-alpha.2` remains a verified experimental prerelease within its published boundary. The Alpha.1 normative distribution remains preserved.
 
 Stateful Revocation is:
 

@@ -23,3 +23,4 @@ Architecture decision records define technical interoperability choices. Governa
 - [DR-009: Lifecycle Closure and Independent Verifier Activation](DR-009-lifecycle-closure-and-independent-verifier-activation.md)
 - [DR-010: Alpha.3 Packaging Release](DR-010-alpha3-packaging-release.md)
 - [DR-011: Alpha.4 Agent Fleet Controls](DR-011-alpha4-agent-fleet-controls.md)
+- [DR-012: Alpha.5 Unattended Issuance and Reference Lead Agent](DR-012-alpha5-unattended-issuance-and-lead-agent.md)
