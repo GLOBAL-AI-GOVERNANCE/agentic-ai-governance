@@ -1,0 +1,37 @@
+{
+  "policy_kind": "global-ai-governance.fleet-issuance-policy",
+  "policy_version": "0.1.0",
+  "issuer_id": "operator.example.fleet-issuer",
+  "validity_days": 30,
+  "revocation_refresh_hours": 24,
+  "agents": [
+    {
+      "agent_id": "agent.example.lead",
+      "display_name": "Lead agent",
+      "maximum_action_level": 4,
+      "delegates": true,
+      "action_terms": ["network_call", "spawn_agent"],
+      "capabilities": ["read:approved-public-information", "draft:internal-summary"],
+      "tools": [
+        {"tool_id": "tool.example.search", "action_level": 1},
+        {"tool_id": "tool.example.draft", "action_level": 2}
+      ]
+    },
+    {
+      "agent_id": "agent.example.researcher",
+      "display_name": "Research sub-agent",
+      "parent": "agent.example.lead",
+      "maximum_action_level": 4,
+      "action_terms": ["network_call"],
+      "tools": [{"tool_id": "tool.example.search", "action_level": 1}]
+    },
+    {
+      "agent_id": "agent.example.writer",
+      "display_name": "Writing sub-agent",
+      "parent": "agent.example.lead",
+      "maximum_action_level": 2,
+      "capabilities": ["read:approved-public-information", "draft:internal-summary"],
+      "tools": [{"tool_id": "tool.example.draft", "action_level": 2}]
+    }
+  ]
+}

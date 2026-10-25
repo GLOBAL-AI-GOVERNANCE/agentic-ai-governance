@@ -24,6 +24,8 @@ Repository = "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance"
 
 [project.scripts]
 validate-passport = "agentic_ai_governance.cli:main"
+issue-passports = "agentic_ai_governance.runners:issue_passports_main"
+lead-agent = "agentic_ai_governance.runners:lead_agent_main"
 
 [tool.setuptools]
 packages = ["agentic_ai_governance"]

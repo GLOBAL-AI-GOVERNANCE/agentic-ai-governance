@@ -184,6 +184,17 @@ python tools/fleet_controls.py examples/fleet-controls/ancestor-suspended.json  
 
 The profile is anchored by document and descriptor hashes pinned in the evaluator. Twenty-three synthetic vectors with pinned expected outcomes are in [`conformance/fleet-controls/`](conformance/fleet-controls/README.md). Approved by `DR-011` with Delivery Status `DEFINED` and Evidence Status `NOT_YET_ESTABLISHED`. The evaluator consumes already-verified passport and status facts; it does not verify signatures or enforce the decision. It runs from a source checkout and is not part of the installed package.
 
+### Unattended issuance and the reference lead agent
+
+Two scripts remove the manual steps from running a governed fleet:
+
+```bash
+python tools/issue_passports.py issue examples/fleet-issuance/fleet-policy.json --out fleet/   # every passport VALID, exit 0
+python examples/lead-agent/lead_agent.py demo                                                  # governed lead agent, offline
+```
+
+[`tools/issue_passports.py`](examples/fleet-issuance/README.md) issues, binds, revokes and refreshes passports from a policy file. The [reference lead agent / orchestrator](examples/lead-agent/README.md) runs a guard on every tool call. It spawns sub-agents with passports bound to it, caps delegation depth at 3, suspends and revokes with cascade, runs shutdown tests, and keeps a hash-chained audit ledger. Level 5 is always denied. Level 4 goes to the approver the operator's policy names: a person by default, or the operator's own automation for the calls it lists. Both are references with `authority_effect: NONE`. The browser version is at <https://ai-governance.solutions/lead-agent/>.
+
 ### Intelligence Assurance Gateway mapping (proposed)
 
 A proposed [Intelligence Assurance Gateway mapping](governance/INTELLIGENCE_ASSURANCE_GATEWAY_MAPPING.md) relates existing Agentic trust primitives to ontology-neutral consequential-authority concepts while preserving current Action Authority, validation, policy, validity, revocation, and reauthorization boundaries. Its [deferred controls](requirements/deferred-intelligence-assurance-controls.md) record future requirements without changing the locked roadmap or creating a profile, evaluator, runtime-control claim, or release.
