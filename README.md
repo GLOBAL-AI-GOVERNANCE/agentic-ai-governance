@@ -195,7 +195,7 @@ python tools/issue_passports.py issue examples/fleet-issuance/fleet-policy.json 
 python examples/lead-agent/lead_agent.py demo                                                  # governed lead agent, offline
 ```
 
-[`tools/issue_passports.py`](examples/fleet-issuance/README.md) issues, binds, revokes and refreshes passports from a policy file. The [reference lead agent / orchestrator](examples/lead-agent/README.md) runs a guard on every tool call. It spawns sub-agents with passports bound to it, caps delegation depth at 3, suspends and revokes with cascade, runs shutdown tests, and keeps a hash-chained audit ledger. Level 5 is always denied. Level 4 goes to the approver the operator's policy names: a person by default, or the operator's own automation for the calls it lists. Both are references with `authority_effect: NONE`. The browser version is at <https://ai-governance.solutions/lead-agent/>.
+[`tools/issue_passports.py`](examples/fleet-issuance/README.md) issues, binds, revokes and refreshes passports from a policy file. The [reference lead agent / orchestrator](examples/lead-agent/README.md) runs a guard on every tool call. It spawns sub-agents with passports bound to it, caps delegation depth at 3, suspends and revokes with cascade, runs shutdown tests, and keeps a hash-chained audit ledger. Level 5 is always denied. Level 4 goes to the approver the operator's policy names: a person by default, or the operator's own automation for the calls it lists. Both are references with `authority_effect: NONE`. The browser scenario is at <https://ai-governance.solutions/lead-agent/>. It does not sign passports, and `lead-agent verify-audit` re-checks the ledger it downloads.
 
 ### Intelligence Assurance Gateway mapping (proposed)
 

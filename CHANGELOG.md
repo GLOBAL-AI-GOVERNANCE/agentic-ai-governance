@@ -3,6 +3,8 @@
 
 ## Unreleased
 
+- The browser scenario at https://ai-governance.solutions/lead-agent/ runs locally and does not sign passports. `lead-agent verify-audit` re-checks the ledger it downloads.
+
 ## v0.1.0-alpha.5 - 2026-10-24
 
 - Recorded the steward-approved Alpha.5 tooling release in DR-012. No schema identity, profile, signed example, or claim changes, and no claim is promoted.
