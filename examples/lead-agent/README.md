@@ -9,7 +9,7 @@ python examples/lead-agent/lead_agent.py serve           # JSON API on http://12
 python examples/lead-agent/lead_agent.py verify-audit audit-ledger.json
 ```
 
-`demo` exits 0 only when all ten of its checks pass. A browser version that runs entirely on the page is at <https://ai-governance.solutions/lead-agent/>.
+`demo` exits 0 only when all ten of its checks pass. The same scenario runs in the browser at <https://ai-governance.solutions/lead-agent/>, with no network request. That page does not sign passports. It writes an audit ledger in this format, which `lead-agent verify-audit` re-checks.
 
 ## What it governs
 
