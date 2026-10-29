@@ -64,6 +64,11 @@ jobs:
       - name: Audit Python dependencies
         run: python -m pip_audit --strict -r requirements-dev.txt
       - run: python -m compileall -q tools tests
+      - name: Check schema $id offline
+        run: python tools/check_schema_ids.py
+      - name: Check schema $id live resolution
+        if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python tools/check_schema_ids.py --online
       - name: Validate OPA bridge policy and examples
         run: |
           opa fmt --fail policies/opa

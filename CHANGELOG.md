@@ -3,6 +3,7 @@
 
 ## Unreleased
 
+- Added `tools/check_schema_ids.py` with offline and `--online` live resolution of every http(s) schema `$id`, wired into Conformance CI.
 - The browser scenario at https://ai-governance.solutions/lead-agent/ runs locally and does not sign passports. `lead-agent verify-audit` re-checks the ledger it downloads.
 
 ## v0.1.0-alpha.5 - 2026-10-24
