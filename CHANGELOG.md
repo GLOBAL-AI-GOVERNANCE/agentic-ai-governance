@@ -3,8 +3,10 @@
 
 ## Unreleased
 
-- Added `tools/check_schema_ids.py` with offline and `--online` live resolution of every http(s) schema `$id`, wired into Conformance CI.
-- The browser scenario at https://ai-governance.solutions/lead-agent/ runs locally and does not sign passports. `lead-agent verify-audit` re-checks the ledger it downloads.
+## v0.1.0-alpha.6 - 2026-10-29
+
+- Added a second passport verifier under `second_verifier/`, built separately from `tools/validate_artifact.py`, with agreement tests against the synthetic examples. Same-control-boundary; not an external independent-maintenance claim. Results keep `authority_effect: NONE`.
+- Confirmed the reference lead agent and Agent Fleet Controls remain operational via regression and demo smoke.
 
 ## v0.1.0-alpha.5 - 2026-10-24
 

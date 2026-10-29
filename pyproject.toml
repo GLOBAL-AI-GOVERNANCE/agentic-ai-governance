@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agentic-ai-governance"
-version = "0.1.0a5"
+version = "0.1.0a6"
 description = "Reference Agent Trust Passport validator for Agentic AI Governance (experimental alpha; verification is not authorization)."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -26,9 +26,10 @@ Repository = "https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance"
 validate-passport = "agentic_ai_governance.cli:main"
 issue-passports = "agentic_ai_governance.runners:issue_passports_main"
 lead-agent = "agentic_ai_governance.runners:lead_agent_main"
+second-verifier = "second_verifier.verify:main"
 
 [tool.setuptools]
-packages = ["agentic_ai_governance"]
+packages = ["agentic_ai_governance", "second_verifier"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
