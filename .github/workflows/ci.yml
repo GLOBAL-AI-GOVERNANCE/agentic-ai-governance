@@ -116,3 +116,59 @@ jobs:
           check wheel "$(ls "$RUNNER_TEMP"/dist/*.whl)"
           check sdist "$(ls "$RUNNER_TEMP"/dist/*.tar.gz)"
           check archive "$RUNNER_TEMP/dist/agentic-ai-governance-ci.zip"
+
+
+  first-run:
+    name: First-run smoke (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Documented first-run (Linux and macOS)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/agentic-venv"
+          . "$RUNNER_TEMP/agentic-venv/bin/activate"
+          python -m pip install --disable-pip-version-check .
+          validate-passport --example signed-unrevoked > "$RUNNER_TEMP/unrevoked.json"
+          python -c "import json,sys; r=json.load(open(sys.argv[1])); assert r['artifact_validation_status']=='PASS', r" "$RUNNER_TEMP/unrevoked.json"
+          if validate-passport --example signed-revoked > "$RUNNER_TEMP/revoked.json"; then
+            echo "revoked example must fail" >&2
+            exit 1
+          fi
+          python -c "import json,sys; r=json.load(open(sys.argv[1])); assert r['verification_primary_status']=='REVOKED', r" "$RUNNER_TEMP/revoked.json"
+      - name: Documented first-run (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          python -m venv "$env:RUNNER_TEMP\agentic-venv"
+          & "$env:RUNNER_TEMP\agentic-venv\Scripts\Activate.ps1"
+          python -m pip install --disable-pip-version-check .
+          $unrevoked = Join-Path $env:RUNNER_TEMP "unrevoked.json"
+          $revoked = Join-Path $env:RUNNER_TEMP "revoked.json"
+          validate-passport --example signed-unrevoked > $unrevoked
+          if ($LASTEXITCODE -ne 0) { throw "signed-unrevoked exited $LASTEXITCODE" }
+          python -c "import json,sys; r=json.load(open(sys.argv[1])); assert r['artifact_validation_status']=='PASS', r" $unrevoked
+          $failed = $false
+          try {
+            validate-passport --example signed-revoked > $revoked
+            if ($LASTEXITCODE -eq 0) { $failed = $true }
+          } catch {
+            # native exit codes should set LASTEXITCODE rather than throw
+          }
+          if ($LASTEXITCODE -eq 0 -or $failed) { throw "revoked example must fail" }
+          python -c "import json,sys; r=json.load(open(sys.argv[1])); assert r['verification_primary_status']=='REVOKED', r" $revoked
