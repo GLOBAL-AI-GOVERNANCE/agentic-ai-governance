@@ -31,6 +31,16 @@ python tools/validate_artifact.py \
   examples/passports/signed-unrevoked.json
 ```
 
+PowerShell (Windows):
+
+```powershell
+git clone https://github.com/GLOBAL-AI-GOVERNANCE/agentic-ai-governance.git
+cd agentic-ai-governance
+python -m venv ..\agentic-venv; ..\agentic-venv\Scripts\Activate.ps1
+python -m pip install -r requirements-dev.txt
+python tools/validate_artifact.py --kind passport --trusted-key examples/trusted-keys/test-ed25519-key.json --revocation-list examples/revocation/valid-revocation-list.json --bundle-manifest examples/bundles/valid-bundle-manifest.json --bundle-root . --at-time 2026-07-18T12:00:00Z examples/passports/signed-unrevoked.json
+```
+
 The result should report `issued_assessment_result: APPROVED`, `verification_primary_status: VALID`, and `operating_disposition: PERMITTED`. To see revocation enforcement, replace the final passport path with `examples/passports/signed-revoked.json`; that passport is present in the supplied list and reports `verification_primary_status: REVOKED` with `operating_disposition: NOT_PERMITTED`.
 
 All keys and signatures in this example are test-only and must never be used outside conformance testing.

@@ -56,6 +56,13 @@ python -m venv ../agentic-venv && . ../agentic-venv/bin/activate   # optional
 python -m pip install -r requirements-dev.txt
 ```
 
+PowerShell (Windows):
+
+```powershell
+python -m venv ..\agentic-venv; ..\agentic-venv\Scripts\Activate.ps1   # optional
+python -m pip install -r requirements-dev.txt
+```
+
 Run a complete signed-passport validation using the synthetic examples:
 
 ```bash
